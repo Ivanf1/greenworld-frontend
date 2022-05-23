@@ -2,10 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "FuturaBook";
+  src: local("FuturaBookfont"), url(./fonts/FuturaBookfont.ttf) format("truetype");
+}
+@font-face {
+  font-family: "FuturaBold";
+  src: local("FuturaBoldfont"), url(./fonts/FuturaBoldfont.ttf) format("truetype");
+}
+@font-face {
+  font-family: "FuturaMedium";
+  src: local("futuramediumbt"), url(./fonts/futuramediumbt.ttf) format("truetype");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "FuturaMedium";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

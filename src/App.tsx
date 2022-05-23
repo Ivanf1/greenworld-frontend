@@ -8,7 +8,8 @@ function App() {
     <div className="App">
       {/* <Button type="primary" text="primary"></Button>
       <Button type="secondary" text="secondary"></Button> */}
-      <Home></Home>
+      {/* <Home></Home> */}
+      Hello there
     </div>
   );
 }
