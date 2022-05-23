@@ -8,3 +8,26 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 40px;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+button.primary {
+  background: #0d6651;
+  color: #ffffff;
+  border: none;
+}
+
+button.secondary {
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #0d6651;
+  border: 2px solid #0d6651;
+}
