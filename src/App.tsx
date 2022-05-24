@@ -5,15 +5,16 @@ import Navbar from "./components/Navbar";
 // import Carousel from "./components/Carousel";
 import SegnalazioneCard from "./components/SegnalazioneCard";
 import TestimonianzaCard from "./components/TestimonianzaCard";
-// import "flowbite";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       {/* <CandidaturaSponsor></CandidaturaSponsor> */}
       {/* <TestimonianzaCard></TestimonianzaCard> */}
-      <SegnalazioneCard></SegnalazioneCard>
+      {/* <SegnalazioneCard></SegnalazioneCard> */}
+      <Profile></Profile>
     </div>
   );
 }
