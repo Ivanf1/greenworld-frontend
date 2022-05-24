@@ -2,6 +2,7 @@ import profileImg from "../assets/profile-img.png";
 import mapMarkImg from "../assets/map-mark.svg";
 import testA from "../assets/a.jpg";
 import testB from "../assets/b.jpg";
+import "./TestimonianzaCard.css";
 
 const TestimonianzaCard = () => {
   return (

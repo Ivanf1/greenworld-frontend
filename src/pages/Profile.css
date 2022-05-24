@@ -1,0 +1,92 @@
+/* ---- profile start ---- */
+div.profile-container {
+  max-width: 1800px;
+  min-height: calc(100vh - 80px);
+  background: #fff;
+  border-radius: 8px;
+  padding: 80px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+div.profile-container > div.upper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+div.profile-container > div.upper-grid > div.profile-section {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+div.profile-container > div.upper-grid > div.profile-section > div.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+div.profile-container > div.upper-grid > div.profile-section > div.profile-info > div.details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 20px;
+}
+
+div.profile-container > div.upper-grid > div.score-section {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: end;
+  /* gap: 10px; */
+}
+
+div.profile-container > div.upper-grid > div.score-section > div.progress-bar-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+div.profile-container
+  > div.upper-grid
+  > div.score-section
+  > div.progress-bar-container
+  > div.progress-bar-background {
+  width: 400px;
+  height: 14px;
+  border-radius: 8px;
+  background: #d299c7;
+}
+div.profile-container
+  > div.upper-grid
+  > div.score-section
+  > div.progress-bar-container
+  > div.progress-bar-background
+  > div.progress-bar-fill {
+  height: 14px;
+  border-radius: 8px;
+  background: #a5338e;
+}
+
+div.profile-container > div.separator {
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  width: calc(1800px - 160px);
+}
+
+div.profile-container > div.separator > svg,
+div.profile-container > div.separator > svg > rect {
+  width: 100%;
+}
+
+div.profile-container > div.separator > svg {
+  margin: auto;
+}
+
+div.profile-container > div.event-container > h5 {
+  margin-bottom: 40px;
+}
+/* ---- profile end ---- */

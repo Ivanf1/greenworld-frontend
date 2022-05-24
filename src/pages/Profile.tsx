@@ -1,5 +1,6 @@
 import profileImg from "../assets/profilo.png";
 import EventoProfilo from "../components/EventoProfilo";
+import "./Profile.css";
 
 const Profile = () => {
   return (

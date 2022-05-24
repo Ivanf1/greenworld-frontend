@@ -1,0 +1,36 @@
+/* ---- evento-profilo start ---- */
+div.evento-profilo-container {
+  display: grid;
+  grid-template-columns: 200px 60% 2fr;
+  grid-template-rows: 1fr;
+  column-gap: 10px;
+  max-width: 1200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+div.evento-profilo-container > img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover !important; /* does not look good without */
+  border-radius: 8px;
+}
+
+div.evento-profilo-container > div.evento-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-self: center;
+  justify-self: center;
+  padding-right: 200px;
+}
+
+div.evento-profilo-container > div.button-container {
+  align-self: center;
+  justify-self: center;
+}
+
+div.evento-profilo-container > div.evento-info-container > span.luogo {
+  font-size: 1.2rem;
+}
+/* ---- evento-profilo end ---- */

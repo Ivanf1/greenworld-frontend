@@ -19,6 +19,30 @@
   src: local("Sansita-Regular"), url(./fonts/Sansita-Regular.ttf) format("truetype");
 }
 
+/* ---- custom scrollbar start ---- */
+/* width */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  max-width: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #bbbbbb;
+  max-width: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* ---- custom scrollbar end ---- */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "FuturaBook";
@@ -45,62 +69,6 @@ h5 {
   font-size: 0.8rem;
 }
 
-/* ---- navbar start ---- */
-nav {
-  background: #fff;
-  width: 100vw;
-  height: 80px;
-}
-
-nav > div.nav-container {
-  max-width: 1600px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  min-height: 100%;
-  justify-content: space-between;
-}
-
-nav > div.nav-container > div.left-container > div.logo-container {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-nav > div.nav-container > div.left-container {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-
-nav > div.nav-container > div.left-container > div.logo-container > img.logo {
-  box-sizing: border-box;
-  width: 50px;
-  height: 50px;
-  object-fit: cover !important; /* does not look good without */
-}
-
-nav > div.nav-container > div.left-container > div.logo-container > span.logo-name {
-  font-size: 1.5rem;
-  font-family: "SansitaRegular";
-  color: #0d6651;
-  margin-bottom: 6px;
-}
-
-nav > div.nav-container > div.left-container > svg {
-  transition: 0.15s;
-}
-
-nav > div.nav-container > div.left-container > svg:hover {
-  fill: #0d6651;
-  cursor: pointer;
-}
-
-nav > div.nav-container > div.left-container > div.logo-container:hover {
-  cursor: pointer;
-}
-/* ---- navbar end ---- */
-
 .scrollbar-style::-webkit-scrollbar-track {
   /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
   border-radius: 10px;
@@ -122,12 +90,11 @@ nav > div.nav-container > div.left-container > div.logo-container:hover {
   max-width: 10px;
 }
 
-div.hero-gradient {
+/* div.hero-gradient {
   background: linear-gradient(90deg, #f6f6f6 31.74%, rgba(217, 217, 217, 0) 100%);
 }
 
 div.evento-banner {
-  /* width: 1920px; */
   height: 100%;
   max-width: 1920px;
   max-height: 960px;
@@ -152,14 +119,11 @@ div.evento-banner-grid {
 div.evento-banner-grid-text {
   display: flex;
   flex-direction: column;
-}
+} */
 
 div.form-background {
   background: #cbdcd8;
-  width: 100vw;
-  height: 100vh;
-  min-width: 100vw;
-  min-height: 100vh;
+  height: calc(100vh - 80px);
   padding-top: 40px;
 }
 
@@ -241,273 +205,7 @@ button.secondary:hover {
   color: #fff;
 }
 
-/* ---- testimonianza start ---- */
-div.testimonianza-card {
-  /* background: #dedede; */
-  background: #fff;
-  border-radius: 8px;
-  max-width: 1000px;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  /* to remove */
-  margin-top: 60px;
-}
-
-div.testimonianza-card > div.profile,
-div.segnalazione-card > div.commento-container > div.profile {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-div.testimonianza-card > div.profile > img,
-div.segnalazione-card > div.commento-container > div.profile > img {
-  width: 80px;
-  height: 80px;
-}
-
-div.testimonianza-card > div.profile > p,
-div.segnalazione-card > div.commento-container > div.profile > p {
-  font-family: "FuturaMedium";
-  font-size: 1.5rem;
-}
-
-div.testimonianza-card > div.info-evento {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-div.testimonianza-card > div.info-evento > button {
-  margin-left: 40px;
-}
-
-div.testimonianza-card > div.info-evento > img {
-  width: 22px;
-}
-
-div.testimonianza-card > div.info-evento > div.location-evento {
-  display: flex;
-  flex-direction: column;
-}
-
-div.testimonianza-card > div.info-evento > div.location-evento > p.location {
-  font-size: 1rem;
-}
-
-div.testimonianza-card > div.info-evento > div.location-evento > p.date {
-  font-size: 0.6rem;
-}
-
-div.testimonianza-card > div.evento-images {
-  display: flex;
-  gap: 20px;
-  overflow-x: scroll;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-
-div.testimonianza-card > div.evento-images > img {
-  max-width: 250px;
-  border-radius: 8px;
-}
-/* ---- testimonianza end ---- */
-
-/* ---- segnalazione start ---- */
-div.segnalazione-card {
-  /* background: #dedede; */
-  background: #fff;
-  border-radius: 8px;
-  max-width: 1000px;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  /* to remove */
-  margin: auto;
-  margin-top: 60px;
-}
-
-div.segnalazione-card > div.top-container {
-  display: flex;
-  gap: 40px;
-}
-
-div.segnalazione-card > div.top-container > div.carousel-wrapper {
-  width: 400px;
-  /* make items in flex parent take half space */
-  flex: 1 1 0px;
-}
-
-div.segnalazione-card > div.top-container > div.info-evento {
-  display: flex;
-  flex-direction: column;
-  /* make items in flex parent take half space */
-  flex: 1 1 0px;
-  gap: 10px;
-}
-
-div.segnalazione-card > div.top-container > div.info-evento > div.buttons-container {
-  flex: 1 1 0px;
-  align-items: flex-end;
-}
-
-div.segnalazione-card > div.top-container > div.info-evento > .location-evento-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-div.segnalazione-card > div.top-container > div.info-evento > .buttons-container {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-div.segnalazione-card > div.commento-container {
-  margin-top: 20px;
-}
-
-div.segnalazione-card > div.commento-container > p {
-  padding-left: 100px;
-}
-/* ---- segnalazione end ---- */
-
 /* carousel */
 div.slider-wrapper {
   border-radius: 8px;
 }
-
-/* ---- profile start ---- */
-div.profile-container {
-  max-width: 1800px;
-  min-height: calc(100vh - 80px);
-  background: #fff;
-  border-radius: 8px;
-  padding: 80px;
-  margin: auto;
-  margin-top: 40px;
-}
-
-div.profile-container > div.upper-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-}
-
-div.profile-container > div.upper-grid > div.profile-section {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-
-div.profile-container > div.upper-grid > div.profile-section > div.profile-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-div.profile-container > div.upper-grid > div.profile-section > div.profile-info > div.details {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  column-gap: 20px;
-}
-
-div.profile-container > div.upper-grid > div.score-section {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-self: end;
-  /* gap: 10px; */
-}
-
-div.profile-container > div.upper-grid > div.score-section > div.progress-bar-container {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-
-div.profile-container
-  > div.upper-grid
-  > div.score-section
-  > div.progress-bar-container
-  > div.progress-bar-background {
-  width: 400px;
-  height: 14px;
-  border-radius: 8px;
-  background: #d299c7;
-}
-div.profile-container
-  > div.upper-grid
-  > div.score-section
-  > div.progress-bar-container
-  > div.progress-bar-background
-  > div.progress-bar-fill {
-  height: 14px;
-  border-radius: 8px;
-  background: #a5338e;
-}
-
-div.profile-container > div.separator {
-  margin: auto;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  width: calc(1800px - 160px);
-}
-
-div.profile-container > div.separator > svg,
-div.profile-container > div.separator > svg > rect {
-  width: 100%;
-}
-
-div.profile-container > div.separator > svg {
-  margin: auto;
-}
-
-div.profile-container > div.event-container > h5 {
-  margin-bottom: 40px;
-}
-/* ---- profile end ---- */
-
-/* ---- evento-profilo start ---- */
-div.evento-profilo-container {
-  display: grid;
-  grid-template-columns: 200px 60% 2fr;
-  grid-template-rows: 1fr;
-  column-gap: 10px;
-  max-width: 1200px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-div.evento-profilo-container > img {
-  display: block;
-  max-width: 100%;
-  object-fit: cover !important; /* does not look good without */
-  border-radius: 8px;
-}
-
-div.evento-profilo-container > div.evento-info-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  align-self: center;
-  justify-self: center;
-  padding-right: 200px;
-}
-
-div.evento-profilo-container > div.button-container {
-  align-self: center;
-  justify-self: center;
-}
-
-div.evento-profilo-container > div.evento-info-container > span.luogo {
-  font-size: 1.2rem;
-}
-/* ---- evento-profilo end ---- */

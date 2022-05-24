@@ -1,6 +1,7 @@
 import Carousel from "./Carousel";
 import profileImg from "../assets/profile-img.png";
 import mapMarkImg from "../assets/map-mark.svg";
+import "./SegnalazioneCard.css";
 
 const SegnalazioneCard = () => {
   return (

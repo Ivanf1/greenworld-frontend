@@ -1,4 +1,5 @@
 import busteImg from "../assets/buste.jpg";
+import "./EventoProfilo.css";
 
 const EventoProfilo = () => {
   return (
