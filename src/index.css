@@ -121,6 +121,49 @@ div.evento-banner-grid-text {
   flex-direction: column;
 } */
 
+/* ---- button start ---- */
+button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 40px;
+  max-height: 40px;
+  gap: 10px;
+  border-radius: 8px;
+  font-family: "FuturaMedium";
+  font-size: 1rem;
+}
+
+button.primary {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: #0d6651;
+  color: #ffffff;
+  transition: background 0.2s;
+}
+
+button.primary:hover {
+  background: #348a76;
+}
+
+button.secondary {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: #ffffff;
+  color: #0d6651;
+  border: 2px solid #0d6651;
+  transition: background, color 0.2s;
+}
+
+button.secondary:hover {
+  background: #348a76;
+  color: #fff;
+}
+/* ---- button end ---- */
+
 div.form-background {
   background: #cbdcd8;
   height: calc(100vh - 80px);
@@ -164,47 +207,6 @@ div.form-field {
 
 form {
   max-width: 400px;
-}
-
-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 40px;
-  max-height: 40px;
-  gap: 10px;
-  border-radius: 8px;
-  font-family: "FuturaMedium";
-  font-size: 1rem;
-}
-
-button.primary {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  background: #0d6651;
-  color: #ffffff;
-  transition: background 0.2s;
-}
-
-button.primary:hover {
-  background: #348a76;
-}
-
-button.secondary {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  background: #ffffff;
-  color: #0d6651;
-  border: 2px solid #0d6651;
-  transition: background, color 0.2s;
-}
-
-button.secondary:hover {
-  background: #348a76;
-  color: #fff;
 }
 
 /* carousel */
