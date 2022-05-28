@@ -9,7 +9,7 @@ const Profile = () => {
         <div className="profile-section">
           <img src={profileImg} alt="" />
           <div className="profile-info">
-            <h4>Francesca Brignano</h4>
+            <h3>Francesca Brignano</h3>
             <div className="details">
               <span className="username-label text-bold">Username</span>
               <span className="username">Francesca70</span>
@@ -22,7 +22,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="score-section">
-          <h5>Punteggio conseguito</h5>
+          <h4>Punteggio conseguito</h4>
           <span>25/100</span>
           <div className="progress-bar-container">
             <div className="progress-bar-background">
@@ -59,7 +59,7 @@ const Profile = () => {
         </svg>
       </div>
       <div className="event-container">
-        <h5>Hai partecipato a 8 eventi</h5>
+        <h4>Hai partecipato a 8 eventi</h4>
         <EventoProfilo></EventoProfilo>
         <EventoProfilo></EventoProfilo>
         <EventoProfilo></EventoProfilo>

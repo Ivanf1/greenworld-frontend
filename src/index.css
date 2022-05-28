@@ -3,20 +3,52 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "FuturaBook";
-  src: local("FuturaBookfont"), url(./fonts/FuturaBookfont.ttf) format("truetype");
+  font-family: "NotoSans-Thin";
+  src: local("NotoSans-Thin"), url(./fonts/NotoSans-Thin.ttf) format("truetype");
 }
 @font-face {
-  font-family: "FuturaBold";
-  src: local("FuturaBoldfont"), url(./fonts/FuturaBoldfont.ttf) format("truetype");
+  font-family: "NotoSans-ExtraLight";
+  src: local("NotoSans-ExtraLight"), url(./fonts/NotoSans-ExtraLight.ttf) format("truetype");
 }
 @font-face {
-  font-family: "FuturaMedium";
-  src: local("futuramediumbt"), url(./fonts/futuramediumbt.ttf) format("truetype");
+  font-family: "NotoSans-Light";
+  src: local("NotoSans-Light"), url(./fonts/NotoSans-Light.ttf) format("truetype");
 }
+@font-face {
+  font-family: "NotoSans-Regular";
+  src: local("NotoSans-Regular"), url(./fonts/NotoSans-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-Medium";
+  src: local("NotoSans-Medium"), url(./fonts/NotoSans-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-SemiBold";
+  src: local("NotoSans-SemiBold"), url(./fonts/NotoSans-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-Bold";
+  src: local("NotoSans-Bold"), url(./fonts/NotoSans-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-ExtraBold";
+  src: local("NotoSans-ExtraBold"), url(./fonts/NotoSans-ExtraBold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-Black";
+  src: local("NotoSans-Black"), url(./fonts/NotoSans-Black.ttf) format("truetype");
+}
+
+/* logo only */
 @font-face {
   font-family: "SansitaRegular";
   src: local("Sansita-Regular"), url(./fonts/Sansita-Regular.ttf) format("truetype");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 /* ---- custom scrollbar start ---- */
@@ -45,25 +77,26 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "FuturaBook";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, "NotoSans-Regular";
+  /* font-weight: 100; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
   background: #f6f6f6;
 }
 
-h4 {
+/* h4 {
   font-family: "FuturaMedium";
   font-size: 2rem;
-}
+} */
 
-h5 {
+/* h5 {
   font-family: "FuturaMedium";
   font-size: 1.5rem;
-}
+} */
 
-.text-bold {
+/* .text-bold {
   font-family: "FuturaMedium";
-}
+} */
 
 .text-small {
   font-size: 0.8rem;
@@ -129,10 +162,9 @@ button {
   align-items: center;
   padding: 8px 40px;
   max-height: 40px;
-  gap: 10px;
   border-radius: 8px;
-  font-family: "FuturaMedium";
-  font-size: 1rem;
+  font-family: "NotoSans-SemiBold";
+  font-size: 14px;
 }
 
 button.primary {
