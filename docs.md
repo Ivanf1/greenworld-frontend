@@ -6,6 +6,7 @@
 - [React Router](https://reactrouter.com/docs/en/v6)
 - [TypeScript](https://www.typescriptlang.org/docs/)
 - [React + Typescript](https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets)
+- [Tailwind](https://tailwindcss.com/docs/installation)
 
 ## Layout
 
