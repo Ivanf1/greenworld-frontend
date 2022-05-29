@@ -5,28 +5,28 @@ import "./Profile.css";
 const Profile = () => {
   return (
     <div className="profile-container">
-      <div className="upper-grid">
-        <div className="profile-section">
+      <div className="grid grid-cols-2">
+        <div className="flex gap-10 items-center">
           <img src={profileImg} alt="" />
-          <div className="profile-info">
+          <div className="flex flex-col items-start gap-5">
             <h3>Francesca Brignano</h3>
-            <div className="details">
-              <span className="username-label text-bold">Username</span>
+            <div className="grid grid-cols-2 grid-rows-3 gap-x-5">
+              <span className="username-label font-semi-bold">Username</span>
               <span className="username">Francesca70</span>
-              <span className="email-label text-bold">Email</span>
+              <span className="email-label font-semi-bold">Email</span>
               <span className="email">francesca97@live.it</span>
-              <span className="community-label text-bold">Nella community dal</span>
+              <span className="community-label font-semi-bold">Nella community dal</span>
               <span className="community">16 gennaio 2021</span>
             </div>
             <button className="secondary">Modifica informazioni</button>
           </div>
         </div>
-        <div className="score-section">
+        <div className="flex flex-col self-center justify-self-end">
           <h4>Punteggio conseguito</h4>
           <span>25/100</span>
-          <div className="progress-bar-container">
-            <div className="progress-bar-background">
-              <div className="progress-bar-fill" style={{ width: "20%" }}></div>
+          <div className="flex items-center gap-10">
+            <div className="w-[400px] h-[14px] rounded-lg bg-accent-purple-tint">
+              <div className="h-[14px] rounded-lg bg-accent-purple" style={{ width: "20%" }}></div>
             </div>
             <svg
               width="44"
@@ -54,12 +54,12 @@ const Profile = () => {
       </div>
       <div className="separator">
         {/* TODO: this needs to be dinamically resized based on profile-container width */}
-        <svg height="4" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect height="4" rx="2" fill="#CBDCD8" />
+        <svg className="w-full m-auto" height="4" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect className="w-full" height="4" rx="2" fill="#CBDCD8" />
         </svg>
       </div>
-      <div className="event-container">
-        <h4>Hai partecipato a 8 eventi</h4>
+      <div>
+        <h4 className="mb-10">Hai partecipato a 8 eventi</h4>
         <EventoProfilo></EventoProfilo>
         <EventoProfilo></EventoProfilo>
         <EventoProfilo></EventoProfilo>

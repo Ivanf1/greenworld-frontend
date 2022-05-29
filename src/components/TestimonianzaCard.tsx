@@ -6,20 +6,20 @@ import "./TestimonianzaCard.css";
 
 const TestimonianzaCard = () => {
   return (
-    <div className="testimonianza-card mx-auto">
-      <div className="profile">
-        <img src={profileImg} alt="" />
-        <p>Marge</p>
+    <div className="testimonianza-card flex flex-col gap-5 p-10 rounded-lg bg-white max-w-[1000px]">
+      <div className="flex items-center gap-5">
+        <img className="profile-img" src={profileImg} alt="" />
+        <h4>Marge</h4>
       </div>
-      <div className="info-evento">
-        <img src={mapMarkImg} alt="" />
-        <div className="location-evento">
-          <p className="location">Lago Maggiore</p>
-          <p className="date">23/04/2002</p>
+      <div className="flex items-start gap-2">
+        <img className="w-[22px]" src={mapMarkImg} alt="" />
+        <div className="flex flex-col">
+          <p className="text-sm">Lago Maggiore</p>
+          <p className="text-xs">23/04/2002</p>
         </div>
-        <button className="secondary">Vedi evento</button>
+        <button className="secondary ml-10">Vedi evento</button>
       </div>
-      <div className="evento-images scrollbar-style">
+      <div className="evento-images scrollbar-style flex gap-5 pb-[10px] pl-[10px]">
         <img src={testA} alt="" />
         <img src={testB} alt="" />
         <img src={testA} alt="" />
@@ -31,7 +31,7 @@ const TestimonianzaCard = () => {
         <img src={testA} alt="" />
         <img src={testB} alt="" />
       </div>
-      <p className="comment">
+      <p>
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
         laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
         architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
