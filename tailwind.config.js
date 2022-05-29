@@ -29,6 +29,7 @@ module.exports = {
       xs: [".875rem"],
       sm: ["1rem"],
       lg: ["1.125rem"],
+      llg: ["1.25rem"],
       xl: ["1.5rem"],
       "2xl": ["2.25rem"],
       "3xl": ["3rem"],
@@ -42,7 +43,7 @@ module.exports = {
       addBase({
         h1: { fontSize: theme("fontSize.3xl"), fontFamily: theme("fontFamily.black") },
         h2: { fontSize: theme("fontSize.2xl"), fontFamily: theme("fontFamily.extra-bold") },
-        h3: { fontSize: theme("fontSize.xl"), fontFamily: theme("fontFamily.bold") },
+        h3: { fontSize: theme("fontSize.llg"), fontFamily: theme("fontFamily.bold") },
         h4: { fontSize: theme("fontSize.lg"), fontFamily: theme("fontFamily.semi-bold") },
       });
     }),

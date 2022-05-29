@@ -134,7 +134,7 @@ button {
   height: 42px;
   border-radius: 8px;
   font-family: "NotoSans-SemiBold";
-  font-size: 14px;
+  /* font-size: 14px; */
 }
 
 button.nav {
@@ -188,6 +188,10 @@ div.slider-wrapper {
 img.profile-img {
   width: 80px;
   height: 80px;
+}
+
+div.form-background {
+  min-height: calc(100vh - 56px);
 }
 
 @media (min-width: 768px) {
