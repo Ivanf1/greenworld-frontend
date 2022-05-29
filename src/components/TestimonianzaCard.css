@@ -1,0 +1,10 @@
+/* ---- testimonianza start ---- */
+div.testimonianza-card > div.evento-images {
+  overflow-x: scroll;
+}
+
+div.testimonianza-card > div.evento-images > img {
+  max-width: 250px;
+  border-radius: 8px;
+}
+/* ---- testimonianza end ---- */

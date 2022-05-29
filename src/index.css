@@ -1,7 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "NotoSans-Thin";
+  src: local("NotoSans-Thin"), url(./fonts/NotoSans-Thin.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-ExtraLight";
+  src: local("NotoSans-ExtraLight"), url(./fonts/NotoSans-ExtraLight.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-Light";
+  src: local("NotoSans-Light"), url(./fonts/NotoSans-Light.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-Regular";
+  src: local("NotoSans-Regular"), url(./fonts/NotoSans-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-Medium";
+  src: local("NotoSans-Medium"), url(./fonts/NotoSans-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-SemiBold";
+  src: local("NotoSans-SemiBold"), url(./fonts/NotoSans-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-Bold";
+  src: local("NotoSans-Bold"), url(./fonts/NotoSans-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-ExtraBold";
+  src: local("NotoSans-ExtraBold"), url(./fonts/NotoSans-ExtraBold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "NotoSans-Black";
+  src: local("NotoSans-Black"), url(./fonts/NotoSans-Black.ttf) format("truetype");
+}
+
+/* logo only */
+@font-face {
+  font-family: "SansitaRegular";
+  src: local("Sansita-Regular"), url(./fonts/Sansita-Regular.ttf) format("truetype");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ---- custom scrollbar start ---- */
+/* width */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  max-width: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #bbbbbb;
+  max-width: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* ---- custom scrollbar end ---- */
+
+@layer components {
+  .card {
+    background: #ffffff;
+    mix-blend-mode: normal;
+    box-shadow: 0px 0px 8px 2px rgba(54, 54, 54, 0.05);
+    border-radius: 8px;
+  }
+
+  .input {
+    /* reset ios safari style */
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+
+    border-radius: 8px;
+    width: 100%;
+    border: 1px solid #d8d8da;
+  }
+  .input:focus {
+    @apply focus:border-primary;
+    @apply focus:ring-primary;
+  }
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, "NotoSans-Regular";
+  background: #f6f6f6;
 }
+
+.scrollbar-style::-webkit-scrollbar-track {
+  border-radius: 10px;
+  max-width: 2px;
+}
+
+.scrollbar-style::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-style::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #bbbbbb;
+  max-width: 10px;
+}
+
+/* ---- button start ---- */
+button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 20px;
+  max-height: 42px;
+  height: 42px;
+  border-radius: 8px;
+  font-family: "NotoSans-SemiBold";
+  /* font-size: 14px; */
+}
+
+button.nav {
+  max-height: 32px;
+}
+
+button.primary {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: #0d6651;
+  color: #ffffff;
+  border: 2px solid #0d6651;
+  transition: 0.2s;
+}
+button.primary:hover {
+  background: #348a76;
+  border: 2px solid #348a76;
+}
+
+button.secondary {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: #ffffff;
+  color: #0d6651;
+  border: 2px solid #0d6651;
+  transition: background, color 0.2s;
+}
+button.secondary:hover {
+  background: #348a76;
+  color: #fff;
+}
+/* ---- button end ---- */
+
+[type="file"] {
+  appearance: none;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* carousel */
+div.slider-wrapper {
+  border-radius: 8px;
+}
+
+img.profile-img {
+  width: 80px;
+  height: 80px;
+}
+
+div.form-background {
+  min-height: calc(100vh - 56px);
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: 8px 40px;
+  }
+  button.nav {
+    max-height: 41px;
+  }
+  div.form-background {
+    min-height: calc(100vh - 80px);
+  }
+}
+
+/* ---- multiselect ---- */
+div.rmsc {
+  --rmsc-main: #0d6651;
+  --rmsc-hover: #f1f3f5;
+  --rmsc-selected: #e2e6ea;
+  --rmsc-border: #d8d8da;
+  --rmsc-gray: #aaa;
+  --rmsc-bg: #fff;
+  --rmsc-p: 10px; /* Spacing */
+  --rmsc-radius: 8px; /* Radius */
+  --rmsc-h: 42px; /* Height */
+}
+/* ---- multiselect ---- */
