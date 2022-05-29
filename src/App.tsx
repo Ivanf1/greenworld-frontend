@@ -12,7 +12,7 @@ import Testimonianze from "./pages/Testimonianze";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Navbar /> */}
+      <Navbar />
       {/* <CandidaturaSponsor></CandidaturaSponsor> */}
       {/* <TestimonianzaCard></TestimonianzaCard> */}
       {/* <SegnalazioneCard></SegnalazioneCard> */}

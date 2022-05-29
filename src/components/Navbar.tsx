@@ -3,9 +3,9 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="h-20 px-20 w-full bg-white">
-      <div className="nav-container m-auto flex items-center min-h-full justify-between ">
-        <div className="left-container flex items-center gap-10">
+    <nav className="h-14 md:h-20 px-4 md:px-20 w-full bg-white">
+      <div className="nav-container m-auto flex items-center min-h-full justify-between">
+        <div className="left-container flex items-center gap-4 md:gap-10">
           <svg
             width="40"
             height="20"
@@ -18,12 +18,12 @@ const Navbar = () => {
             <rect y="8" width="40" height="4" rx="2" />
             <rect y="16" width="40" height="4" rx="2" />
           </svg>
-          <div className="flex gap-2 items-center logo-container hover:cursor-pointer">
-            <img className="logo" src={logo} alt="" />
-            <span className="logo-name">GreenWorld</span>
+          <div className="flex md:gap-2 items-center logo-container hover:cursor-pointer">
+            <img className="logo w-[30px] h-[30px] md:w-[50px] md:h-[50px]" src={logo} alt="" />
+            <span className="logo-name mb-[6px] text-lg md:text-xl">GreenWorld</span>
           </div>
         </div>
-        <button className="secondary">Login</button>
+        <button className="secondary nav">Login</button>
       </div>
     </nav>
   );
