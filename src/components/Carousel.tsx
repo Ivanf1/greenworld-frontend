@@ -1,21 +1,24 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "./Carousel.css";
 import testA from "../assets/a.jpg";
 import testB from "../assets/b.jpg";
 
+SwiperCore.use([Navigation, Pagination]);
+
 const MyCarousel = () => {
   return (
-    <Carousel showThumbs={false} showStatus={false}>
-      <div>
-        <img src={testA} alt="..." />
-      </div>
-      <div>
-        <img src={testB} alt="..." />
-      </div>
-      <div>
-        <img src={testA} alt="..." />
-      </div>
-    </Carousel>
+    <Swiper slidesPerView={1} loop={true} navigation={true} pagination={true}>
+      <SwiperSlide>
+        <img src={testA} alt="" />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src={testB} alt="" />
+      </SwiperSlide>
+    </Swiper>
   );
 };
 

@@ -52,12 +52,12 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="separator">
-        {/* TODO: this needs to be dinamically resized based on profile-container width */}
+      {/* TODO: this needs to be dinamically resized based on profile-container width */}
+      {/* <div className="separator">
         <svg className="w-full m-auto" height="4" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect className="w-full" height="4" rx="2" fill="#CBDCD8" />
         </svg>
-      </div>
+      </div> */}
       <div>
         <h4 className="mb-10">Hai partecipato a 8 eventi</h4>
         <EventoProfilo></EventoProfilo>

@@ -1,0 +1,1 @@
+export const TAILWINDCSS_MD_BREAKPOINT = 768;

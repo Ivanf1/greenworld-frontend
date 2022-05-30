@@ -8,6 +8,12 @@
 - [React + Typescript](https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets)
 - [Tailwind](https://tailwindcss.com/docs/installation)
 
+## Altre librerie usate
+
+- [Framer Motion](https://www.framer.com/motion/)
+- [Swiper](https://swiperjs.com/swiper-api)
+- [react-multi-select-component](https://github.com/hc-oss/react-multi-select-component)
+
 ## Layout
 
 - [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)

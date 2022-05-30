@@ -1,35 +1,33 @@
+import "./TestimonianzaCard.css";
 import profileImg from "../assets/profile-img.png";
 import mapMarkImg from "../assets/map-mark.svg";
-import testA from "../assets/a.jpg";
-import testB from "../assets/b.jpg";
-import "./TestimonianzaCard.css";
+import ScrollableContainer from "./ScrollableContainer";
+import useWindowSize from "../hooks/windowSize";
+import { TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
 
 const TestimonianzaCard = () => {
+  const [width, _] = useWindowSize();
+
   return (
-    <div className="testimonianza-card flex flex-col gap-5 p-10 rounded-lg bg-white max-w-[1000px]">
+    <div className="testimonianza-card flex flex-col gap-8 md:gap-5 p-4 md:p-10 rounded-lg bg-white w-[95%] max-w-[95%] md:max-w-[1000px]">
       <div className="flex items-center gap-5">
         <img className="profile-img" src={profileImg} alt="" />
         <h4>Marge</h4>
       </div>
-      <div className="flex items-start gap-2">
-        <img className="w-[22px]" src={mapMarkImg} alt="" />
-        <div className="flex flex-col">
-          <p className="text-sm">Lago Maggiore</p>
-          <p className="text-xs">23/04/2002</p>
+      <div className="flex flex-col md:flex-row items-start gap-2">
+        <div className="flex items-start gap-2">
+          <img className="w-[22px] mt-1" src={mapMarkImg} alt="" />
+          <div className="flex flex-col">
+            <p className="text-sm">Lago Maggiore</p>
+            <p className="text-xs">23/04/2002</p>
+          </div>
         </div>
-        <button className="secondary ml-10">Vedi evento</button>
+        <button className="secondary w-full md:w-auto md:ml-10">Vedi evento</button>
       </div>
-      <div className="evento-images scrollbar-style flex gap-5 pb-[10px] pl-[10px]">
-        <img src={testA} alt="" />
-        <img src={testB} alt="" />
-        <img src={testA} alt="" />
-        <img src={testB} alt="" />
-        <img src={testA} alt="" />
-        <img src={testB} alt="" />
-        <img src={testA} alt="" />
-        <img src={testB} alt="" />
-        <img src={testA} alt="" />
-        <img src={testB} alt="" />
+      <div className="w-full">
+        <ScrollableContainer
+          slidesPerView={width > TAILWINDCSS_MD_BREAKPOINT ? 3 : 1}
+        ></ScrollableContainer>
       </div>
       <p>
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
