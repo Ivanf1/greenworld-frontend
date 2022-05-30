@@ -53,6 +53,8 @@
 
 #root {
   min-height: 100vh;
+  --color-primary: #0d6651;
+  --border-rad: 8px;
 }
 
 /* ---- custom scrollbar start ---- */
@@ -84,7 +86,7 @@
     background: #ffffff;
     mix-blend-mode: normal;
     box-shadow: 0px 0px 8px 2px rgba(54, 54, 54, 0.05);
-    border-radius: 8px;
+    border-radius: var(--border-rad);
   }
 
   .input {
@@ -92,7 +94,7 @@
     -webkit-appearance: none;
     -webkit-border-radius: 0;
 
-    border-radius: 8px;
+    border-radius: var(--border-rad);
     width: 100%;
     border: 1px solid #d8d8da;
   }
@@ -132,9 +134,8 @@ button {
   padding: 4px 20px;
   max-height: 42px;
   height: 42px;
-  border-radius: 8px;
+  border-radius: var(--border-rad);
   font-family: "NotoSans-SemiBold";
-  /* font-size: 14px; */
 }
 
 button.nav {
@@ -178,11 +179,6 @@ button.secondary:hover {
   padding-left: 0.75rem;
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-/* carousel */
-div.slider-wrapper {
-  border-radius: 8px;
 }
 
 img.profile-img {
