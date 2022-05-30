@@ -115,7 +115,7 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "NotoSans-Regular";
-  background: #f6f6f6;
+  /* background: #f6f6f6; */
 }
 
 .scrollbar-style::-webkit-scrollbar-track {
@@ -175,6 +175,17 @@ button.secondary:hover {
   color: #ffffff;
 }
 
+button.secondary-white {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  transition: 0.2s;
+}
+button.secondary-white:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
 button.delete {
   background: #ffffff;
   color: var(--color-accent-red);
@@ -231,3 +242,18 @@ div.rmsc {
   --rmsc-h: 42px; /* Height */
 }
 /* ---- multiselect ---- */
+
+/* ---- home carousel ---- */
+.hero-carousel-wrapper > .swiper {
+  border-radius: 0;
+}
+
+.hero-carousel-wrapper > .swiper > .swiper-button-next,
+.hero-carousel-wrapper > .swiper > .swiper-button-prev {
+  border-radius: var(--border-rad);
+  color: #ffffff;
+  padding: 30px 16px;
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+  background-color: #0000003d;
+}
+/* ---- home carousel ---- */

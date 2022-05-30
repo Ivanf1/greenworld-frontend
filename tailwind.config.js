@@ -24,6 +24,7 @@ module.exports = {
       bold: ["NotoSans-Bold"],
       "extra-bold": ["NotoSans-ExtraBold"],
       black: ["NotoSans-Black"],
+      logo: ["SansitaRegular"],
     },
     fontSize: {
       xs: [".875rem"],

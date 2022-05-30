@@ -12,14 +12,12 @@ import SegnalazioneLuogo from "./pages/SegnalazioneLuogo";
 import InserimentoTestimonianza from "./pages/InserimentoTestimonianza";
 import CreaEvento from "./pages/CreaEvento";
 import Segnalazioni from "./pages/Segnalazioni";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      {/* <CandidaturaSponsor></CandidaturaSponsor> */}
-      {/* <TestimonianzaCard></TestimonianzaCard> */}
-      {/* <SegnalazioneCard></SegnalazioneCard> */}
       <Routes>
         <Route path="/profilo" element={<Profile />} />
         <Route path="/candidatura-sponsor" element={<CandidaturaSponsor />} />
@@ -28,6 +26,7 @@ function App() {
         <Route path="/crea-evento" element={<CreaEvento />} />
         <Route path="/testimonia" element={<InserimentoTestimonianza />} />
         <Route path="/testimonianze" element={<Testimonianze />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

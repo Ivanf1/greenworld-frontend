@@ -1,0 +1,23 @@
+.hero {
+  background-color: #242424; /* f6f6f6a2 */
+  background-image: url("../assets/hero.jpg");
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: calc(50vh - 190px);
+  padding-bottom: calc(50vh - 190px);
+  color: #ffffff;
+}
+
+.testimonianze-cta {
+  background-color: #06282082;
+  background-image: url("../assets/testimonianze-cta.jpg");
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 350px;
+  padding-bottom: 450px;
+  color: #ffffff;
+}
