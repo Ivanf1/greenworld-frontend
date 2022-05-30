@@ -2,12 +2,12 @@ import "./SideMenu.css";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import useWindowSize from "../hooks/windowSize";
+import { TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
 
 interface Props {
   open: boolean;
   onClose: () => void;
 }
-const TAILWINDCSS_MD_BREAKPOINT = 768;
 
 const SideMenu = ({ open, onClose }: Props) => {
   const [width, _] = useWindowSize();
@@ -63,10 +63,10 @@ const SideMenu = ({ open, onClose }: Props) => {
               <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Diventa Organizzatore
               </Link>
-              <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link to="candidatura-sponsor" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Diventa Sponsor
               </Link>
-              <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link to="testimonianze" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Elenco Testimonianze
               </Link>
             </div>

@@ -18,7 +18,7 @@ function App() {
       <Navbar />
       {/* <CandidaturaSponsor></CandidaturaSponsor> */}
       {/* <TestimonianzaCard></TestimonianzaCard> */}
-      <SegnalazioneCard></SegnalazioneCard>
+      {/* <SegnalazioneCard></SegnalazioneCard> */}
       <Routes>
         <Route path="/profilo" element={<Profile />} />
         <Route path="/candidatura-sponsor" element={<CandidaturaSponsor />} />
