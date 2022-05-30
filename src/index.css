@@ -54,6 +54,8 @@
 #root {
   min-height: 100vh;
   --color-primary: #0d6651;
+  --color-primary-tint: #348a76;
+  --color-accent-red: #d64e78;
   --border-rad: 8px;
 }
 
@@ -86,7 +88,7 @@
     background: #ffffff;
     mix-blend-mode: normal;
     box-shadow: 0px 0px 8px 2px rgba(54, 54, 54, 0.05);
-    border-radius: var(--border-rad);
+    border-radius: 8px;
   }
 
   .input {
@@ -94,13 +96,19 @@
     -webkit-appearance: none;
     -webkit-border-radius: 0;
 
-    border-radius: var(--border-rad);
+    border-radius: 8px;
     width: 100%;
     border: 1px solid #d8d8da;
   }
   .input:focus {
     @apply focus:border-primary;
     @apply focus:ring-primary;
+  }
+
+  .separator {
+    height: 2px;
+    border-radius: 8px;
+    background-color: theme("colors.primary-tint");
   }
 }
 
@@ -127,6 +135,9 @@ body {
 
 /* ---- button start ---- */
 button {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -143,31 +154,36 @@ button.nav {
 }
 
 button.primary {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  background: #0d6651;
+  background: var(--color-primary);
   color: #ffffff;
-  border: 2px solid #0d6651;
+  border: 2px solid var(--color-primary);
   transition: 0.2s;
 }
 button.primary:hover {
-  background: #348a76;
-  border: 2px solid #348a76;
+  background: var(--color-primary-tint);
+  border: 2px solid var(--color-primary-tint);
 }
 
 button.secondary {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   background: #ffffff;
-  color: #0d6651;
-  border: 2px solid #0d6651;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   transition: background, color 0.2s;
 }
 button.secondary:hover {
-  background: #348a76;
-  color: #fff;
+  background: var(--color-primary-tint);
+  color: #ffffff;
+}
+
+button.delete {
+  background: #ffffff;
+  color: var(--color-accent-red);
+  border: 2px solid var(--color-accent-red);
+  transition: 0.2s;
+}
+button.delete:hover {
+  background: var(--color-accent-red);
+  color: #ffffff;
 }
 /* ---- button end ---- */
 
@@ -204,14 +220,14 @@ div.form-background {
 
 /* ---- multiselect ---- */
 div.rmsc {
-  --rmsc-main: #0d6651;
+  --rmsc-main: var(--color-primary);
   --rmsc-hover: #f1f3f5;
   --rmsc-selected: #e2e6ea;
   --rmsc-border: #d8d8da;
   --rmsc-gray: #aaa;
   --rmsc-bg: #fff;
   --rmsc-p: 10px; /* Spacing */
-  --rmsc-radius: 8px; /* Radius */
+  --rmsc-radius: var(--border-rad); /* Radius */
   --rmsc-h: 42px; /* Height */
 }
 /* ---- multiselect ---- */

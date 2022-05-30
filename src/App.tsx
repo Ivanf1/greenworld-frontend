@@ -11,6 +11,7 @@ import Testimonianze from "./pages/Testimonianze";
 import SegnalazioneLuogo from "./pages/SegnalazioneLuogo";
 import InserimentoTestimonianza from "./pages/InserimentoTestimonianza";
 import CreaEvento from "./pages/CreaEvento";
+import Segnalazioni from "./pages/Segnalazioni";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profilo" element={<Profile />} />
         <Route path="/candidatura-sponsor" element={<CandidaturaSponsor />} />
         <Route path="/segnala" element={<SegnalazioneLuogo />} />
+        <Route path="/segnalazioni" element={<Segnalazioni />} />
         <Route path="/crea-evento" element={<CreaEvento />} />
         <Route path="/testimonia" element={<InserimentoTestimonianza />} />
         <Route path="/testimonianze" element={<Testimonianze />} />

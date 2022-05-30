@@ -1,4 +1,3 @@
-import "./TestimonianzaCard.css";
 import profileImg from "../assets/profile-img.png";
 import mapMarkImg from "../assets/map-mark.svg";
 import ScrollableContainer from "./ScrollableContainer";
