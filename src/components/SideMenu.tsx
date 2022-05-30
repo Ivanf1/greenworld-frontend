@@ -57,8 +57,14 @@ const SideMenu = ({ open, onClose }: Props) => {
               <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Profilo
               </Link>
-              <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link to="segnalazioni" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Segnalazioni
+              </Link>
+              <Link to="segnala" className="text-lg pl-10 py-3 " onClick={onClose}>
+                Segnala un luogo
+              </Link>
+              <Link to="crea-evento" className="text-lg pl-10 py-3 " onClick={onClose}>
+                Crea evento
               </Link>
               <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Diventa Organizzatore
@@ -68,6 +74,9 @@ const SideMenu = ({ open, onClose }: Props) => {
               </Link>
               <Link to="testimonianze" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Elenco Testimonianze
+              </Link>
+              <Link to="testimonia" className="text-lg pl-10 py-3 " onClick={onClose}>
+                Inserisci testimonianza
               </Link>
             </div>
           </motion.div>
