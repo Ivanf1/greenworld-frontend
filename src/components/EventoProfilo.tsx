@@ -1,11 +1,10 @@
-import busteImg from "../assets/buste.jpg";
-import "./EventoProfilo.css";
+import busteImg from "../assets/b.jpg";
 
 const EventoProfilo = () => {
   return (
-    <div className="evento-profilo-container grid grid-cols-[200px_60%_2fr] gap-x-2 mt-5 mb-5">
-      <img src={busteImg} alt="" />
-      <div className="flex flex-col gap-1 self-center justify-self-start pl-4">
+    <div className="evento-profilo-container grid grid-cols-1 grid-rows-[auto_auto_auto] lg:grid-rows-1 gap-y-10 lg:grid-cols-[minmax(100px,200px)_auto_auto] lg:gap-x-2">
+      <img src={busteImg} alt="" className="w-full max-w-full block rounded-lg lg:w-auto" />
+      <div className="flex flex-col gap-1 self-center justify-self-start lg:pl-4">
         <span className="text-sm font-medium">Lago dei cigni</span>
         <span className="text-xs">15/03/1992</span>
         <p>
@@ -13,8 +12,8 @@ const EventoProfilo = () => {
           lorem qua la sit ipsum
         </p>
       </div>
-      <div className="self-center justify-self-center">
-        <button className="secondary">Aggiungi testimonianza</button>
+      <div className="self-center">
+        <button className="secondary w-full lg:w-auto">Aggiungi testimonianza</button>
       </div>
     </div>
   );
