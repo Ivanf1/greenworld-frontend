@@ -2,10 +2,10 @@ import profileImg from "../assets/profile-img.png";
 import mapMarkImg from "../assets/map-mark.svg";
 import ScrollableContainer from "./ScrollableContainer";
 import useWindowSize from "../hooks/windowSize";
-import { TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
+import { TAILWINDCSS_LG_BREAKPOINT } from "../constants/tailwind";
 
 const TestimonianzaCard = () => {
-  const [width, _] = useWindowSize();
+  const [width] = useWindowSize();
 
   return (
     <div className="testimonianza-card flex flex-col gap-8 md:gap-5 p-4 md:p-10 rounded-lg bg-white w-[95%] max-w-[95%] md:max-w-[1000px]">
@@ -25,7 +25,7 @@ const TestimonianzaCard = () => {
       </div>
       <div className="w-full">
         <ScrollableContainer
-          slidesPerView={width > TAILWINDCSS_MD_BREAKPOINT ? 3 : 1}
+          slidesPerView={width > TAILWINDCSS_LG_BREAKPOINT ? 3 : 1}
         ></ScrollableContainer>
       </div>
       <p>
