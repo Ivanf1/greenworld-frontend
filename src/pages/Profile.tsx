@@ -4,28 +4,29 @@ import "./Profile.css";
 
 const Profile = () => {
   return (
-    <div className="profile-container">
-      <div className="grid grid-cols-2">
-        <div className="flex gap-10 items-center">
+    <div className="profile-container card mx-auto px-4 py-10 w-[95%] max-w-[95%] md:max-w-[1600px] md:p-10 lg:p-10 my-10 md:my-20">
+      <div className="grid grid-cols-1 xl:grid-cols-[70%_30%] grid-rows-[1fr_auto_auto] xl:grid-rows-1">
+        <div className="flex flex-col w-full md:flex-row gap-10 sm:gap-20 items-center mx-auto lg:mx-0">
           <img src={profileImg} alt="" />
-          <div className="flex flex-col items-start gap-5">
+          <div className="flex flex-col w-full md:w-auto items-center md:items-start gap-5">
             <h3>Francesca Brignano</h3>
-            <div className="grid grid-cols-2 grid-rows-3 gap-x-5">
+            <div className="grid w-full grid-cols-[1fr_auto] md:grid-rows-2 grid-rows-3 gap-x-5">
               <span className="username-label font-semi-bold">Username</span>
               <span className="username">Francesca70</span>
               <span className="email-label font-semi-bold">Email</span>
               <span className="email">francesca97@live.it</span>
-              <span className="community-label font-semi-bold">Nella community dal</span>
+              <span className="community-label font-semi-bold">Nella community</span>
               <span className="community">16 gennaio 2021</span>
             </div>
-            <button className="secondary">Modifica informazioni</button>
+            <button className="secondary w-full xl:w-auto">Modifica informazioni</button>
           </div>
         </div>
-        <div className="flex flex-col self-center justify-self-end">
-          <h4>Punteggio conseguito</h4>
+        <div className="separator my-20 xl:hidden"></div>
+        <div className="flex flex-col md:self-center md:justify-self-end w-full">
+          <h4 className="text-center mb-10 md:text-left md:mb-0">Punteggio conseguito</h4>
           <span>25/100</span>
           <div className="flex items-center gap-10">
-            <div className="w-[400px] h-[14px] rounded-lg bg-accent-purple-tint">
+            <div className="w-[90%] xl:w-full h-[14px] rounded-lg bg-accent-purple-tint">
               <div className="h-[14px] rounded-lg bg-accent-purple" style={{ width: "20%" }}></div>
             </div>
             <svg
@@ -52,22 +53,19 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      {/* TODO: this needs to be dinamically resized based on profile-container width */}
-      {/* <div className="separator">
-        <svg className="w-full m-auto" height="4" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect className="w-full" height="4" rx="2" fill="#CBDCD8" />
-        </svg>
-      </div> */}
+      <div className="separator w-full my-20"></div>
       <div>
-        <h4 className="mb-10">Hai partecipato a 8 eventi</h4>
-        <EventoProfilo></EventoProfilo>
-        <EventoProfilo></EventoProfilo>
-        <EventoProfilo></EventoProfilo>
-        <EventoProfilo></EventoProfilo>
-        <EventoProfilo></EventoProfilo>
-        <EventoProfilo></EventoProfilo>
-        <EventoProfilo></EventoProfilo>
-        <EventoProfilo></EventoProfilo>
+        <h4 className="text-center mb-10 md:text-left">Hai partecipato a 8 eventi</h4>
+        <div className="flex flex-col gap-20 lg:gap-10">
+          <EventoProfilo></EventoProfilo>
+          <EventoProfilo></EventoProfilo>
+          <EventoProfilo></EventoProfilo>
+          <EventoProfilo></EventoProfilo>
+          <EventoProfilo></EventoProfilo>
+          <EventoProfilo></EventoProfilo>
+          <EventoProfilo></EventoProfilo>
+          <EventoProfilo></EventoProfilo>
+        </div>
       </div>
     </div>
   );

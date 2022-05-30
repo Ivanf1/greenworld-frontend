@@ -2,7 +2,7 @@ import "./SideMenu.css";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import useWindowSize from "../hooks/windowSize";
-import { TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
+import { TAILWINDCSS_LG_BREAKPOINT } from "../constants/tailwind";
 
 interface Props {
   open: boolean;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const SideMenu = ({ open, onClose }: Props) => {
-  const [width, _] = useWindowSize();
+  const [width] = useWindowSize();
 
   return (
     <AnimatePresence>
@@ -24,12 +24,12 @@ const SideMenu = ({ open, onClose }: Props) => {
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
           ></motion.div>
           <motion.div
-            className={`w-[90%] md:w-1/4 h-full bg-white fixed z-50`}
-            initial={{ left: width > TAILWINDCSS_MD_BREAKPOINT ? "-25%" : "-90%" }}
+            className={`w-[90%] lg:w-1/4 h-full bg-white fixed z-50`}
+            initial={{ left: width > TAILWINDCSS_LG_BREAKPOINT ? "-25%" : "-90%" }}
             animate={{ left: 0 }}
             transition={{ ease: "easeOut", duration: 0.3 }}
             exit={{
-              left: width > TAILWINDCSS_MD_BREAKPOINT ? "-25%" : "-90%",
+              left: width > TAILWINDCSS_LG_BREAKPOINT ? "-25%" : "-90%",
               transition: { duration: 0.3 },
             }}
           >
@@ -57,8 +57,14 @@ const SideMenu = ({ open, onClose }: Props) => {
               <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Profilo
               </Link>
-              <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link to="segnalazioni" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Segnalazioni
+              </Link>
+              <Link to="segnala" className="text-lg pl-10 py-3 " onClick={onClose}>
+                Segnala un luogo
+              </Link>
+              <Link to="crea-evento" className="text-lg pl-10 py-3 " onClick={onClose}>
+                Crea evento
               </Link>
               <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Diventa Organizzatore
@@ -68,6 +74,9 @@ const SideMenu = ({ open, onClose }: Props) => {
               </Link>
               <Link to="testimonianze" className="text-lg pl-10 py-3 " onClick={onClose}>
                 Elenco Testimonianze
+              </Link>
+              <Link to="testimonia" className="text-lg pl-10 py-3 " onClick={onClose}>
+                Inserisci testimonianza
               </Link>
             </div>
           </motion.div>
