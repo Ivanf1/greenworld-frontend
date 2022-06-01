@@ -1,13 +1,22 @@
 .hero {
-  background-color: #242424; /* f6f6f6a2 */
-  background-image: url("../assets/hero.jpg");
-  background-blend-mode: overlay;
+  background-image: linear-gradient(180deg, #f6f6f6 21.35%, rgba(255, 255, 255, 0) 100%),
+    url("../assets/heroc.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding-top: calc(50vh - 190px);
-  padding-bottom: calc(50vh - 190px);
-  color: #ffffff;
+  color: var(--color-primary-text);
+  padding-top: 2rem;
+  padding-bottom: calc(90vh - 190px);
+  max-height: 100vh;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    background-image: linear-gradient(90deg, #f6f6f6 21.35%, rgba(255, 255, 255, 0) 100%),
+      url("../assets/heroc.jpg");
+    padding-top: calc(50vh - 190px);
+    padding-bottom: calc(50vh - 190px);
+  }
 }
 
 .testimonianze-cta {
@@ -17,7 +26,5 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding-top: 350px;
-  padding-bottom: 450px;
   color: #ffffff;
 }

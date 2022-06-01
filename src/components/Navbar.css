@@ -1,7 +1,13 @@
 /* ---- navbar start ---- */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 49; /* side menu is 50 */
+}
+
 nav > div.nav-container > div.left-container > div.logo-container > img.logo {
   box-sizing: border-box;
-  object-fit: cover !important; /* does not look good without */
+  object-fit: cover !important;
 }
 
 nav > div.nav-container > div.left-container > div.logo-container > span.logo-name {

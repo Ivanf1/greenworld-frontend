@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -12,7 +13,12 @@ module.exports = {
         "accent-red": "#D64E78",
         "accent-purple": "#8E0072",
         "accent-purple-tint": "#D299C7",
+        "primary-text": "#042c23",
       },
+    },
+    screens: {
+      xsm: "420px",
+      ...defaultTheme.screens,
     },
     fontFamily: {
       thin: ["NotoSans-Thin"],

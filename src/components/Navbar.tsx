@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
       <SideMenu open={open} onClose={cycleOpen}></SideMenu>
-      <nav className="h-14 md:h-20 px-4 md:px-20 w-full bg-white">
+      <nav className="h-14 md:h-20 px-4 md:px-5 lg:px-20 w-full bg-white">
         <div className="nav-container m-auto flex items-center min-h-full justify-between">
           <div className="left-container flex items-center gap-4 md:gap-10">
             <div className="ham-container p-2" onClick={() => cycleOpen()}>

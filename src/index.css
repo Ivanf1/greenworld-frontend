@@ -56,6 +56,7 @@
   --color-primary: #0d6651;
   --color-primary-tint: #348a76;
   --color-accent-red: #d64e78;
+  --color-primary-text: #042c23;
   --border-rad: 8px;
 }
 
@@ -110,6 +111,10 @@
     border-radius: 8px;
     background-color: theme("colors.primary-tint");
   }
+}
+
+.home-card-shadow {
+  box-shadow: 0px 0px 10px 3px rgb(191 191 191 / 20%);
 }
 
 body {
@@ -251,9 +256,25 @@ div.rmsc {
 .hero-carousel-wrapper > .swiper > .swiper-button-next,
 .hero-carousel-wrapper > .swiper > .swiper-button-prev {
   border-radius: var(--border-rad);
-  color: #ffffff;
+  color: var(--color-primary);
   padding: 30px 16px;
   margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
-  background-color: #0000003d;
+  /* background-color: #0000003d; */
+}
+
+.hero-carousel-wrapper > .swiper > .swiper-button-next:hover,
+.hero-carousel-wrapper > .swiper > .swiper-button-prev:hover {
+  /* color: #ffffff; */
+  background-color: #00000011;
+}
+
+.swiper-button-prev {
+  top: 10% !important;
+  left: 88% !important;
+}
+
+.swiper-button-next {
+  top: 10% !important;
+  right: 5% !important;
 }
 /* ---- home carousel ---- */
