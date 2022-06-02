@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 // import "./Carousel.css";
 import testA from "../assets/gennaro-swim.jpg";
 // import testB from "../assets/b.jpg";
-import gennaro from "../assets/gennaro.png";
+import gennaro from "../assets/gennaro.jpg";
 import HeroCarouselItem from "./HeroCarouselItem";
 
 SwiperCore.use([Navigation, Pagination]);
