@@ -21,15 +21,10 @@ module.exports = {
       ...defaultTheme.screens,
     },
     fontFamily: {
-      thin: ["NotoSans-Thin"],
-      "extra-light": ["NotoSans-ExtraLight"],
-      light: ["NotoSans-Light"],
       regular: ["NotoSans-Regular"],
       medium: ["NotoSans-Medium"],
       "semi-bold": ["NotoSans-SemiBold"],
       bold: ["NotoSans-Bold"],
-      "extra-bold": ["NotoSans-ExtraBold"],
-      black: ["NotoSans-Black"],
       logo: ["SansitaRegular"],
     },
     fontSize: {
