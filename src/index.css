@@ -3,46 +3,26 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "NotoSans-Thin";
-  src: local("NotoSans-Thin"), url(./fonts/NotoSans-Thin.ttf) format("truetype");
-}
-@font-face {
-  font-family: "NotoSans-ExtraLight";
-  src: local("NotoSans-ExtraLight"), url(./fonts/NotoSans-ExtraLight.ttf) format("truetype");
-}
-@font-face {
-  font-family: "NotoSans-Light";
-  src: local("NotoSans-Light"), url(./fonts/NotoSans-Light.ttf) format("truetype");
-}
-@font-face {
   font-family: "NotoSans-Regular";
-  src: local("NotoSans-Regular"), url(./fonts/NotoSans-Regular.ttf) format("truetype");
+  src: local("NotoSans-Regular"), url(./fonts/NotoSans-Regular.woff) format("woff");
 }
 @font-face {
   font-family: "NotoSans-Medium";
-  src: local("NotoSans-Medium"), url(./fonts/NotoSans-Medium.ttf) format("truetype");
+  src: local("NotoSans-Medium"), url(./fonts/NotoSans-Medium.woff) format("woff");
 }
 @font-face {
   font-family: "NotoSans-SemiBold";
-  src: local("NotoSans-SemiBold"), url(./fonts/NotoSans-SemiBold.ttf) format("truetype");
+  src: local("NotoSans-SemiBold"), url(./fonts/NotoSans-SemiBold.woff) format("woff");
 }
 @font-face {
   font-family: "NotoSans-Bold";
-  src: local("NotoSans-Bold"), url(./fonts/NotoSans-Bold.ttf) format("truetype");
-}
-@font-face {
-  font-family: "NotoSans-ExtraBold";
-  src: local("NotoSans-ExtraBold"), url(./fonts/NotoSans-ExtraBold.ttf) format("truetype");
-}
-@font-face {
-  font-family: "NotoSans-Black";
-  src: local("NotoSans-Black"), url(./fonts/NotoSans-Black.ttf) format("truetype");
+  src: local("NotoSans-Bold"), url(./fonts/NotoSans-Bold.woff) format("woff");
 }
 
 /* logo only */
 @font-face {
   font-family: "SansitaRegular";
-  src: local("Sansita-Regular"), url(./fonts/Sansita-Regular.ttf) format("truetype");
+  src: local("Sansita-Regular"), url(./fonts/Sansita-Regular.woff) format("woff");
 }
 
 *,
