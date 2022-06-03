@@ -5,7 +5,6 @@
   background-size: cover;
   background-position: center;
   color: var(--color-primary-text);
-  padding-top: 2rem;
   padding-bottom: calc(90vh - 190px);
   max-height: 100vh;
 }
@@ -39,16 +38,6 @@
   background-color: #00000011;
 }
 
-.hero-carousel-wrapper > .swiper > .swiper-button-prev {
-  top: 10% !important;
-  left: 90% !important;
-}
-
-.hero-carousel-wrapper > .swiper > .swiper-button-next {
-  top: 10% !important;
-  right: 3% !important;
-}
-
 .hero-carousel-wrapper > .swiper > .swiper-pagination > .swiper-pagination-bullet {
   background: #000000;
   opacity: 0.4;
@@ -57,20 +46,49 @@
   background: #000000;
   opacity: 1;
 }
+
+.hero-carousel-wrapper > .swiper > .swiper-button-prev {
+  display: none;
+}
+.hero-carousel-wrapper > .swiper > .swiper-button-next {
+  display: none;
+}
 /* ---- home carousel ---- */
+
+@media (min-width: 768px) {
+  .hero-carousel-wrapper > .swiper > .swiper-button-prev {
+    display: flex;
+    margin-left: 20px;
+  }
+  .hero-carousel-wrapper > .swiper > .swiper-button-next {
+    display: flex;
+    margin-right: 20px;
+  }
+}
 
 @media (min-width: 1024px) {
   .hero {
     background-image: linear-gradient(90deg, #f6f6f6 21.35%, rgba(255, 255, 255, 0) 100%),
       url("../assets/heroc.jpg");
-    padding-top: calc(50vh - 190px);
-    padding-bottom: calc(50vh - 190px);
+    padding-top: calc(50vh - 178px);
+    padding-bottom: calc(50vh - 178px);
+  }
+  .hero-carousel-wrapper > .swiper > .swiper-button-prev {
+    top: 10% !important;
+    left: 90% !important;
+    margin-left: 0 !important;
+  }
+
+  .hero-carousel-wrapper > .swiper > .swiper-button-next {
+    top: 10% !important;
+    right: 3% !important;
+    margin-right: 0 !important;
   }
 }
 
 /* if device has no hover it's probably a mobile */
 @media (hover: none) {
   .testimonianze-cta {
-    background-attachment: unset;
+    background-attachment: scroll;
   }
 }

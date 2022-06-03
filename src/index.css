@@ -37,6 +37,7 @@
   --color-primary-tint: #348a76;
   --color-accent-red: #d64e78;
   --color-primary-text: #042c23;
+  --color-hover: #034c3b;
   --border-rad: 8px;
 }
 
@@ -156,8 +157,8 @@ button.primary {
   transition: 0.2s;
 }
 button.primary:hover {
-  background: var(--color-primary-tint);
-  border: 2px solid var(--color-primary-tint);
+  background: var(--color-hover);
+  border: 2px solid var(--color-hover);
 }
 
 button.secondary {
@@ -167,7 +168,7 @@ button.secondary {
   transition: background, color 0.2s;
 }
 button.secondary:hover {
-  background: var(--color-primary-tint);
+  background: var(--color-hover);
   color: #ffffff;
 }
 
