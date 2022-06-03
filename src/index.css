@@ -97,6 +97,17 @@
   box-shadow: 0px 0px 10px 3px rgb(191 191 191 / 20%);
 }
 
+.bottom-border {
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+.top-border {
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "NotoSans-Regular";
@@ -227,34 +238,3 @@ div.rmsc {
   --rmsc-h: 42px; /* Height */
 }
 /* ---- multiselect ---- */
-
-/* ---- home carousel ---- */
-.hero-carousel-wrapper > .swiper {
-  border-radius: 0;
-}
-
-.hero-carousel-wrapper > .swiper > .swiper-button-next,
-.hero-carousel-wrapper > .swiper > .swiper-button-prev {
-  border-radius: var(--border-rad);
-  color: var(--color-primary);
-  padding: 30px 16px;
-  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
-  /* background-color: #0000003d; */
-}
-
-.hero-carousel-wrapper > .swiper > .swiper-button-next:hover,
-.hero-carousel-wrapper > .swiper > .swiper-button-prev:hover {
-  /* color: #ffffff; */
-  background-color: #00000011;
-}
-
-.swiper-button-prev {
-  top: 10% !important;
-  left: 88% !important;
-}
-
-.swiper-button-next {
-  top: 10% !important;
-  right: 5% !important;
-}
-/* ---- home carousel ---- */
