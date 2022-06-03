@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div className="w-full h-full flex flex-col gap-[200px]">
       <div className="hero w-full">
-        <div className="flex flex-col items-center lg:items-start gap-8 max-w-[78.125rem] mx-auto px-5 lg:px-20 2xl:px-0">
+        <div className="flex flex-col items-center lg:items-start gap-8 max-w-[78.125rem] mx-auto px-7 xl:px-0">
           <h1 className="text-4xl font-bold max-w-lg text-center lg:text-left">
             Il nostro Pianeta è la nostra casa
           </h1>
@@ -20,8 +20,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="testimonianze-cta w-full py-52 lg:py-72 px-5 lg:px-20 2xl:px-0">
-        <div className="flex flex-col items-center lg:items-start max-w-[78.125rem] mx-auto">
+      <div className="testimonianze-cta w-full py-52 lg:py-72 ">
+        <div className="flex flex-col items-center lg:items-start max-w-[78.125rem] mx-auto px-7 xl:px-0">
           <h2 className="font-medium text-center lg:text-left">
             Evento sulle montagne di Avellino
           </h2>
@@ -32,19 +32,19 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-full bg-light-grey py-20 hidden lg:block">
+      <div className="w-full bg-primary-tint py-20 hidden lg:block">
         <div className="hero-carousel-wrapper max-w-[78.125rem] mx-auto home-card-shadow">
           <HeroCarousel />
         </div>
       </div>
 
-      <div className="w-full bg-light-grey lg:py-20">
+      <div className="w-full md:bg-light-grey md:py-20">
         <div className="grid grid-cols-1 grid-rows-[repeat(6, auto)] md:grid-cols-2 md:grid-rows-3 md:gap-y-20 lg:max-w-[78.125rem] mx-auto">
-          <div className="home-card-shadow">
+          <div className="md:home-card-shadow top-border md:border-none mx-7 md:mx-0">
             <img src={gridImg1} alt="" className="w-full h-full object-cover" />
           </div>
-          <div className="bg-white h-full w-full flex home-card-shadow">
-            <div className="mx-auto max-w-[70%] flex flex-col items-center justify-center text-center py-20 md:py-5 lg:items-start lg:text-left lg:py-0">
+          <div className="bg-white h-full md:w-full md:flex home-card-shadow bottom-border md:border-none mx-7 md:mx-0">
+            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center text-center px-5 md:px-0 py-5 lg:items-start lg:text-left lg:py-0">
               <span className="text-4xl font-bold text-accent-blue">124</span>
               <h2 className="text-xl font-bold mb-5 lg:mb-0">Eventi organizzati</h2>
               <p>
@@ -53,8 +53,8 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="bg-white h-full w-full flex home-card-shadow">
-            <div className="mx-auto max-w-[70%] flex flex-col items-center justify-center text-center py-20 md:py-5 lg:items-start lg:text-left lg:py-0">
+          <div className="bg-white h-full md:w-full md:flex home-card-shadow bottom-border md:border-none mx-7 md:mx-0">
+            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center text-center px-5 md:px-0 py-5 lg:items-start lg:text-left lg:py-0">
               <span className="text-4xl font-bold text-accent-red">4200</span>
               <h2 className="text-xl font-bold mb-5 lg:mb-0">Volontari registrati</h2>
               <p>
@@ -64,14 +64,14 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="home-card-shadow row-start-3 row-end-3">
-            <img src={gridImg2} alt="" className="w-full h-full object-cover" />
+          <div className="md:home-card-shadow top-border md:border-none mx-7 md:mx-0 row-start-3 row-end-3 md:row-start-2 md:row-end-2 md:col-start-2 md:col-end-2 mt-20 md:mt-0">
+            <img src={gridImg2} alt="persone" className="w-full h-full object-cover" />
           </div>
-          <div className="home-card-shadow ">
-            <img src={gridImg3} alt="" className="w-full h-full object-cover" />
+          <div className="md:home-card-shadow top-border md:border-none mx-7 md:mx-0 mt-20 md:mt-0">
+            <img src={gridImg3} alt="spazzatura mare" className="w-full h-full object-cover" />
           </div>
-          <div className="bg-white h-full w-full flex home-card-shadow">
-            <div className="mx-auto max-w-[70%] flex flex-col items-center justify-center text-center py-20 md:py-5 lg:items-start lg:text-left lg:py-0">
+          <div className="bg-white h-full md:w-full flex home-card-shadow bottom-border md:border-none mx-7 md:mx-0">
+            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center text-center px-5 md:px-0 py-5 lg:items-start lg:text-left lg:py-0">
               <span className="text-4xl font-bold text-accent-purple inline">
                 6230
                 <span className="font-bold text-xl text-accent-purple inline">kg</span>
@@ -89,7 +89,7 @@ const Home = () => {
 
       <div className="w-full bg-primary-tint hidden lg:block">
         <div className="grid grid-cols-2 py-60 max-w-[78.125rem] mx-auto">
-          <div className="flex flex-col pr-[40%] items-start gap-y-6">
+          <div className="flex flex-col pr-[40%] items-start gap-y-6 px-7 xl:px-0">
             <h2 className="text-xl font-semi-bold">La tua azienda per il cambiamento climatico</h2>
             <p>
               234 aziende si sono già unite alla nostra causa. Diventa anche tu parte del
@@ -101,23 +101,25 @@ const Home = () => {
         </div>
       </div>
 
-      <footer className="w-full bg-primary">
-        <div className="flex flex-col md:flex-row gap-10 md:gap-x-40 items-start text-white px-5 py-20 lg:max-w-[78.125rem] mx-auto">
-          <div className="flex flex-col gap-y-10">
-            <span>Chi siamo</span>
-            <span>Chi siamo</span>
-            <span>Chi siamo</span>
-            <span>Chi siamo</span>
-            <span>Chi siamo</span>
+      <footer className="w-full bg-primary lg:pt-40 lg:pb-20">
+        <div className="flex flex-col md:gap-x-40 items-start text-white px-7 xl:px-0 lg:max-w-[78.125rem] mx-auto">
+          <div className="flex w-full gap-x-20">
+            <div className="flex flex-col gap-y-10">
+              <span>Chi siamo</span>
+              <span>Chi siamo</span>
+              <span>Chi siamo</span>
+              <span>Chi siamo</span>
+              <span>Chi siamo</span>
+            </div>
+            <div className="flex flex-col gap-y-10">
+              <span>Chi siamo</span>
+              <span>Chi siamo</span>
+              <span>Chi siamo</span>
+              <span>Chi siamo</span>
+              <span>Chi siamo</span>
+            </div>
           </div>
-          <div className="flex flex-col gap-y-10">
-            <span>Chi siamo</span>
-            <span>Chi siamo</span>
-            <span>Chi siamo</span>
-            <span>Chi siamo</span>
-            <span>Chi siamo</span>
-          </div>
-          <div className="flex-1 flex justify-end self-end">
+          <div className="flex-1 flex justify-end self-end mt-10">
             <span className="font-logo text-lg">GreenWorld</span>
           </div>
         </div>

@@ -4,7 +4,7 @@ import mapMarkImg from "../assets/map-mark.svg";
 
 const SegnalazioneCard = () => {
   return (
-    <div className="rounded-lg p-4 md:p-10 flex flex-col gap-8 md:gap-5 bg-white w-[95%] max-w-[95%] md:max-w-[1000px]">
+    <div className="card p-4 md:p-10 flex flex-col gap-8 md:gap-5 w-[95%] max-w-[95%] md:max-w-[1000px]">
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10">
         <div className="row-start-2 md:row-start-auto">
           <Carousel />
