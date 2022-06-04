@@ -21,10 +21,10 @@ module.exports = {
       ...defaultTheme.screens,
     },
     fontFamily: {
-      regular: ["NotoSans-Regular"],
-      medium: ["NotoSans-Medium"],
-      "semi-bold": ["NotoSans-SemiBold"],
-      bold: ["NotoSans-Bold"],
+      regular: ["Segoe UI"],
+      medium: ["Segoe UI"],
+      semibold: ["Segoe UI"],
+      bold: ["Segoe UI"],
       logo: ["SansitaRegular"],
     },
     fontSize: {
