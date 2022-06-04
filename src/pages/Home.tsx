@@ -13,7 +13,7 @@ const Home = () => {
           <h1 className="text-3xl md:text-4xl leading-[3.8rem] font-bold max-w-lg text-center lg:text-left">
             Il nostro Pianeta è la nostra casa
           </h1>
-          <p className="max-w-xs text-center lg:text-left font-semi-bold">
+          <p className="max-w-xs text-center lg:text-left font-semibold">
             Partecipa agli eventi organizzati dalla community e aiutaci a proteggerlo.
           </p>
           <button className="primary">Vedi eventi</button>
@@ -90,7 +90,7 @@ const Home = () => {
       <div className="w-full bg-primary-tint hidden lg:block">
         <div className="grid grid-cols-2 py-60 max-w-[78.125rem] mx-auto">
           <div className="flex flex-col pr-[40%] items-start gap-y-6 px-5 xl:px-0">
-            <h2 className="text-xl font-semi-bold">La tua azienda per il cambiamento climatico</h2>
+            <h2 className="text-xl font-semibold">La tua azienda per il cambiamento climatico</h2>
             <p>
               234 aziende si sono già unite alla nostra causa. Diventa anche tu parte del
               cambiamento.

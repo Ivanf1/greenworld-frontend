@@ -16,7 +16,7 @@ const HeroCarouselItem = ({ leftImg, profileImg, name, title, content }: Props) 
           <p className="text-xs ">{name}</p>
         </div>
         <div className="flex flex-col items-center gap-6">
-          <h2 className="font-semi-bold text-xl text-primary-text">{title}</h2>
+          <h2 className="font-semibold text-xl text-primary-text">{title}</h2>
           <p className="text-center px-7 lg:max-w-[70%]">{content}</p>
         </div>
       </div>
