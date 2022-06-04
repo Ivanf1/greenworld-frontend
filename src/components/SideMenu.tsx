@@ -83,7 +83,7 @@ const SideMenu = ({ open, onClose }: Props) => {
                 Crea evento
               </Link>
               <Link
-                to="profilo"
+                to="organizzatore"
                 className="menu-option text-lg font-semibold pl-10 py-3 "
                 onClick={onClose}
               >
