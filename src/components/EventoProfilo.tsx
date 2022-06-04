@@ -13,7 +13,7 @@ const EventoProfilo = () => {
         </p>
       </div>
       <div className="self-center">
-        <button className="secondary w-full lg:w-auto">Aggiungi testimonianza</button>
+        <button className="primary w-full lg:w-auto">Aggiungi testimonianza</button>
       </div>
     </div>
   );

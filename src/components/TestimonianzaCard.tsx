@@ -21,7 +21,7 @@ const TestimonianzaCard = () => {
             <p className="text-xs">23/04/2002</p>
           </div>
         </div>
-        <button className="secondary w-full md:w-auto md:ml-10">Vedi evento</button>
+        <button className="primary w-full md:w-auto md:ml-10">Vedi evento</button>
       </div>
       <div className="w-full">
         <ScrollableContainer

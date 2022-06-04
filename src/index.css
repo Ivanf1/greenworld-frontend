@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: "NotoSans-Regular";
   src: local("NotoSans-Regular"), url(./fonts/NotoSans-Regular.woff) format("woff");
 }
@@ -17,7 +17,7 @@
 @font-face {
   font-family: "NotoSans-Bold";
   src: local("NotoSans-Bold"), url(./fonts/NotoSans-Bold.woff) format("woff");
-}
+} */
 
 /* logo only */
 @font-face {
@@ -37,6 +37,7 @@
   --color-primary-tint: #348a76;
   --color-accent-red: #d64e78;
   --color-primary-text: #042c23;
+  --color-hover: #034c3b;
   --border-rad: 8px;
 }
 
@@ -110,8 +111,9 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "NotoSans-Regular";
-  /* background: #f6f6f6; */
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI"; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif";
 }
 
 .scrollbar-style::-webkit-scrollbar-track {
@@ -142,7 +144,8 @@ button {
   max-height: 42px;
   height: 42px;
   border-radius: var(--border-rad);
-  font-family: "NotoSans-SemiBold";
+  font-family: "Segoe UI";
+  font-weight: 600;
 }
 
 button.nav {
@@ -156,8 +159,8 @@ button.primary {
   transition: 0.2s;
 }
 button.primary:hover {
-  background: var(--color-primary-tint);
-  border: 2px solid var(--color-primary-tint);
+  background: var(--color-hover);
+  border: 2px solid var(--color-hover);
 }
 
 button.secondary {
@@ -167,7 +170,7 @@ button.secondary {
   transition: background, color 0.2s;
 }
 button.secondary:hover {
-  background: var(--color-primary-tint);
+  background: var(--color-hover);
   color: #ffffff;
 }
 

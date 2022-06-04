@@ -12,11 +12,11 @@ const Profile = () => {
             <div className="flex flex-col w-full md:w-auto items-center md:items-start gap-5">
               <h3>Francesca Brignano</h3>
               <div className="grid w-full grid-cols-[1fr_auto] md:grid-rows-2 grid-rows-3 gap-x-5">
-                <span className="username-label font-semi-bold">Username</span>
+                <span className="username-label font-semibold">Username</span>
                 <span className="username">Francesca70</span>
-                <span className="email-label font-semi-bold">Email</span>
+                <span className="email-label font-semibold">Email</span>
                 <span className="email">francesca97@live.it</span>
-                <span className="community-label font-semi-bold">Nella community</span>
+                <span className="community-label font-semibold">Nella community</span>
                 <span className="community">16 gennaio 2021</span>
               </div>
               <button className="secondary w-full xl:w-auto">Modifica informazioni</button>
