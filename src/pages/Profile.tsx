@@ -3,6 +3,9 @@ import EventoProfilo from "../components/EventoProfilo";
 import "./Profile.css";
 
 const Profile = () => {
+  const eventiPartecipati = 25;
+  const eventiPerPremio = 100;
+
   return (
     <div className="w-full h-full bg-light-grey py-10">
       <div className="profile-container card mx-auto px-4 py-10 w-[95%] max-w-[95%] md:max-w-[1600px] md:p-10">
@@ -25,12 +28,14 @@ const Profile = () => {
           <div className="separator my-20 xl:hidden"></div>
           <div className="flex flex-col md:self-center md:justify-self-end w-full">
             <h4 className="text-center mb-10 md:text-left md:mb-0">Punteggio conseguito</h4>
-            <span>25/100</span>
+            <span>
+              {eventiPartecipati}/{eventiPerPremio}
+            </span>
             <div className="flex items-center gap-10">
               <div className="w-[90%] xl:w-full h-[14px] rounded-lg bg-accent-purple-tint">
                 <div
                   className="h-[14px] rounded-lg bg-accent-purple"
-                  style={{ width: "20%" }}
+                  style={{ width: `${eventiPartecipati / (eventiPerPremio / 100)}%` }}
                 ></div>
               </div>
               <svg
@@ -67,16 +72,13 @@ const Profile = () => {
         </div>
         <div className="separator w-full my-20"></div>
         <div>
-          <h4 className="text-center mb-10 md:text-left">Hai partecipato a 8 eventi</h4>
+          <h4 className="text-center mb-10 md:text-left">
+            Hai partecipato a {eventiPartecipati} eventi
+          </h4>
           <div className="flex flex-col gap-20 lg:gap-10">
-            <EventoProfilo></EventoProfilo>
-            <EventoProfilo></EventoProfilo>
-            <EventoProfilo></EventoProfilo>
-            <EventoProfilo></EventoProfilo>
-            <EventoProfilo></EventoProfilo>
-            <EventoProfilo></EventoProfilo>
-            <EventoProfilo></EventoProfilo>
-            <EventoProfilo></EventoProfilo>
+            {[...Array(eventiPartecipati)].map((_, i) => (
+              <EventoProfilo key={i} />
+            ))}
           </div>
         </div>
       </div>

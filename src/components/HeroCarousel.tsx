@@ -3,9 +3,7 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-// import "./Carousel.css";
 import testA from "../assets/gennaro-swim.jpg";
-// import testB from "../assets/b.jpg";
 import gennaro from "../assets/gennaro.jpg";
 import HeroCarouselItem from "./HeroCarouselItem";
 

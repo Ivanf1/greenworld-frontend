@@ -22,12 +22,12 @@ const Home = () => {
 
       <div className="testimonianze-cta w-full py-52 lg:py-72 ">
         <div className="flex flex-col items-center lg:items-start max-w-[78.125rem] mx-auto px-5 xl:px-0">
-          <h2 className="font-medium text-center lg:text-left">
+          <h2 className="font-medium text-2xl text-center lg:text-left">
             Evento sulle montagne di Avellino
           </h2>
-          <h3 className="font-regular text-center lg:text-left mt-1">
+          <h5 className="font-regular text-lg text-center lg:text-left mt-1">
             18/05/1972 - Montagne, Avellino
-          </h3>
+          </h5>
           <button className="secondary-white mt-10">Vedi testimonianze</button>
         </div>
       </div>
@@ -88,8 +88,8 @@ const Home = () => {
       </div>
 
       <div className="w-full bg-primary-tint hidden lg:block">
-        <div className="grid grid-cols-2 py-60 max-w-[78.125rem] mx-auto">
-          <div className="flex flex-col pr-[40%] items-start gap-y-6 px-5 xl:px-0">
+        <div className="grid grid-cols-[30%_auto] py-60 max-w-[78.125rem] mx-auto">
+          <div className="flex flex-col items-start gap-y-6 px-5 xl:px-0">
             <h2 className="text-xl font-semibold">La tua azienda per il cambiamento climatico</h2>
             <p>
               234 aziende si sono già unite alla nostra causa. Diventa anche tu parte del

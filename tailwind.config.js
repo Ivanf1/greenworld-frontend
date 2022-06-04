@@ -92,9 +92,21 @@ module.exports = {
     plugin(function ({ addBase, theme }) {
       addBase({
         h1: { fontSize: theme("fontSize.3xl"), fontFamily: theme("fontFamily.black") },
-        h2: { fontSize: theme("fontSize.2xl"), fontFamily: theme("fontFamily.extra-bold") },
-        h3: { fontSize: theme("fontSize.llg"), fontFamily: theme("fontFamily.bold") },
-        h4: { fontSize: theme("fontSize.lg"), fontFamily: theme("fontFamily.semi-bold") },
+        h2: {
+          fontSize: theme("fontSize.xl"),
+          fontFamily: theme("fontFamily.extra-bold"),
+          fontWeight: theme("fontWeight.bold"),
+        },
+        h3: {
+          fontSize: theme("fontSize.llg"),
+          fontFamily: theme("fontFamily.bold"),
+          fontWeight: theme("fontWeight.bold"),
+        },
+        h4: {
+          fontSize: theme("fontSize.lg"),
+          fontFamily: theme("fontFamily.semibold"),
+          fontWeight: theme("fontWeight.semibold"),
+        },
       });
     }),
   ],

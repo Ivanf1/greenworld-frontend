@@ -5,14 +5,14 @@ nav {
   z-index: 49; /* side menu is 50 */
 }
 
-nav > div.nav-container > div.left-container > div.logo-container > img.logo {
+img.logo {
   box-sizing: border-box;
   object-fit: cover !important;
 }
 
-nav > div.nav-container > div.left-container > div.logo-container > span.logo-name {
+span.logo-name {
   font-family: "SansitaRegular";
-  color: #0d6651;
+  color: var(--color-primary);
 }
 
 .ham-container {

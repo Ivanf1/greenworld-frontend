@@ -10,7 +10,7 @@ const SegnalazioneCard = () => {
           <Carousel />
         </div>
         <div className="flex flex-1 flex-col gap-3">
-          <h3>Ma che ne so</h3>
+          <h3 className="font-bold text-xl">Ma che ne so</h3>
           <p>
             lorem ipsum dolor sir lorem ipsum dolor sit lorem ipsum dolor sir lorem dolor sit bla
             lorem ipsum dolor sir lorem ipsum dolor
@@ -29,7 +29,7 @@ const SegnalazioneCard = () => {
       <div className="">
         <div className="flex items-center gap-5">
           <img className="profile-img" src={profileImg} alt="" />
-          <h4>Marge</h4>
+          <h4 className="font-semibold">Marge</h4>
         </div>
         <p className="mt-4 md:pl-[100px]">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque

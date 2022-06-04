@@ -99,6 +99,11 @@ body {
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif";
 }
 
+a {
+  display: block;
+  text-decoration: none;
+}
+
 .scrollbar-style::-webkit-scrollbar-track {
   border-radius: 10px;
   max-width: 2px;
