@@ -127,7 +127,6 @@ button {
   max-height: 42px;
   height: 42px;
   border-radius: var(--border-rad);
-  font-family: "Segoe UI";
   font-weight: 600;
 }
 
