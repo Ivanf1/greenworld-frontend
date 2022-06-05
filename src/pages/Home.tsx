@@ -7,9 +7,9 @@ import gridImg3 from "../assets/home-grid-3.jpg";
 
 const Home = () => {
   return (
-    <div className="w-full h-full flex flex-col gap-[200px]">
+    <div className="w-full h-full flex flex-col space-y-[200px]">
       <div className="hero w-full pt-[10vh] md:pt-[20vh]">
-        <div className="flex flex-col items-center lg:items-start gap-8 max-w-[78.125rem] mx-auto px-5 xl:px-0">
+        <div className="flex flex-col items-center lg:items-start space-y-8 max-w-[78.125rem] mx-auto px-5 xl:px-0">
           <h1 className="text-3xl md:text-4xl leading-[3.8rem] font-bold max-w-lg text-center lg:text-left">
             Il nostro Pianeta è la nostra casa
           </h1>
@@ -20,7 +20,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="testimonianze-cta w-full py-52 lg:py-72 ">
+      <div className="testimonianze-cta w-full py-52 lg:py-72">
         <div className="flex flex-col items-center lg:items-start max-w-[78.125rem] mx-auto px-5 xl:px-0">
           <h2 className="font-medium text-2xl text-center lg:text-left">
             Evento sulle montagne di Avellino
@@ -39,7 +39,7 @@ const Home = () => {
       </div>
 
       <div className="bg-light-grey p-5 lg:py-20">
-        <div className="grid grid-cols-1 grid-rows-[repeat(6, auto)] md:grid-cols-2 md:grid-rows-3 md:gap-y-10 lg:gap-y-20 lg:max-w-[78.125rem] mx-auto">
+        <div className="grid grid-cols-1 grid-rows-[repeat(6,auto)] md:grid-cols-2 md:grid-rows-3 md:-y-10 lg:-y-20 lg:max-w-[78.125rem] mx-auto">
           <div className="md:home-card-shadow top-border md:border-none">
             <img src={gridImg1} alt="" className="w-full h-full object-cover" />
           </div>
@@ -89,7 +89,7 @@ const Home = () => {
 
       <div className="w-full bg-primary-tint hidden lg:block">
         <div className="grid grid-cols-[30%_auto] py-60 max-w-[78.125rem] mx-auto">
-          <div className="flex flex-col items-start gap-y-6 px-5 xl:px-0">
+          <div className="flex flex-col items-start space-y-6 px-5 xl:px-0">
             <h2 className="text-xl font-semibold">La tua azienda per il cambiamento climatico</h2>
             <p>
               234 aziende si sono già unite alla nostra causa. Diventa anche tu parte del
@@ -102,16 +102,16 @@ const Home = () => {
       </div>
 
       <footer className="w-full bg-primary px-5 py-20">
-        <div className="flex flex-col md:gap-x-40 items-start text-white xl:px-0 lg:max-w-[78.125rem] mx-auto">
-          <div className="flex w-full gap-x-20">
-            <div className="flex flex-col gap-y-10">
+        <div className="flex flex-col md:space-x-40 items-start text-white xl:px-0 lg:max-w-[78.125rem] mx-auto">
+          <div className="flex w-full space-x-20">
+            <div className="flex flex-col space-y-10">
               <span>Chi siamo</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
             </div>
-            <div className="flex flex-col gap-y-10">
+            <div className="flex flex-col space-y-10">
               <span>Chi siamo</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>

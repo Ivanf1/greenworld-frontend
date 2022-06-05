@@ -33,7 +33,7 @@ const SideMenu = ({ open, onClose }: Props) => {
               transition: { duration: 0.3 },
             }}
           >
-            <div className="flex flex-col gap-3 pt-10 z-10">
+            <div className="flex flex-col space-y-3 pt-10 z-10">
               <div className="ml-auto mr-10 p-2 w-[50px] ham-close-container" onClick={onClose}>
                 <svg viewBox="0 0 600 600" fill="black" xmlns="http://www.w3.org/2000/svg">
                   <rect
