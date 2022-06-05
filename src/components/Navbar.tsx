@@ -12,7 +12,7 @@ const Navbar = () => {
       <SideMenu open={open} onClose={cycleOpen} />
       <nav className="h-14 md:h-20 px-5 xl:px-5 w-full bg-white">
         <div className="nav-container m-auto flex items-center min-h-full justify-between">
-          <div className="left-container flex items-center gap-4 md:gap-10">
+          <div className="left-container flex items-center space-x-4 md:space-x-10">
             <div className="ham-container p-2" onClick={() => cycleOpen()}>
               <svg
                 width="40"
@@ -28,7 +28,7 @@ const Navbar = () => {
               </svg>
             </div>
             <Link to="/">
-              <div className="flex md:gap-2 items-center logo-container hover:cursor-pointer">
+              <div className="flex md:space-x-2 items-center logo-container hover:cursor-pointer">
                 <img className="logo w-[30px] h-[30px] md:w-[50px] md:h-[50px]" src={logo} alt="" />
                 <span className="logo-name mb-[6px] text-lg md:text-xl">GreenWorld</span>
               </div>

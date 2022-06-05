@@ -8,13 +8,13 @@ const TestimonianzaCard = () => {
   const [width] = useWindowSize();
 
   return (
-    <div className="card flex flex-col gap-8 md:gap-5 p-4 md:p-10 w-[95%] max-w-[95%] md:max-w-[1000px]">
-      <div className="flex items-center gap-5">
+    <div className="card flex flex-col space-y-8 md:space-y-5 p-4 md:p-10 w-[95%] max-w-[95%] md:max-w-[1000px]">
+      <div className="flex items-center space-x-5">
         <img className="profile-img" src={profileImg} alt="" />
         <h4>Marge</h4>
       </div>
-      <div className="flex flex-col md:flex-row items-start gap-2">
-        <div className="flex items-start gap-2">
+      <div className="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-10">
+        <div className="flex items-start space-x-2">
           <img className="w-[22px] mt-1" src={mapMarkImg} alt="" />
           <div className="flex flex-col">
             <p className="text-sm">Lago Maggiore</p>
