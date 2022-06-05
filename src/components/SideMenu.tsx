@@ -33,7 +33,7 @@ const SideMenu = ({ open, onClose }: Props) => {
               transition: { duration: 0.3 },
             }}
           >
-            <div className="flex flex-col gap-3 pt-10 z-10">
+            <div className="flex flex-col space-y-3 pt-10 z-10">
               <div className="ml-auto mr-10 p-2 w-[50px] ham-close-container" onClick={onClose}>
                 <svg viewBox="0 0 600 600" fill="black" xmlns="http://www.w3.org/2000/svg">
                   <rect
@@ -54,28 +54,60 @@ const SideMenu = ({ open, onClose }: Props) => {
                   />
                 </svg>
               </div>
-              <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link
+                to="profilo"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
                 Profilo
               </Link>
-              <Link to="segnalazioni" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link
+                to="segnalazioni"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
                 Segnalazioni
               </Link>
-              <Link to="segnala" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link
+                to="segnala"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
                 Segnala un luogo
               </Link>
-              <Link to="crea-evento" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link
+                to="crea-evento"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
                 Crea evento
               </Link>
-              <Link to="profilo" className="text-lg pl-10 py-3 " onClick={onClose}>
-                Diventa Organizzatore
+              <Link
+                to="organizzatore"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
+                Diventa organizzatore
               </Link>
-              <Link to="candidatura-sponsor" className="text-lg pl-10 py-3 " onClick={onClose}>
-                Diventa Sponsor
+              <Link
+                to="candidatura-sponsor"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
+                Diventa sponsor
               </Link>
-              <Link to="testimonianze" className="text-lg pl-10 py-3 " onClick={onClose}>
-                Elenco Testimonianze
+              <Link
+                to="testimonianze"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
+                Elenco testimonianze
               </Link>
-              <Link to="testimonia" className="text-lg pl-10 py-3 " onClick={onClose}>
+              <Link
+                to="testimonia"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
                 Inserisci testimonianza
               </Link>
             </div>

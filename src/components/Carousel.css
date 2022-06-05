@@ -8,6 +8,10 @@
   color: #ffffff;
   padding: 30px 16px;
   margin-top: calc(0px - ((var(--swiper-navigation-size) + 15px) / 2));
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
   background-color: #0000003d;
 }
 

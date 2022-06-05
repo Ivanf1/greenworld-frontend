@@ -1,8 +1,8 @@
-a {
+a.menu-option {
   text-decoration: none;
   transition: 0.15s;
 }
-a:hover {
+a.menu-option:hover {
   color: #ffffff;
   background-color: #348a76;
 }

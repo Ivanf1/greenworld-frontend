@@ -1,12 +1,18 @@
 /* ---- navbar start ---- */
-nav > div.nav-container > div.left-container > div.logo-container > img.logo {
-  box-sizing: border-box;
-  object-fit: cover !important; /* does not look good without */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 49; /* side menu is 50 */
 }
 
-nav > div.nav-container > div.left-container > div.logo-container > span.logo-name {
+img.logo {
+  box-sizing: border-box;
+  object-fit: cover !important;
+}
+
+span.logo-name {
   font-family: "SansitaRegular";
-  color: #0d6651;
+  color: var(--color-primary);
 }
 
 .ham-container {
