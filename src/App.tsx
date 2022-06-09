@@ -10,6 +10,7 @@ import CreaEvento from "./pages/CreaEvento";
 import Segnalazioni from "./pages/Segnalazioni";
 import Home from "./pages/Home";
 import DiventaOrganizzatore from "./pages/DiventaOrganizzatore";
+import Evento from "./pages/Evento";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/testimonia" element={<InserimentoTestimonianza />} />
         <Route path="/testimonianze" element={<Testimonianze />} />
         <Route path="/organizzatore" element={<DiventaOrganizzatore />} />
+        <Route path="/evento" element={<Evento />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
