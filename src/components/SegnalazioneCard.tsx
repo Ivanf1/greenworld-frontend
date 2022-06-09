@@ -23,8 +23,8 @@ const SegnalazioneCard = () => {
         </div>
 
         <div className="flex flex-col md:flex-row md:items-end space-y-2 md:mt-0 md:space-x-5 md:mb-5">
-          <button className="primary">Crea evento</button>
-          <button className="delete">Rimuovi</button>
+          <button className="primary flex-1 lg:flex-initial">Crea evento</button>
+          <button className="delete flex-1 lg:flex-initial">Rimuovi</button>
         </div>
       </div>
 
