@@ -13,6 +13,8 @@
 - [Framer Motion](https://www.framer.com/motion/)
 - [Swiper](https://swiperjs.com/swiper-api)
 - [react-multi-select-component](https://github.com/hc-oss/react-multi-select-component)
+- [react-dropzone](https://react-dropzone.js.org/)
+- [Formik](https://formik.org/docs/overview)
 
 ## Layout
 

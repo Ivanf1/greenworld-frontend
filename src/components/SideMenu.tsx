@@ -110,6 +110,13 @@ const SideMenu = ({ open, onClose }: Props) => {
               >
                 Inserisci testimonianza
               </Link>
+              <Link
+                to="evento"
+                className="menu-option text-lg font-semibold pl-10 py-3 "
+                onClick={onClose}
+              >
+                Evento
+              </Link>
             </div>
           </motion.div>
         </div>

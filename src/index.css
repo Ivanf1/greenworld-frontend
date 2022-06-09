@@ -8,6 +8,12 @@
   src: local("Sansita-Regular"), url(./fonts/Sansita-Regular.woff) format("woff");
 }
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif";
+}
+
 *,
 *::before,
 *::after {
@@ -70,6 +76,10 @@
     @apply focus:ring-primary;
   }
 
+  .form-error {
+    color: rgb(241, 97, 97);
+  }
+
   .separator {
     height: 2px;
     border-radius: 8px;
@@ -90,13 +100,6 @@
   border-left: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
   border-top: 1px solid #ebebeb;
-}
-
-body {
-  margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI"; */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif";
 }
 
 a {
@@ -201,6 +204,15 @@ img.profile-img {
 
 div.form-background {
   min-height: calc(100vh - 56px);
+}
+
+.required::after {
+  display: block;
+  content: "\01F7B7";
+  display: block;
+  color: rgb(241, 97, 97);
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
 }
 
 @media (min-width: 768px) {
