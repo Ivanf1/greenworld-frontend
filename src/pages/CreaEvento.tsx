@@ -1,7 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MultiSelect } from "react-multi-select-component";
+import { useDropzone } from "react-dropzone";
 
 const CreaEvento = () => {
+  const [files, setFiles] = useState<{ preview: string }[]>([]);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: {
+      "image/*": [],
+    },
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
+    maxFiles: 10,
+  });
+
+  const thumbs = files.map((file) => (
+    <div className="inline-flex">
+      <div>
+        <img
+          src={file.preview}
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview);
+          }}
+          alt=""
+          className="block h-full w-[260px]"
+        />
+      </div>
+    </div>
+  ));
+
+  useEffect(() => {
+    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+  }, []);
+
   const options = [
     { value: "chocolate", label: "Chocolate" },
     { value: "strawberry", label: "Strawberry" },
@@ -69,7 +108,19 @@ const CreaEvento = () => {
             <label className="block" htmlFor="foto">
               Carica foto
             </label>
-            <input className="input" type="file" name="foto" />
+            <div {...getRootProps()} className="cursor-pointer input py-2 px-3">
+              <input {...getInputProps()} />
+              {isDragActive ? (
+                <p>Trascina qui le immagini ...</p>
+              ) : (
+                <p>Trascina le immagini o clicca per selezionarle</p>
+              )}
+              <aside
+                className={`grid grid-cols-[repeat(2,auto)] gap-2 ${files.length !== 0 && "mt-4"} `}
+              >
+                {thumbs}
+              </aside>
+            </div>
           </div>
           <div className="my-3">
             <label className="block" htmlFor="citta">
