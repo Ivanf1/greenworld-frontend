@@ -39,24 +39,26 @@ const Home = () => {
       </div>
 
       <div className="bg-light-grey p-5 lg:py-20">
-        <div className="grid grid-cols-1 grid-rows-[repeat(6,auto)] md:grid-cols-2 md:grid-rows-3 md:-y-10 lg:-y-20 lg:max-w-[78.125rem] mx-auto">
+        <div className="grid grid-cols-1 grid-rows-[repeat(6,auto)]  md:grid-cols-2 md:grid-rows-3 md:-y-10 lg:-y-20 lg:max-w-[78.125rem] mx-auto w-full h-full">
+          {/* prettier-ignore */}
           <div className="md:home-card-shadow top-border md:border-none">
-            <img src={gridImg1} alt="" className="w-full h-full object-cover" />
+            <img src={gridImg1} alt="" className="w-full md:h-full  md:object-cover" />
           </div>
           <div className="bg-white h-full md:w-full md:flex home-card-shadow bottom-border md:border-none">
-            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center text-center px-5 md:px-0 py-5 lg:items-start lg:text-left lg:py-0">
+            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center px-5 md:px-0 py-5 sm:items-start sm:text-left lg:py-0">
               <span className="text-4xl font-bold text-accent-blue">124</span>
-              <h2 className="text-xl font-bold mb-5 lg:mb-0">Eventi organizzati</h2>
+              <h2 className="text-xl font-bold mb-5">Eventi organizzati</h2>
               <p>
                 La nostra community ha organizzato e continua ad organizzare numerosi eventi di
                 pulizia su tutto il territorio italiano.
               </p>
             </div>
           </div>
+
           <div className="bg-white h-full md:w-full md:flex home-card-shadow bottom-border md:border-none">
-            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center text-center px-5 md:px-0 py-5 lg:items-start lg:text-left lg:py-0">
+            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center px-5 md:px-0 py-5 sm:items-start sm:text-left lg:py-0">
               <span className="text-4xl font-bold text-accent-red">4200</span>
-              <h2 className="text-xl font-bold mb-5 lg:mb-0">Volontari registrati</h2>
+              <h2 className="text-xl font-bold mb-5">Volontari registrati</h2>
               <p>
                 I volontari che prendono parte ad i nostri eventi sono in continuo aumento. Hanno
                 background differenti ma condividono la passione della salvaguardia del nostro
@@ -65,18 +67,19 @@ const Home = () => {
             </div>
           </div>
           <div className="md:home-card-shadow top-border md:border-none row-start-3 row-end-3 md:row-start-2 md:row-end-2 md:col-start-2 md:col-end-2 mt-20 md:mt-0">
-            <img src={gridImg2} alt="persone" className="w-full h-full object-cover" />
+            <img src={gridImg2} alt="persone" className="w-full md:h-full object-cover" />
           </div>
+
           <div className="md:home-card-shadow top-border md:border-none mt-20 md:mt-0">
-            <img src={gridImg3} alt="spazzatura mare" className="w-full h-full object-cover" />
+            <img src={gridImg3} alt="spazzatura mare" className="w-full md:h-full object-cover" />
           </div>
-          <div className="bg-white h-full md:w-full flex home-card-shadow bottom-border md:border-none">
-            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center text-center px-5 md:px-0 py-5 lg:items-start lg:text-left lg:py-0">
+          <div className="bg-white h-full md:w-full md:flex home-card-shadow bottom-border md:border-none">
+            <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center px-5 md:px-0 py-10 sm:items-start sm:text-left lg:py-0">
               <span className="text-4xl font-bold text-accent-purple inline">
                 6230
                 <span className="font-bold text-xl text-accent-purple inline">kg</span>
               </span>
-              <h2 className="text-xl font-bold mb-5 lg:mb-0">Spazzatura raccolta</h2>
+              <h2 className="text-xl font-bold mb-5">Spazzatura raccolta</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud

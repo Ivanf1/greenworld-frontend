@@ -28,7 +28,7 @@ const Navbar = () => {
               </svg>
             </div>
             <Link to="/">
-              <div className="flex md:space-x-2 items-center logo-container hover:cursor-pointer">
+              <div className="flex md:-2 items-center logo-container hover:cursor-pointer">
                 <img className="logo w-[30px] h-[30px] md:w-[50px] md:h-[50px]" src={logo} alt="" />
                 <span className="logo-name mb-[6px] text-lg md:text-xl">GreenWorld</span>
               </div>
