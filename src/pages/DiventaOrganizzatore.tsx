@@ -1,3 +1,5 @@
+import ProgressBar from "../components/ProgressBar";
+
 const DiventaOrganizzatore = () => {
   const numEventi = 12;
   const minEventi = 20;
@@ -30,14 +32,8 @@ const DiventaOrganizzatore = () => {
               Quando avrai partecipato a 20 eventi, ti sarà resa disponibile la possibilità di
               diventare organizzatore
             </p>
-            <div className="flex space-x-5 md:space-x-20 items-center mt-2">
-              <span>12/20</span>
-              <div className="w-[90%] xl:w-full h-[14px] rounded-lg bg-accent-purple-tint">
-                <div
-                  className="h-[14px] rounded-lg bg-accent-purple"
-                  style={{ width: `${numEventi / (minEventi / 100)}%` }}
-                ></div>
-              </div>
+            <div className="mt-2">
+              <ProgressBar total={minEventi} completed={numEventi} showLabel={true} />
             </div>
           </div>
         </div>

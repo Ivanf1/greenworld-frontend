@@ -11,24 +11,27 @@ import Segnalazioni from "./pages/Segnalazioni";
 import Home from "./pages/Home";
 import DiventaOrganizzatore from "./pages/DiventaOrganizzatore";
 import Evento from "./pages/Evento";
+import { MotionConfig } from "framer-motion";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/profilo" element={<Profile />} />
-        <Route path="/candidatura-sponsor" element={<CandidaturaSponsor />} />
-        <Route path="/segnala" element={<SegnalazioneLuogo />} />
-        <Route path="/segnalazioni" element={<Segnalazioni />} />
-        <Route path="/crea-evento" element={<CreaEvento />} />
-        <Route path="/testimonia" element={<InserimentoTestimonianza />} />
-        <Route path="/testimonianze" element={<Testimonianze />} />
-        <Route path="/organizzatore" element={<DiventaOrganizzatore />} />
-        <Route path="/evento" element={<Evento />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <MotionConfig reducedMotion="user">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/profilo" element={<Profile />} />
+          <Route path="/candidatura-sponsor" element={<CandidaturaSponsor />} />
+          <Route path="/segnala" element={<SegnalazioneLuogo />} />
+          <Route path="/segnalazioni" element={<Segnalazioni />} />
+          <Route path="/crea-evento" element={<CreaEvento />} />
+          <Route path="/testimonia" element={<InserimentoTestimonianza />} />
+          <Route path="/testimonianze" element={<Testimonianze />} />
+          <Route path="/organizzatore" element={<DiventaOrganizzatore />} />
+          <Route path="/evento" element={<Evento />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </MotionConfig>
   );
 }
 
