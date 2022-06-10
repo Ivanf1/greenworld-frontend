@@ -6,6 +6,7 @@ import sponsorLogo from "../assets/pizzaciro.png";
 import profileImg from "../assets/profilo.png";
 import commentProfileImg from "../assets/profile-img.png";
 import UserComment from "../components/UserComment";
+import ProgressBar from "../components/ProgressBar";
 
 const Evento = () => {
   const partecipanti = 45;
@@ -52,17 +53,7 @@ const Evento = () => {
 
             <div>
               <h4>Partecipanti</h4>
-              <div className="flex items-center space-x-5">
-                <span>
-                  {partecipanti}/{maxPartecipanti}
-                </span>
-                <div className="w-[90%] xl:w-full h-[14px] rounded-lg bg-accent-purple-tint">
-                  <div
-                    className="h-[14px] rounded-lg bg-accent-purple"
-                    style={{ width: `${partecipanti / (maxPartecipanti / 100)}%` }}
-                  ></div>
-                </div>
-              </div>
+              <ProgressBar total={maxPartecipanti} completed={partecipanti} showLabel={true} />
             </div>
           </div>
 
