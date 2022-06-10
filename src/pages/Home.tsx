@@ -1,10 +1,12 @@
 import HeroCarousel from "../components/HeroCarousel";
+import HomeMap from "../components/MapUnderTest";
+import Counter from "../components/Counter";
 import "./Home.css";
 
 import gridImg1 from "../assets/home-grid-1.jpg";
 import gridImg2 from "../assets/home-grid-2.jpg";
 import gridImg3 from "../assets/home-grid-3.jpg";
-import Counter from "../components/Counter";
+import downArrow from "../assets/down.svg";
 
 const Home = () => {
   return (
@@ -31,6 +33,16 @@ const Home = () => {
           </h5>
           <button className="secondary-white mt-10">Vedi testimonianze</button>
         </div>
+      </div>
+
+      <div className="h-full bg-light-grey">
+        <div className="flex flex-col items-center pt-10 pb-6">
+          <h3 className="text-center">
+            Cerca un evento a cui partecipare o segnala un luogo da ripulire
+          </h3>
+          <img src={downArrow} alt="" />
+        </div>
+        <HomeMap />
       </div>
 
       <div className="bg-primary-tint p-5 lg:py-20">

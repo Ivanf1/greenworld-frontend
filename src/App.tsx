@@ -12,6 +12,8 @@ import Home from "./pages/Home";
 import DiventaOrganizzatore from "./pages/DiventaOrganizzatore";
 import Evento from "./pages/Evento";
 import { MotionConfig } from "framer-motion";
+import MapPopupTest from "./components/MapPopupTest";
+import MapUnderTest from "./components/MapUnderTest";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/testimonianze" element={<Testimonianze />} />
           <Route path="/organizzatore" element={<DiventaOrganizzatore />} />
           <Route path="/evento" element={<Evento />} />
+          <Route path="/mappa-popup" element={<MapPopupTest />} />
+          <Route path="/mappa-sotto" element={<MapUnderTest />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>

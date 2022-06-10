@@ -12,10 +12,12 @@
     "@types/react-dom": "^18.0.4",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.4",
+    "leaflet": "^1.8.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-dropzone": "^14.2.1",
     "react-intersection-observer": "^9.2.2",
+    "react-leaflet": "^4.0.0",
     "react-multi-select-component": "^4.2.7",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",
@@ -49,6 +51,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
+    "@types/leaflet": "^1.7.11",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.0.24"

@@ -240,3 +240,13 @@ div.rmsc {
   --rmsc-h: 42px; /* Height */
 }
 /* ---- multiselect ---- */
+
+.leaflet-container {
+  width: 100%;
+  height: calc(100vh - 200px);
+  z-index: 1;
+}
+
+.leaflet-control-attribution.leaflet-control {
+  display: flex;
+}
