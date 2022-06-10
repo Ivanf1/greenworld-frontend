@@ -4,6 +4,7 @@ import "./Home.css";
 import gridImg1 from "../assets/home-grid-1.jpg";
 import gridImg2 from "../assets/home-grid-2.jpg";
 import gridImg3 from "../assets/home-grid-3.jpg";
+import Counter from "../components/Counter";
 
 const Home = () => {
   return (
@@ -46,7 +47,9 @@ const Home = () => {
           </div>
           <div className="bg-white h-full md:w-full md:flex home-card-shadow bottom-border md:border-none">
             <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center px-5 md:px-0 py-5 sm:items-start sm:text-left lg:py-0">
-              <span className="text-4xl font-bold text-accent-blue">124</span>
+              <span className="text-4xl font-bold text-accent-blue">
+                <Counter from={0} to={124} />
+              </span>
               <h2 className="text-xl font-bold mb-5">Eventi organizzati</h2>
               <p>
                 La nostra community ha organizzato e continua ad organizzare numerosi eventi di
@@ -57,7 +60,9 @@ const Home = () => {
 
           <div className="bg-white h-full md:w-full md:flex home-card-shadow bottom-border md:border-none">
             <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center px-5 md:px-0 py-5 sm:items-start sm:text-left lg:py-0">
-              <span className="text-4xl font-bold text-accent-red">4200</span>
+              <span className="text-4xl font-bold text-accent-red">
+                <Counter from={0} to={4200} />
+              </span>
               <h2 className="text-xl font-bold mb-5">Volontari registrati</h2>
               <p>
                 I volontari che prendono parte ad i nostri eventi sono in continuo aumento. Hanno
@@ -76,7 +81,7 @@ const Home = () => {
           <div className="bg-white h-full md:w-full md:flex home-card-shadow bottom-border md:border-none">
             <div className="mx-auto md:max-w-[70%] flex flex-col items-center justify-center px-5 md:px-0 py-10 sm:items-start sm:text-left lg:py-0">
               <span className="text-4xl font-bold text-accent-purple inline">
-                6230
+                <Counter from={0} to={6230} />
                 <span className="font-bold text-xl text-accent-purple inline">kg</span>
               </span>
               <h2 className="text-xl font-bold mb-5">Spazzatura raccolta</h2>
