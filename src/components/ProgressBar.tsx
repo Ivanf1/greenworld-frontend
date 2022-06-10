@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface Props {
   total: number;
   completed: number;
@@ -14,10 +16,15 @@ const ProgressBar = ({ total, completed, showLabel }: Props) => {
         </span>
       )}
       <div className="w-[90%] xl:w-full h-[14px] rounded-lg bg-accent-purple-tint">
-        <div
+        <motion.div
+          initial={{ width: "0%" }}
+          whileInView={{ width: `${completed / (total / 100)}%` }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 1,
+          }}
           className="h-[14px] rounded-lg bg-accent-purple"
-          style={{ width: `${completed / (total / 100)}%` }}
-        ></div>
+        ></motion.div>
       </div>
     </div>
   );
