@@ -18,6 +18,7 @@ import timeImg from "../assets/time.svg";
 import close from "../assets/delete.svg";
 import sponsorLogo from "../assets/pizzaciro.png";
 import searchIcon from "../assets/search.svg";
+import { Link } from "react-router-dom";
 
 const MMap = () => {
   const [map, setMap] = useState<Map | undefined | null>(null);
@@ -107,9 +108,11 @@ const MMap = () => {
             );
           })}
         </MapContainer>
-        <button className="absolute bottom-[20px] right-[20px] z-[40] primary">
-          Segnala un luogo
-        </button>
+        <Link to="segnala">
+          <button className="absolute bottom-[20px] right-[20px] z-[40] primary">
+            Segnala un luogo
+          </button>
+        </Link>
         <div className="flex absolute top-[10px] left-[74px] z-[40] search-bar-container pr-2 w-[min(calc(100%-74px-8px-12px),400px)]">
           <input
             type="text"
@@ -159,7 +162,9 @@ const MMap = () => {
                     />
                   </div>
                   <div>
-                    <button className="primary w-full lg:w-auto">Maggiori informazioni</button>
+                    <Link to="/evento">
+                      <button className="primary w-full lg:w-auto">Maggiori informazioni</button>
+                    </Link>
                   </div>
                 </div>
               </div>
