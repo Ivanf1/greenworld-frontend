@@ -11,7 +11,7 @@ import downArrow from "../assets/down.svg";
 const Home = () => {
   return (
     <div className="w-full h-full flex flex-col space-y-[200px]">
-      <div className="hero w-full pt-[10vh] md:pt-[20vh]">
+      <div className="hero w-full pt-20 md:pt-40">
         <div className="flex flex-col items-center lg:items-start space-y-8 max-w-[78.125rem] mx-auto px-5 xl:px-0">
           <h1 className="text-3xl md:text-4xl leading-[3.8rem] font-bold max-w-lg text-center lg:text-left">
             Il nostro Pianeta è la nostra casa
