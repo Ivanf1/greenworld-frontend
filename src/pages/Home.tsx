@@ -1,5 +1,5 @@
 import HeroCarousel from "../components/HeroCarousel";
-import HomeMap from "../components/MapUnderTest";
+import HomeMap from "../components/HomeMap";
 import Counter from "../components/Counter";
 import "./Home.css";
 
@@ -36,7 +36,7 @@ const Home = () => {
       </div>
 
       <div className="h-full bg-light-grey">
-        <div className="flex flex-col items-center pt-10 pb-6">
+        <div className="flex flex-col items-center pt-10 pb-6 px-5 xl:px-0">
           <h3 className="text-center">
             Cerca un evento a cui partecipare o segnala un luogo da ripulire
           </h3>

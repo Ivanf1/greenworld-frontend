@@ -22,6 +22,7 @@ body {
 
 #root {
   min-height: 100vh;
+  scroll-behavior: smooth;
   --color-primary: #0d6651;
   --color-primary-tint: #348a76;
   --color-accent-red: #d64e78;
@@ -74,6 +75,29 @@ body {
   .input:focus {
     @apply focus:border-primary;
     @apply focus:ring-primary;
+  }
+
+  .search-bar-container {
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
+    background-color: #ffffff;
+  }
+  .search-bar-container:focus {
+    @apply focus:border-primary;
+    @apply focus:ring-primary;
+  }
+
+  .search-bar {
+    /* reset ios safari style */
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 8px;
+    border: none;
+  }
+  .search-bar:focus {
+    @apply focus:border-white;
+    @apply focus:ring-transparent;
   }
 
   .form-error {

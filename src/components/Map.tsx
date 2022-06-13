@@ -1,69 +1,71 @@
-import { useState } from "react";
-import { LeafletMouseEvent, Map } from "leaflet";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { useRef, useState } from "react";
+
+import { Icon, LeafletMouseEvent, Map } from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { GestureHandling } from "leaflet-gesture-handling";
+import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
+
+import { TAILWINDCSS_LG_BREAKPOINT, TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
+import useWindowSize from "../hooks/windowSize";
 import ProgressBar from "./ProgressBar";
-import eventImage from "../assets/a.jpg";
+import { markers, EventoInfo } from "../data/MapMarkers";
+
 import mapMarkImg from "../assets/map-mark.svg";
+import homeMapMarkImg from "../assets/home-map-mark.svg";
 import calendarImg from "../assets/calendar.svg";
 import timeImg from "../assets/time.svg";
-
-interface EventoInfo {
-  n: number;
-  e: number;
-  name: string;
-  partecipanti: number;
-  maxPartecipanti: number;
-  ora: string;
-  indirizzo: string;
-  data: string;
-  img: string;
-}
-
-const markers: EventoInfo[] = [
-  {
-    n: 40.641991,
-    e: 14.824107,
-    name: "Evento sul fiume Sarno",
-    partecipanti: 45,
-    maxPartecipanti: 150,
-    ora: "15:30",
-    indirizzo: "Sarno",
-    data: "15/03/2022",
-    img: eventImage,
-  },
-  {
-    n: 40.64,
-    e: 14.843801,
-    name: "Evento eventualmente eventuale",
-    partecipanti: 40,
-    maxPartecipanti: 150,
-    ora: "15:30",
-    indirizzo: "Sarno",
-    data: "15/03/2022",
-    img: eventImage,
-  },
-];
+import close from "../assets/delete.svg";
+import sponsorLogo from "../assets/pizzaciro.png";
+import searchIcon from "../assets/search.svg";
 
 const MMap = () => {
   const [map, setMap] = useState<Map | undefined | null>(null);
   const [currentEvent, setCurrentEvent] = useState<EventoInfo | null | undefined>(null);
+  const mapSectionRef = useRef<HTMLDivElement | null>(null);
+  const [windowWidth] = useWindowSize();
+
+  Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
+
+  const scrollToEventSection = () => {
+    if (mapSectionRef.current) {
+      const offset =
+        windowWidth >= TAILWINDCSS_LG_BREAKPOINT
+          ? 250
+          : windowWidth >= TAILWINDCSS_MD_BREAKPOINT
+          ? 160
+          : 400;
+      const y = mapSectionRef.current.getBoundingClientRect().top + window.pageYOffset + offset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
+  const scrollToMapSection = () => {
+    if (mapSectionRef.current) {
+      const y = mapSectionRef.current.getBoundingClientRect().top + (window.pageYOffset - 200);
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
 
   const markerClickHandler = (e: LeafletMouseEvent) => {
     let selectedEvent = markers.find(
       (marker) => marker.n === e.latlng.lat && marker.e === e.latlng.lng
     );
     setCurrentEvent(selectedEvent);
-    console.log(
-      markers.find((marker) => marker.n === e.latlng.lat && marker.e === e.latlng.lng)?.name
-    );
     if (map) {
       map.flyTo(e.latlng);
+      scrollToEventSection();
     }
   };
 
+  const eventSectionClickHandler = () => {
+    setCurrentEvent(null);
+    scrollToMapSection();
+  };
+
   return (
-    <div className="grid md:grid-rows-[65%_35%] lg:grid-rows-2 w-full md:h-full min-h-[calc(100vh-80px)]">
-      <div className="relative">
+    <div className="w-full h-full relative">
+      <div className="relative w-full h-full" ref={mapSectionRef}>
         <MapContainer
           center={[40.641991, 14.824107]}
           scrollWheelZoom={false}
@@ -79,57 +81,94 @@ const MMap = () => {
               <Marker
                 position={[marker.n, marker.e]}
                 eventHandlers={{ click: markerClickHandler }}
+                icon={
+                  new Icon({
+                    iconUrl: homeMapMarkImg,
+                    iconSize: [40, 40],
+                    iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
+                    popupAnchor: [0, -40], // point from which the popup should open relative to the iconAnchor
+                  })
+                }
                 key={i}
-              />
+              >
+                <Popup>{marker.name}</Popup>
+              </Marker>
             );
           })}
         </MapContainer>
         <button className="absolute bottom-[20px] right-[20px] z-[40] primary">
           Segnala un luogo
         </button>
+        <div className="flex absolute top-[10px] left-[74px] z-[40] search-bar-container pr-2 w-[min(calc(100%-74px-8px-12px),400px)]">
+          <input
+            type="text"
+            placeholder="Cerca un luogo o un evento"
+            className="flex-1 search-bar"
+          ></input>
+          <img src={searchIcon} alt="" />
+        </div>
       </div>
 
-      <div className="bg-light-grey">
-        {currentEvent ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 h-full w-full lg:max-w-[78.125rem] mx-auto">
-            <div className="flex items-center justify-center p-2 lg:p-10">
-              <img src={currentEvent.img} className="h-auto w-auto rounded-lg" alt="" />
+      {currentEvent && (
+        <div className="bg-light-grey pb-5">
+          <div className="card xl:max-w-[78.125rem] xl:mx-auto mx-5 p-5">
+            <div className="relative ">
+              <div
+                className="absolute -top-3 -right-3 md:top-[5px] md:right-[5px] cursor-pointer"
+                onClick={eventSectionClickHandler}
+              >
+                <img src={close} className="w-[14px] h-[14px]" alt="" />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-[auto_1fr] md:grid-rows-1 w-full lg:max-w-[78.125rem] mx-auto gap-x-5 lg:gap-x-20">
+                <div className="flex items-center justify-center">
+                  <img src={currentEvent.img} className="h-auto w-auto rounded-lg" alt="" />
+                </div>
+                <div className="flex flex-col py-10 space-y-5 lg:justify-center md:space-y-2 lg:space-y-10">
+                  <h3>{currentEvent.name}</h3>
+                  <div className="flex flex-col space-y-2">
+                    <div className="flex space-x-2">
+                      <img src={mapMarkImg} alt="" />
+                      <span>{currentEvent.indirizzo}</span>
+                    </div>
+                    <div className="flex space-x-2">
+                      <img src={calendarImg} alt="" />
+                      <span>{currentEvent.data}</span>
+                    </div>
+                    <div className="flex space-x-2">
+                      <img src={timeImg} alt="" />
+                      <span>{currentEvent.ora}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Partecipanti</h4>
+                    <ProgressBar
+                      total={currentEvent.maxPartecipanti}
+                      completed={currentEvent.partecipanti}
+                      showLabel={true}
+                    />
+                  </div>
+                  <div>
+                    <button className="primary w-full lg:w-auto">Maggiori informazioni</button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col md:p-10 justify-center md:space-y-2 lg:space-y-10">
-              <h3>{currentEvent.name}</h3>
-              <div className="flex flex-col space-y-2">
-                <div className="flex space-x-2">
-                  <img src={mapMarkImg} alt="" />
-                  <span>{currentEvent.indirizzo}</span>
+            <div className="separator lg:max-w-[78.125rem] mx-auto mt-5 mb-10 lg:my-10"></div>
+            <div className="flex flex-col items-center space-y-5 text-center">
+              <h3>Questo evento è sponsorizzato da</h3>
+              <div className="grid grid-cols-[auto_auto] items-center gap-x-2 md:gap-x-10">
+                <div className="flex flex-col items-center">
+                  <span className="font-semibold">Pizzeria da Ciro</span>
+                  <span className="text-xs">dal 1976</span>
+                  <span className="text-xs">Via Giovanni Nefasto, Genova, 83083</span>
+                  <span className="text-xs">pizzeriaciro.na - @ciroreal</span>
                 </div>
-                <div className="flex space-x-2">
-                  <img src={calendarImg} alt="" />
-                  <span>{currentEvent.data}</span>
-                </div>
-                <div className="flex space-x-2">
-                  <img src={timeImg} alt="" />
-                  <span>{currentEvent.ora}</span>
-                </div>
-              </div>
-              <div>
-                <h4>Partecipanti</h4>
-                <ProgressBar
-                  total={currentEvent.maxPartecipanti}
-                  completed={currentEvent.partecipanti}
-                  showLabel={true}
-                />
-              </div>
-              <div>
-                <button className="primary">Maggiori informazioni</button>
+                <img className="w-full max-w-[80px] max-h-[80px]" src={sponsorLogo} alt="" />
               </div>
             </div>
           </div>
-        ) : (
-          <div className="h-full w-full flex items-center justify-center text-center p-10">
-            <h4>Seleziona un evento sulla mappa per vederne le informazioni</h4>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
