@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 
 import { Icon, LeafletMouseEvent, Map } from "leaflet";
+import * as L from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { GestureHandling } from "leaflet-gesture-handling";
@@ -25,7 +26,7 @@ const MMap = () => {
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
   const [windowWidth] = useWindowSize();
 
-  Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
+  L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
 
   const scrollToEventSection = () => {
     if (mapSectionRef.current) {
@@ -68,7 +69,7 @@ const MMap = () => {
       <div className="relative w-full h-full" ref={mapSectionRef}>
         <MapContainer
           center={[40.641991, 14.824107]}
-          scrollWheelZoom={false}
+          // scrollWheelZoom={false}
           ref={setMap}
           zoom={13}
         >

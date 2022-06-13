@@ -239,18 +239,6 @@ div.form-background {
   font-size: 0.8rem;
 }
 
-@media (min-width: 768px) {
-  button {
-    padding: 8px 40px;
-  }
-  button.nav {
-    max-height: 41px;
-  }
-  div.form-background {
-    min-height: calc(100vh - 80px);
-  }
-}
-
 /* ---- multiselect ---- */
 div.rmsc {
   --rmsc-main: var(--color-primary);
@@ -267,10 +255,26 @@ div.rmsc {
 
 .leaflet-container {
   width: 100%;
-  height: calc(100vh - 200px);
+  height: 800px;
   z-index: 1;
 }
 
 .leaflet-control-attribution.leaflet-control {
   display: flex;
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: 8px 40px;
+  }
+  button.nav {
+    max-height: 41px;
+  }
+  div.form-background {
+    min-height: calc(100vh - 80px);
+  }
+
+  .leaflet-container {
+    height: calc(100vh - 200px);
+  }
 }
