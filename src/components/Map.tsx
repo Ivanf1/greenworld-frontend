@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
 
 import { Icon, LeafletMouseEvent, Map } from "leaflet";
-import * as L from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { GestureHandling } from "leaflet-gesture-handling";
 import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
@@ -25,8 +24,7 @@ const MMap = () => {
   const [currentEvent, setCurrentEvent] = useState<EventoInfo | null | undefined>(null);
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
   const [windowWidth] = useWindowSize();
-
-  L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
+  const [init, setInit] = useState<boolean>(true);
 
   const scrollToEventSection = () => {
     if (mapSectionRef.current) {
@@ -64,15 +62,27 @@ const MMap = () => {
     scrollToMapSection();
   };
 
+  const GestureHandlingSetter = () => {
+    /* eslint-disable */
+    const map = useMap() as any;
+    map.gestureHandling.enable();
+    map.addHandler("gestureHandling", GestureHandling);
+    setInit(false);
+    /* eslint-enable */
+    return null;
+  };
+
   return (
     <div className="w-full h-full relative">
       <div className="relative w-full h-full" ref={mapSectionRef}>
         <MapContainer
           center={[40.641991, 14.824107]}
-          // scrollWheelZoom={false}
+          scrollWheelZoom={false}
+          doubleClickZoom={true}
           ref={setMap}
           zoom={13}
         >
+          {init && <GestureHandlingSetter />}
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
