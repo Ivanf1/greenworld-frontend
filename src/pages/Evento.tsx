@@ -65,7 +65,7 @@ const Evento = () => {
 
         <div className="separator w-full my-20"></div>
 
-        <div className="flex flex-col items-center space-y-5">
+        <div className="flex flex-col items-center text-center space-y-5">
           <h3>Questo evento è sponsorizzato da</h3>
 
           <div className="grid grid-cols-[auto_auto] items-center gap-x-2 md:gap-x-10">
