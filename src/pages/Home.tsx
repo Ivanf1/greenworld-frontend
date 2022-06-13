@@ -7,6 +7,7 @@ import gridImg1 from "../assets/home-grid-1.jpg";
 import gridImg2 from "../assets/home-grid-2.jpg";
 import gridImg3 from "../assets/home-grid-3.jpg";
 import downArrow from "../assets/down.svg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -31,7 +32,9 @@ const Home = () => {
           <h5 className="font-regular text-lg text-center lg:text-left mt-1">
             18/05/1972 - Montagne, Avellino
           </h5>
-          <button className="secondary-white mt-10">Vedi testimonianze</button>
+          <Link to="testimonianze">
+            <button className="secondary-white mt-10">Vedi testimonianze</button>
+          </Link>
         </div>
       </div>
 
@@ -115,7 +118,9 @@ const Home = () => {
               234 aziende si sono già unite alla nostra causa. Diventa anche tu parte del
               cambiamento.
             </p>
-            <button className="primary">Diventa Sponsor</button>
+            <Link to="candidatura-sponsor">
+              <button className="primary">Diventa Sponsor</button>
+            </Link>
           </div>
           <div></div>
         </div>

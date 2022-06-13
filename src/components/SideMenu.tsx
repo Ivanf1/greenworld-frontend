@@ -55,13 +55,6 @@ const SideMenu = ({ open, onClose }: Props) => {
                 </svg>
               </div>
               <Link
-                to="profilo"
-                className="menu-option text-lg font-semibold pl-10 py-3 "
-                onClick={onClose}
-              >
-                Profilo
-              </Link>
-              <Link
                 to="segnalazioni"
                 className="menu-option text-lg font-semibold pl-10 py-3 "
                 onClick={onClose}
@@ -109,13 +102,6 @@ const SideMenu = ({ open, onClose }: Props) => {
                 onClick={onClose}
               >
                 Inserisci testimonianza
-              </Link>
-              <Link
-                to="evento"
-                className="menu-option text-lg font-semibold pl-10 py-3 "
-                onClick={onClose}
-              >
-                Evento
               </Link>
             </div>
           </motion.div>
