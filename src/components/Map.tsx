@@ -34,15 +34,16 @@ const MMap = () => {
           ? 250
           : windowWidth >= TAILWINDCSS_MD_BREAKPOINT
           ? 160
-          : 400;
+          : 520;
       const y = mapSectionRef.current.getBoundingClientRect().top + window.pageYOffset + offset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
   const scrollToMapSection = () => {
+    const offset = windowWidth >= TAILWINDCSS_MD_BREAKPOINT ? 200 : 70;
     if (mapSectionRef.current) {
-      const y = mapSectionRef.current.getBoundingClientRect().top + (window.pageYOffset - 200);
+      const y = mapSectionRef.current.getBoundingClientRect().top + (window.pageYOffset - offset);
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
