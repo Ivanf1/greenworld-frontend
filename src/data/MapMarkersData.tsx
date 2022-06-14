@@ -1,4 +1,13 @@
 import eventImage from "../assets/a.jpg";
+import sponsorLogo from "../assets/pizzaciro.png";
+
+export interface EventoSponsor {
+  nome: string;
+  testo: string;
+  indirizzo: string;
+  info: string;
+  logo: string;
+}
 
 export interface EventoInfo {
   n: number;
@@ -10,6 +19,7 @@ export interface EventoInfo {
   indirizzo: string;
   data: string;
   img: string;
+  sponsors?: EventoSponsor[];
 }
 
 export const markers: EventoInfo[] = [
@@ -23,6 +33,15 @@ export const markers: EventoInfo[] = [
     indirizzo: "Sarno",
     data: "15/03/2022",
     img: eventImage,
+    sponsors: [
+      {
+        nome: "Pizzeria da Ciro",
+        testo: "dal 1976",
+        indirizzo: "Via Giovanni Nefasto, Genova, 83083",
+        info: "pizzeriaciro.na - @ciroreal",
+        logo: sponsorLogo,
+      },
+    ],
   },
   {
     n: 40.64,
@@ -34,5 +53,14 @@ export const markers: EventoInfo[] = [
     indirizzo: "Sarno",
     data: "15/03/2022",
     img: eventImage,
+    sponsors: [
+      {
+        nome: "Pizzeria da Ciro",
+        testo: "dal 1976",
+        indirizzo: "Via Giovanni Nefasto, Genova, 83083",
+        info: "pizzeriaciro.na - @ciroreal",
+        logo: sponsorLogo,
+      },
+    ],
   },
 ];

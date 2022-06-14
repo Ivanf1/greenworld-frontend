@@ -10,6 +10,8 @@ import downArrow from "../assets/down.svg";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 
+import { heroCarouselItemData } from "../data/HeroCarouselData";
+
 const Home = () => {
   const eventMapSectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -62,7 +64,7 @@ const Home = () => {
 
       <div className="bg-primary-tint p-5 lg:py-20">
         <div className="hero-carousel-wrapper max-w-[78.125rem] mx-auto home-card-shadow">
-          <HeroCarousel />
+          <HeroCarousel items={heroCarouselItemData} />
         </div>
       </div>
 

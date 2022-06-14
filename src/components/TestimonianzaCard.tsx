@@ -10,9 +10,10 @@ interface Props {
   location: string;
   date: string;
   comment: string;
+  imgs?: string[];
 }
 
-const TestimonianzaCard = ({ profileImg, name, location, date, comment }: Props) => {
+const TestimonianzaCard = ({ profileImg, name, location, date, comment, imgs }: Props) => {
   const [width] = useWindowSize();
 
   return (
@@ -33,9 +34,14 @@ const TestimonianzaCard = ({ profileImg, name, location, date, comment }: Props)
           </div>
         </div>
       </div>
-      <div className="w-full">
-        <ScrollableContainer slidesPerView={width > TAILWINDCSS_LG_BREAKPOINT ? 3 : 1} />
-      </div>
+      {imgs && (
+        <div className="w-full">
+          <ScrollableContainer
+            slidesPerView={width > TAILWINDCSS_LG_BREAKPOINT ? 3 : 1}
+            imgs={imgs}
+          />
+        </div>
+      )}
       <div className="flex flex-col-reverse md:flex-col">
         <p className="mt-5 md:mt-0 md:mb-5">{comment}</p>
         <button className="primary w-full md:w-auto ml-auto">Vedi evento</button>

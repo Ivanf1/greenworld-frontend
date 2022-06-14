@@ -1,20 +1,13 @@
 import profileImg from "../assets/profilo.png";
 import EventoProfilo from "../components/EventoProfilo";
-import eventoImg from "../assets/b.jpg";
 import ProgressBar from "../components/ProgressBar";
 import giftImg from "../assets/gift.svg";
 
-const Profile = () => {
-  const eventiPartecipati = 25;
-  const eventiPerPremio = 100;
+import { eventi } from "../data/EventoProfiloData";
 
-  const evento = {
-    img: eventoImg,
-    location: "Lago dei cigni",
-    date: "15/03/1992",
-    description:
-      "Lorem ipsum dolor sit sit sit dolor lorem qua la sit ipsum ipsum dolor sit sit sit dolor lorem qua la sit ipsum",
-  };
+const Profile = () => {
+  const eventiPartecipati = eventi.length;
+  const eventiPerPremio = 100;
 
   return (
     <div className="w-full h-full bg-light-grey py-10">
@@ -50,7 +43,7 @@ const Profile = () => {
             Hai partecipato a {eventiPartecipati} eventi
           </h4>
           <div className="flex flex-col space-y-20 lg:space-y-10">
-            {[...Array(eventiPartecipati)].map((_, i) => (
+            {eventi.map((evento, i) => (
               <EventoProfilo
                 key={i}
                 img={evento.img}
