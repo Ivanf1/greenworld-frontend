@@ -232,7 +232,7 @@ div.form-background {
 
 .required::after {
   display: block;
-  content: "\01F7B7";
+  content: "*";
   display: block;
   color: rgb(241, 97, 97);
   margin-left: 0.5rem;
