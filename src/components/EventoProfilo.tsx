@@ -1,5 +1,6 @@
 import mapMarkImg from "../assets/map-mark.svg";
 import calendarImg from "../assets/calendar.svg";
+import { Link } from "react-router-dom";
 
 interface Props {
   img: string;
@@ -26,7 +27,9 @@ const EventoProfilo = ({ img, location, date, description }: Props) => {
         <p>{description}</p>
       </div>
       <div className="self-center">
-        <button className="primary w-full md:w-auto ml-auto">Aggiungi testimonianza</button>
+        <Link to="/testimonia">
+          <button className="primary w-full md:w-auto ml-auto">Aggiungi testimonianza</button>
+        </Link>
       </div>
     </div>
   );
