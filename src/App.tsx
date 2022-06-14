@@ -12,8 +12,11 @@ import Home from "./pages/Home";
 import DiventaOrganizzatore from "./pages/DiventaOrganizzatore";
 import Evento from "./pages/Evento";
 import { MotionConfig } from "framer-motion";
+import smoothscroll from "smoothscroll-polyfill";
 
 function App() {
+  smoothscroll.polyfill();
+
   return (
     <MotionConfig reducedMotion="user">
       <BrowserRouter>
