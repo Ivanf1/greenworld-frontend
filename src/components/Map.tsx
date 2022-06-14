@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { Icon, LeafletMouseEvent, Map } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -9,7 +10,6 @@ import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
 import { TAILWINDCSS_LG_BREAKPOINT, TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
 import useWindowSize from "../hooks/windowSize";
 import ProgressBar from "./ProgressBar";
-import { markers, EventoInfo } from "../data/MapMarkers";
 
 import mapMarkImg from "../assets/map-mark.svg";
 import homeMapMarkImg from "../assets/home-map-mark.svg";
@@ -18,9 +18,33 @@ import timeImg from "../assets/time.svg";
 import close from "../assets/delete.svg";
 import sponsorLogo from "../assets/pizzaciro.png";
 import searchIcon from "../assets/search.svg";
-import { Link } from "react-router-dom";
 
-const MMap = () => {
+interface EventoSponsor {
+  nome: string;
+  testo: string;
+  indirizzo: string;
+  info: string;
+  logo: string;
+}
+
+interface EventoInfo {
+  n: number;
+  e: number;
+  name: string;
+  partecipanti: number;
+  maxPartecipanti: number;
+  ora: string;
+  indirizzo: string;
+  data: string;
+  img: string;
+  sponsors?: EventoSponsor[];
+}
+
+interface Props {
+  events: EventoInfo[];
+}
+
+const MMap = ({ events }: Props) => {
   const [map, setMap] = useState<Map | undefined | null>(null);
   const [currentEvent, setCurrentEvent] = useState<EventoInfo | null | undefined>(null);
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
@@ -34,21 +58,22 @@ const MMap = () => {
           ? 250
           : windowWidth >= TAILWINDCSS_MD_BREAKPOINT
           ? 160
-          : 400;
+          : 520;
       const y = mapSectionRef.current.getBoundingClientRect().top + window.pageYOffset + offset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
   const scrollToMapSection = () => {
+    const offset = windowWidth >= TAILWINDCSS_MD_BREAKPOINT ? 200 : 70;
     if (mapSectionRef.current) {
-      const y = mapSectionRef.current.getBoundingClientRect().top + (window.pageYOffset - 200);
+      const y = mapSectionRef.current.getBoundingClientRect().top + (window.pageYOffset - offset);
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
   const markerClickHandler = (e: LeafletMouseEvent) => {
-    let selectedEvent = markers.find(
+    let selectedEvent = events.find(
       (marker) => marker.n === e.latlng.lat && marker.e === e.latlng.lng
     );
     setCurrentEvent(selectedEvent);
@@ -88,10 +113,10 @@ const MMap = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {markers.map((marker, i) => {
+          {events.map((event, i) => {
             return (
               <Marker
-                position={[marker.n, marker.e]}
+                position={[event.n, event.e]}
                 eventHandlers={{ click: markerClickHandler }}
                 icon={
                   new Icon({
@@ -103,7 +128,7 @@ const MMap = () => {
                 }
                 key={i}
               >
-                <Popup>{marker.name}</Popup>
+                <Popup>{event.name}</Popup>
               </Marker>
             );
           })}
@@ -169,19 +194,34 @@ const MMap = () => {
                 </div>
               </div>
             </div>
-            <div className="separator lg:max-w-[78.125rem] mx-auto mt-5 mb-10 lg:my-10"></div>
-            <div className="flex flex-col items-center space-y-5 text-center">
-              <h3>Questo evento è sponsorizzato da</h3>
-              <div className="grid grid-cols-[auto_auto] items-center gap-x-2 md:gap-x-10">
-                <div className="flex flex-col items-center">
-                  <span className="font-semibold">Pizzeria da Ciro</span>
-                  <span className="text-xs">dal 1976</span>
-                  <span className="text-xs">Via Giovanni Nefasto, Genova, 83083</span>
-                  <span className="text-xs">pizzeriaciro.na - @ciroreal</span>
+            {currentEvent.sponsors && (
+              <>
+                <div className="separator lg:max-w-[78.125rem] mx-auto mt-5 mb-10 lg:my-10"></div>
+                <div className="flex flex-col items-center space-y-5 text-center">
+                  <h3>Questo evento è sponsorizzato da</h3>
+                  {currentEvent.sponsors.map((sponsor, i) => {
+                    return (
+                      <div
+                        className="grid grid-cols-[auto_auto] items-center gap-x-2 md:gap-x-10"
+                        key={i}
+                      >
+                        <div className="flex flex-col items-center">
+                          <span className="font-semibold">{sponsor.nome}</span>
+                          <span className="text-xs">{sponsor.testo}</span>
+                          <span className="text-xs">{sponsor.indirizzo}</span>
+                          <span className="text-xs">{sponsor.info}</span>
+                        </div>
+                        <img
+                          className="w-full max-w-[80px] max-h-[80px]"
+                          src={sponsorLogo}
+                          alt=""
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
-                <img className="w-full max-w-[80px] max-h-[80px]" src={sponsorLogo} alt="" />
-              </div>
-            </div>
+              </>
+            )}
           </div>
         </div>
       )}

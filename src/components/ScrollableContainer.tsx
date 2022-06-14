@@ -4,16 +4,15 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./ScrollableContainer.css";
-import testA from "../assets/a.jpg";
-import testB from "../assets/b.jpg";
 
 SwiperCore.use([FreeMode, Pagination]);
 
 interface Props {
   slidesPerView?: number;
+  imgs: string[];
 }
 
-const ScrollableContainer = ({ slidesPerView }: Props) => {
+const ScrollableContainer = ({ slidesPerView, imgs }: Props) => {
   return (
     <Swiper
       slidesPerView={slidesPerView || 3}
@@ -23,30 +22,13 @@ const ScrollableContainer = ({ slidesPerView }: Props) => {
       spaceBetween={20}
       grabCursor={true}
     >
-      <SwiperSlide>
-        <img src={testA} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={testB} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={testA} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={testB} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={testA} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={testB} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={testA} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={testB} alt="" />
-      </SwiperSlide>
+      {imgs.map((img, i) => {
+        return (
+          <SwiperSlide key={i}>
+            <img src={img} alt="" />
+          </SwiperSlide>
+        );
+      })}
     </Swiper>
   );
 };

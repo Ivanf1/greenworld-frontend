@@ -13,6 +13,7 @@ import DiventaOrganizzatore from "./pages/DiventaOrganizzatore";
 import Evento from "./pages/Evento";
 import { MotionConfig } from "framer-motion";
 import smoothscroll from "smoothscroll-polyfill";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   smoothscroll.polyfill();
@@ -21,18 +22,20 @@ function App() {
     <MotionConfig reducedMotion="user">
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/profilo" element={<Profile />} />
-          <Route path="/candidatura-sponsor" element={<CandidaturaSponsor />} />
-          <Route path="/segnala" element={<SegnalazioneLuogo />} />
-          <Route path="/segnalazioni" element={<Segnalazioni />} />
-          <Route path="/crea-evento" element={<CreaEvento />} />
-          <Route path="/testimonia" element={<InserimentoTestimonianza />} />
-          <Route path="/testimonianze" element={<Testimonianze />} />
-          <Route path="/organizzatore" element={<DiventaOrganizzatore />} />
-          <Route path="/evento" element={<Evento />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/profilo" element={<Profile />} />
+            <Route path="/candidatura-sponsor" element={<CandidaturaSponsor />} />
+            <Route path="/segnala" element={<SegnalazioneLuogo />} />
+            <Route path="/segnalazioni" element={<Segnalazioni />} />
+            <Route path="/crea-evento" element={<CreaEvento />} />
+            <Route path="/testimonia" element={<InserimentoTestimonianza />} />
+            <Route path="/testimonianze" element={<Testimonianze />} />
+            <Route path="/organizzatore" element={<DiventaOrganizzatore />} />
+            <Route path="/evento" element={<Evento />} />
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </ScrollToTop>
       </BrowserRouter>
     </MotionConfig>
   );

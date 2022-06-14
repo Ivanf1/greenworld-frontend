@@ -8,8 +8,20 @@ import gridImg2 from "../assets/home-grid-2.jpg";
 import gridImg3 from "../assets/home-grid-3.jpg";
 import downArrow from "../assets/down.svg";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+
+import { heroCarouselItemData } from "../data/HeroCarouselData";
 
 const Home = () => {
+  const eventMapSectionRef = useRef<HTMLDivElement | null>(null);
+
+  const seeEventsClickHandler = () => {
+    if (eventMapSectionRef.current) {
+      const y = eventMapSectionRef.current.getBoundingClientRect().top + window.pageYOffset - 50;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="w-full h-full flex flex-col space-y-[200px]">
       <div className="hero w-full pt-20 md:pt-40">
@@ -20,7 +32,9 @@ const Home = () => {
           <p className="max-w-xs text-center lg:text-left font-semibold">
             Partecipa agli eventi organizzati dalla community e aiutaci a proteggerlo.
           </p>
-          <button className="primary">Vedi eventi</button>
+          <button className="primary" onClick={seeEventsClickHandler}>
+            Vedi eventi
+          </button>
         </div>
       </div>
 
@@ -38,7 +52,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="h-full bg-light-grey">
+      <div className="h-full bg-light-grey" ref={eventMapSectionRef}>
         <div className="flex flex-col items-center pt-10 pb-6 px-5 xl:px-0">
           <h3 className="text-center">
             Cerca un evento a cui partecipare o segnala un luogo da ripulire
@@ -50,13 +64,12 @@ const Home = () => {
 
       <div className="bg-primary-tint p-5 lg:py-20">
         <div className="hero-carousel-wrapper max-w-[78.125rem] mx-auto home-card-shadow">
-          <HeroCarousel />
+          <HeroCarousel items={heroCarouselItemData} />
         </div>
       </div>
 
       <div className="bg-light-grey p-5 lg:py-20">
         <div className="grid grid-cols-1 grid-rows-[repeat(6,auto)]  md:grid-cols-2 md:grid-rows-3 md:-y-10 lg:-y-20 lg:max-w-[78.125rem] mx-auto w-full h-full">
-          {/* prettier-ignore */}
           <div className="md:home-card-shadow top-border md:border-none">
             <img src={gridImg1} alt="" className="w-full md:h-full  md:object-cover" />
           </div>
@@ -127,16 +140,18 @@ const Home = () => {
       </div>
 
       <footer className="w-full bg-primary px-5 py-20">
-        <div className="flex flex-col md:space-x-40 items-start text-white xl:px-0 lg:max-w-[78.125rem] mx-auto">
+        <div className="flex flex-col md:space-x-40 items-start text-[#dfebe8] xl:px-0 lg:max-w-[64rem] mx-auto">
           <div className="flex w-full space-x-20">
-            <div className="flex flex-col space-y-10">
+            <div className="flex flex-col space-y-4">
+              <span className="font-semibold text-lg">Su di noi</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
             </div>
-            <div className="flex flex-col space-y-10">
+            <div className="flex flex-col space-y-4">
+              <span className="font-semibold text-lg">Su di noi</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
               <span>Chi siamo</span>
