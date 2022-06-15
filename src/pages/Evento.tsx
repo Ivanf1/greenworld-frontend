@@ -18,26 +18,26 @@ const Evento = () => {
 
   return (
     <div className="w-full h-full bg-light-grey py-10">
-      <div className="min-h-[calc(100vh-80px)] card mx-auto px-4 py-10 w-[95%] max-w-[95%] md:max-w-[1600px] md:p-10">
-        <div className="grid grid-cols-1 grid-rows-[repeat(3,auto)] gap-y-5 xl:grid-cols-2 xl:grid-rows-[repeat(2,auto)] lg:gap-10">
-          <div className="row-start-2 xl:row-start-1 xl:row-span-2">
+      <main className="min-h-[calc(100vh-80px)] card mx-auto px-4 py-10 w-[95%] max-w-[95%] md:max-w-[1600px] md:p-10">
+        <section className="grid grid-cols-1 grid-rows-[repeat(3,auto)] gap-y-5 xl:grid-cols-2 xl:grid-rows-[repeat(2,auto)] lg:gap-10">
+          <section className="row-start-2 xl:row-start-1 xl:row-span-2">
             <Carousel />
-          </div>
+          </section>
 
-          <div className="flex flex-1 flex-col space-y-3">
+          <section className="flex flex-1 flex-col space-y-3">
             <h3 className="font-bold text-xl">Evento sul fiume Sarno</h3>
 
             <div className="flex flex-col space-y-2">
               <div className="flex space-x-2">
-                <img src={mapMarkImg} alt="" />
+                <img src={mapMarkImg} alt="" aria-hidden="true" />
                 <span className="">Sarno, 80087, SA</span>
               </div>
               <div className="flex space-x-2">
-                <img src={calendarImg} alt="" />
+                <img src={calendarImg} alt="" aria-hidden="true" />
                 <span className="">10/07/2022</span>
               </div>
               <div className="flex space-x-2">
-                <img src={timeImg} alt="" />
+                <img src={timeImg} alt="" aria-hidden="true" />
                 <span className="">15:30</span>
               </div>
             </div>
@@ -55,17 +55,17 @@ const Evento = () => {
               <h4>Partecipanti</h4>
               <ProgressBar total={maxPartecipanti} completed={partecipanti} showLabel={true} />
             </div>
-          </div>
+          </section>
 
           <div className="flex flex-col md:flex-row md:items-end space-y-2 md:mt-0 md:space-x-5 md:mb-5">
             <button className="primary flex-1 lg:flex-initial">Partecipa</button>
             <button className="secondary flex-1 lg:flex-initial">Condividi</button>
           </div>
-        </div>
+        </section>
 
         <div className="separator w-full my-20"></div>
 
-        <div className="flex flex-col items-center text-center space-y-5">
+        <section className="flex flex-col items-center text-center space-y-5">
           <h3>Questo evento è sponsorizzato da</h3>
 
           <div className="grid grid-cols-[auto_auto] items-center gap-x-2 md:gap-x-10">
@@ -77,11 +77,11 @@ const Evento = () => {
             </div>
             <img className="w-full max-w-[80px] max-h-[80px]" src={sponsorLogo} alt="" />
           </div>
-        </div>
+        </section>
 
         <div className="separator w-full my-20"></div>
 
-        <div>
+        <section>
           <div className="flex items-center space-x-5">
             <img className="profile-img" src={profileImg} alt="" />
             <h4 className="font-normal">Francesca</h4>
@@ -93,16 +93,16 @@ const Evento = () => {
             </div>
             <button className="secondary  w-full lg:w-auto">Pubblica</button>
           </div>
-        </div>
+        </section>
 
-        <div className="flex flex-col space-y-10 mt-20 max-w-[1000px]">
+        <section className="flex flex-col space-y-10 mt-20 max-w-[1000px]">
           {[...Array(numeroCommenti)].map((_, i) => {
             return (
               <UserComment key={i} name="Marge" profileImg={commentProfileImg} comment={comment} />
             );
           })}
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 };

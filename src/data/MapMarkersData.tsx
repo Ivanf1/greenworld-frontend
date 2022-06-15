@@ -19,6 +19,7 @@ export interface EventoInfo {
   indirizzo: string;
   data: string;
   img: string;
+  altImg: string;
   sponsors?: EventoSponsor[];
 }
 
@@ -33,6 +34,7 @@ export const markers: EventoInfo[] = [
     indirizzo: "Sarno",
     data: "15/03/2022",
     img: eventImage,
+    altImg: "",
     sponsors: [
       {
         nome: "Pizzeria da Ciro",
@@ -53,6 +55,7 @@ export const markers: EventoInfo[] = [
     indirizzo: "Sarno",
     data: "15/03/2022",
     img: eventImage,
+    altImg: "",
     sponsors: [
       {
         nome: "Pizzeria da Ciro",

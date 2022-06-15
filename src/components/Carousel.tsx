@@ -13,10 +13,10 @@ const MyCarousel = () => {
   return (
     <Swiper slidesPerView={1} loop={true} navigation={true} pagination={true}>
       <SwiperSlide>
-        <img src={testA} alt="" />
+        <img src={testA} alt="immagine A" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={testB} alt="" />
+        <img src={testB} alt="immagine B" />
       </SwiperSlide>
     </Swiper>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Formik } from "formik";
 import FileInput from "../components/FileInput";
 
@@ -50,7 +50,9 @@ const CandidaturaSponsor = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {}}
+          onSubmit={(values, { validateForm }) => {
+            validateForm();
+          }}
         >
           {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit} className="w-full">
@@ -62,13 +64,18 @@ const CandidaturaSponsor = () => {
                   className="input"
                   type="text"
                   name="nomeAzienda"
+                  id="nomeAzienda"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.nomeAzienda}
+                  aria-errormessage="nomeAziendaError"
+                  aria-required="true"
                 />
               </div>
               {errors.nomeAzienda && touched.nomeAzienda && errors.nomeAzienda && (
-                <div className="form-error">{errors.nomeAzienda}</div>
+                <div className="form-error" id="nomeAziendaError">
+                  {errors.nomeAzienda}
+                </div>
               )}
               <div className="mt-3">
                 <label className="flex required" htmlFor="referenze">
@@ -78,13 +85,18 @@ const CandidaturaSponsor = () => {
                   className="input"
                   type="text"
                   name="referenze"
+                  id="referenze"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.referenze}
+                  aria-errormessage="referenzeError"
+                  aria-required="true"
                 />
               </div>
               {errors.referenze && touched.referenze && errors.referenze && (
-                <div className="form-error">{errors.referenze}</div>
+                <div className="form-error" id="referenzeError">
+                  {errors.referenze}
+                </div>
               )}
               <div className="mt-3">
                 <label className="flex required" htmlFor="email">
@@ -94,12 +106,17 @@ const CandidaturaSponsor = () => {
                   className="input"
                   type="email"
                   name="email"
+                  id="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
+                  aria-errormessage="emailError"
+                  aria-required="true"
                 />
                 {errors.email && touched.email && errors.email && (
-                  <div className="form-error">{errors.email}</div>
+                  <div className="form-error" id="emailError">
+                    {errors.email}
+                  </div>
                 )}
               </div>
               <div className="mt-3">
@@ -110,12 +127,17 @@ const CandidaturaSponsor = () => {
                   className="input"
                   type="text"
                   name="telefono"
+                  id="telefono"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.telefono}
+                  aria-errormessage="telefonoError"
+                  aria-required="true"
                 />
                 {errors.telefono && touched.telefono && errors.telefono && (
-                  <div className="form-error">{errors.telefono}</div>
+                  <div className="form-error" id="telefonoError">
+                    {errors.telefono}
+                  </div>
                 )}
               </div>
               <div className="mt-3">
@@ -126,19 +148,30 @@ const CandidaturaSponsor = () => {
                   className="input"
                   type="text"
                   name="url"
+                  id="url"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.url}
+                  aria-errormessage="urlError"
+                  aria-required="true"
                 />
                 {errors.url && touched.url && errors.url && (
-                  <div className="form-error">{errors.url}</div>
+                  <div className="form-error" id="urlError">
+                    {errors.url}
+                  </div>
                 )}
               </div>
               <div className="mt-3">
                 <label className="flex required" htmlFor="logo">
                   Carica il tuo logo
                 </label>
-                <FileInput files={files} setFiles={setFiles} maxFiles={1} />
+                <FileInput
+                  files={files}
+                  setFiles={setFiles}
+                  maxFiles={1}
+                  id="logo"
+                  aria-required="true"
+                />
                 {errors.files && touched.files && errors.files && files.length < 1 && (
                   <div className="form-error">{errors.files}</div>
                 )}

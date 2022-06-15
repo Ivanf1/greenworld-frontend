@@ -99,7 +99,9 @@ const CreaEvento = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {}}
+          onSubmit={(values, { validateForm }) => {
+            validateForm();
+          }}
         >
           {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit} className="w-full">
@@ -111,12 +113,17 @@ const CreaEvento = () => {
                   className="input"
                   type="text"
                   name="nome"
+                  id="nome"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.nome}
+                  aria-errormessage="nomeError"
+                  aria-required="true"
                 />
                 {errors.nome && touched.nome && errors.nome && (
-                  <div className="form-error">{errors.nome}</div>
+                  <div className="form-error" id="nomeError">
+                    {errors.nome}
+                  </div>
                 )}
               </div>
               <div className="my-3 md:grid md:grid-cols-2 md:gap-5">
@@ -128,12 +135,17 @@ const CreaEvento = () => {
                     className="input"
                     type="date"
                     name="data"
+                    id="data"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.data}
+                    aria-errormessage="dataError"
+                    aria-required="true"
                   />
                   {errors.data && touched.data && errors.data && (
-                    <div className="form-error">{errors.data}</div>
+                    <div className="form-error" id="dataError">
+                      {errors.data}
+                    </div>
                   )}
                 </div>
                 <div className="my-3 md:my-0">
@@ -144,12 +156,17 @@ const CreaEvento = () => {
                     className="input"
                     type="time"
                     name="ora"
+                    id="ora"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.ora}
+                    aria-errormessage="oraError"
+                    aria-required="true"
                   />
                   {errors.ora && touched.ora && errors.ora && (
-                    <div className="form-error">{errors.ora}</div>
+                    <div className="form-error" id="oraError">
+                      {errors.ora}
+                    </div>
                   )}
                 </div>
               </div>
@@ -161,14 +178,19 @@ const CreaEvento = () => {
                   className="input"
                   type="number"
                   name="numeroPartecipanti"
+                  id="numeroPartecipanti"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.numeroPartecipanti}
+                  aria-errormessage="numeroPartecipantiError"
+                  aria-required="true"
                 />
                 {errors.numeroPartecipanti &&
                   touched.numeroPartecipanti &&
                   errors.numeroPartecipanti && (
-                    <div className="form-error">{errors.numeroPartecipanti}</div>
+                    <div className="form-error" id="numeroPartecipantiError">
+                      {errors.numeroPartecipanti}
+                    </div>
                   )}
               </div>
               <div className="my-3">
@@ -181,16 +203,26 @@ const CreaEvento = () => {
                   onChange={setSelected}
                   labelledBy="Seleziona gli sponsor"
                   overrideStrings={selectLocals}
+                  aria-errormessage="sponsorError"
+                  aria-required="true"
                 />
                 {errors.sponsors && touched.sponsors && errors.sponsors && selected.length < 1 && (
-                  <div className="form-error">{errors.sponsors}</div>
+                  <div className="form-error" id="sponsorError">
+                    {errors.sponsors}
+                  </div>
                 )}
               </div>
               <div className="mt-3">
                 <label className="flex required" htmlFor="foto">
                   Carica foto
                 </label>
-                <FileInput files={files} setFiles={setFiles} maxFiles={1} />
+                <FileInput
+                  files={files}
+                  setFiles={setFiles}
+                  maxFiles={1}
+                  id="foto"
+                  aria-required="true"
+                />
                 {errors.files && touched.files && errors.files && files.length < 1 && (
                   <div className="form-error">{errors.files}</div>
                 )}
@@ -203,12 +235,17 @@ const CreaEvento = () => {
                   className="input"
                   type="text"
                   name="citta"
+                  id="citta"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.citta}
+                  aria-errormessage="cittaError"
+                  aria-required="true"
                 />
                 {errors.citta && touched.citta && errors.citta && (
-                  <div className="form-error">{errors.citta}</div>
+                  <div className="form-error" id="cittaError">
+                    {errors.citta}
+                  </div>
                 )}
               </div>
               <div className="mt-3">
@@ -219,12 +256,17 @@ const CreaEvento = () => {
                   className="input"
                   type="text"
                   name="via"
+                  id="via"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.via}
+                  aria-errormessage="viaError"
+                  aria-required="true"
                 />
                 {errors.via && touched.via && errors.via && (
-                  <div className="form-error">{errors.via}</div>
+                  <div className="form-error" id="viaError">
+                    {errors.via}
+                  </div>
                 )}
               </div>
               <div className="mt-3">
@@ -235,12 +277,16 @@ const CreaEvento = () => {
                   className="input"
                   type="text"
                   name="civico"
+                  id="civico"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.civico}
+                  aria-errormessage="civicoError"
                 />
                 {errors.civico && touched.civico && errors.civico && (
-                  <div className="form-error">{errors.civico}</div>
+                  <div className="form-error" id="civicoError">
+                    {errors.civico}
+                  </div>
                 )}
               </div>
 
