@@ -15,15 +15,16 @@ const SideMenu = ({ open, onClose }: Props) => {
   return (
     <AnimatePresence>
       {open && (
-        <nav className="h-full w-full z-50" id="side-menu">
+        <div>
           <motion.div
-            className="fixed bg-gray-800 h-full w-full z-50"
+            className="fixed bg-gray-800 h-full w-full z-50 cursor-pointer"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.8 }}
             transition={{ ease: "easeOut", duration: 0.3 }}
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            onClick={onClose}
           ></motion.div>
-          <motion.div
+          <motion.nav
             className={`w-[90%] lg:w-1/4 h-full bg-white fixed z-50`}
             initial={{ left: width > TAILWINDCSS_LG_BREAKPOINT ? "-25%" : "-90%" }}
             animate={{ left: 0 }}
@@ -38,7 +39,6 @@ const SideMenu = ({ open, onClose }: Props) => {
                 className="ml-auto mr-10 p-2 w-[50px] ham-close-container"
                 onClick={onClose}
                 role="button"
-                aria-controls="side-menu"
                 aria-label="Chiudi menu laterale"
               >
                 <svg
@@ -115,8 +115,8 @@ const SideMenu = ({ open, onClose }: Props) => {
                 Inserisci testimonianza
               </Link>
             </div>
-          </motion.div>
-        </nav>
+          </motion.nav>
+        </div>
       )}
     </AnimatePresence>
   );
