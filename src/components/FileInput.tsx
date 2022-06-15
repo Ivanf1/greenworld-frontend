@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import deleteImg from "../assets/delete.svg";
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLInputElement> {
   files: { preview: string }[];
   setFiles: (
     value: { preview: string }[] | ((prevVar: { preview: string }[]) => { preview: string }[])
@@ -10,7 +10,7 @@ interface Props {
   maxFiles: number;
 }
 
-const FileInput = ({ files, setFiles, maxFiles }: Props) => {
+const FileInput = ({ files, setFiles, maxFiles, ...others }: Props) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
       "image/*": [],
@@ -57,7 +57,7 @@ const FileInput = ({ files, setFiles, maxFiles }: Props) => {
 
   return (
     <div {...getRootProps()} className="cursor-pointer input py-2 px-3">
-      <input {...getInputProps()} name="foto" />
+      <input {...getInputProps()} name="foto" {...others} />
       {isDragActive ? (
         <p>Trascina qui le immagini ...</p>
       ) : (

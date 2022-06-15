@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import profileImg from "../assets/profilo.png";
 import { Formik } from "formik";
 import FileInput from "../components/FileInput";
@@ -35,7 +35,9 @@ const InserimentoTestimonianza = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {}}
+          onSubmit={(values, { validateForm }) => {
+            validateForm();
+          }}
         >
           {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit} className="w-full">
@@ -49,16 +51,21 @@ const InserimentoTestimonianza = () => {
                   onBlur={handleBlur}
                   value={values.testimonianza}
                   name="testimonianza"
+                  id="testimonianza"
+                  aria-errormessage="testimonianzaError"
+                  aria-required="true"
                 />
               </div>
               {errors.testimonianza && touched.testimonianza && errors.testimonianza && (
-                <div className="form-error">{errors.testimonianza}</div>
+                <div className="form-error" id="testimonianzaError">
+                  {errors.testimonianza}
+                </div>
               )}
               <div className="my-3">
                 <label className="block" htmlFor="foto">
                   Carica foto
                 </label>
-                <FileInput files={files} setFiles={setFiles} maxFiles={10} />
+                <FileInput files={files} setFiles={setFiles} maxFiles={10} id="foto" />
               </div>
               <div className="flex justify-end mt-10">
                 <button className="primary w-full md:w-auto" type="submit" disabled={isSubmitting}>
