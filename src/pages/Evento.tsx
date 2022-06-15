@@ -29,15 +29,15 @@ const Evento = () => {
 
             <div className="flex flex-col space-y-2">
               <div className="flex space-x-2">
-                <img src={mapMarkImg} alt="" />
+                <img src={mapMarkImg} alt="" aria-hidden="true" />
                 <span className="">Sarno, 80087, SA</span>
               </div>
               <div className="flex space-x-2">
-                <img src={calendarImg} alt="" />
+                <img src={calendarImg} alt="" aria-hidden="true" />
                 <span className="">10/07/2022</span>
               </div>
               <div className="flex space-x-2">
-                <img src={timeImg} alt="" />
+                <img src={timeImg} alt="" aria-hidden="true" />
                 <span className="">15:30</span>
               </div>
             </div>

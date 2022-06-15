@@ -16,11 +16,11 @@ const EventoProfilo = ({ img, location, date, description }: Props) => {
       <div className="flex flex-col space-y-1 self-center justify-self-start lg:pl-4">
         <div className="flex flex-col space-y-2">
           <div className="flex space-x-2">
-            <img src={mapMarkImg} alt="" />
+            <img src={mapMarkImg} alt="" aria-hidden="true" />
             <span className="">{location}</span>
           </div>
           <div className="flex space-x-2">
-            <img src={calendarImg} alt="" />
+            <img src={calendarImg} alt="" aria-hidden="true" />
             <span className="">{date}</span>
           </div>
         </div>

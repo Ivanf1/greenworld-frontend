@@ -63,7 +63,7 @@ const Home = () => {
               Cerca un evento a cui partecipare o segnala un luogo da ripulire
             </h3>
           </header>
-          <img src={downArrow} alt="" />
+          <img src={downArrow} alt="" aria-hidden="true" />
         </div>
         <HomeMap />
       </section>

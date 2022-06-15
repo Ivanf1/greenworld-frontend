@@ -13,7 +13,13 @@ const Navbar = () => {
       <nav className="h-14 md:h-20 px-5 xl:px-5 w-full bg-white">
         <div className="nav-container m-auto flex items-center min-h-full justify-between">
           <div className="left-container flex items-center space-x-4 md:space-x-10">
-            <div className="ham-container p-2" onClick={() => cycleOpen()}>
+            <div
+              className="ham-container p-2"
+              onClick={() => cycleOpen()}
+              role="button"
+              aria-controls="side-menu"
+              aria-label="Apri menu laterale"
+            >
               <svg
                 width="40"
                 height="20"
@@ -21,6 +27,7 @@ const Navbar = () => {
                 fill="#000000"
                 xmlns="http://www.w3.org/2000/svg"
                 className="hamburger-icon"
+                aria-hidden="true"
               >
                 <rect width="40" height="4" rx="2" />
                 <rect y="8" width="40" height="4" rx="2" />

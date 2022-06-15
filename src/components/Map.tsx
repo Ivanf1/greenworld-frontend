@@ -166,15 +166,15 @@ const MMap = ({ events }: Props) => {
                   <h3>{currentEvent.name}</h3>
                   <div className="flex flex-col space-y-2">
                     <div className="flex space-x-2">
-                      <img src={mapMarkImg} alt="" />
+                      <img src={mapMarkImg} alt="" aria-hidden="true" />
                       <span>{currentEvent.indirizzo}</span>
                     </div>
                     <div className="flex space-x-2">
-                      <img src={calendarImg} alt="" />
+                      <img src={calendarImg} alt="" aria-hidden="true" />
                       <span>{currentEvent.data}</span>
                     </div>
                     <div className="flex space-x-2">
-                      <img src={timeImg} alt="" />
+                      <img src={timeImg} alt="" aria-hidden="true" />
                       <span>{currentEvent.ora}</span>
                     </div>
                   </div>

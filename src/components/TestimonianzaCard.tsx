@@ -25,11 +25,11 @@ const TestimonianzaCard = ({ profileImg, name, location, date, comment, imgs }: 
       <section className="flex flex-col md:flex-row items-start md:items-center space-y-10 md:space-y-0 md:space-x-10">
         <div className="flex flex-col space-y-2">
           <div className="flex space-x-2">
-            <img src={mapMarkImg} alt="" />
+            <img src={mapMarkImg} alt="" aria-hidden="true" />
             <span className="">{location}</span>
           </div>
           <div className="flex space-x-2">
-            <img src={calendarImg} alt="" />
+            <img src={calendarImg} alt="" aria-hidden="true" />
             <span className="">{date}</span>
           </div>
         </div>

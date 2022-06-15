@@ -15,7 +15,7 @@ const SideMenu = ({ open, onClose }: Props) => {
   return (
     <AnimatePresence>
       {open && (
-        <nav className="h-full w-full z-50">
+        <nav className="h-full w-full z-50" id="side-menu">
           <motion.div
             className="fixed bg-gray-800 h-full w-full z-50"
             initial={{ opacity: 0 }}
@@ -34,8 +34,19 @@ const SideMenu = ({ open, onClose }: Props) => {
             }}
           >
             <div className="flex flex-col space-y-3 pt-10 z-10">
-              <div className="ml-auto mr-10 p-2 w-[50px] ham-close-container" onClick={onClose}>
-                <svg viewBox="0 0 600 600" fill="black" xmlns="http://www.w3.org/2000/svg">
+              <div
+                className="ml-auto mr-10 p-2 w-[50px] ham-close-container"
+                onClick={onClose}
+                role="button"
+                aria-controls="side-menu"
+                aria-label="Chiudi menu laterale"
+              >
+                <svg
+                  viewBox="0 0 600 600"
+                  fill="black"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
                   <rect
                     x="6"
                     y="538"

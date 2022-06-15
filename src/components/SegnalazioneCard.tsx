@@ -22,7 +22,7 @@ const SegnalazioneCard = ({ titolo, via, testo, nomeUtente, commento, imgProfilo
         <section className="flex flex-1 flex-col space-y-3">
           <h3 className="font-bold text-xl">{titolo}</h3>
           <div className="flex items-start space-x-2">
-            <img src={mapMarkImg} alt="" />
+            <img src={mapMarkImg} alt="" aria-hidden="true" />
             <p className="">{via}</p>
           </div>
           <p>{testo}</p>
