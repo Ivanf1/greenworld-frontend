@@ -100,7 +100,7 @@ const MMap = ({ events }: Props) => {
 
   return (
     <div className="w-full h-full relative">
-      <div className="relative w-full h-full" ref={mapSectionRef}>
+      <section className="relative w-full h-full" ref={mapSectionRef}>
         <MapContainer
           center={[40.641991, 14.824107]}
           scrollWheelZoom={false}
@@ -146,23 +146,23 @@ const MMap = ({ events }: Props) => {
           ></input>
           <img src={searchIcon} alt="" />
         </div>
-      </div>
+      </section>
 
       {currentEvent && (
         <div className="bg-light-grey pb-5">
-          <div className="card xl:max-w-[78.125rem] xl:mx-auto mx-5 p-5">
-            <div className="relative ">
+          <section className="card xl:max-w-[78.125rem] xl:mx-auto mx-5 p-5">
+            <section className="relative ">
               <div
                 className="absolute -top-3 -right-3 md:top-[5px] md:right-[5px] cursor-pointer"
                 onClick={eventSectionClickHandler}
               >
                 <img src={close} className="w-[14px] h-[14px]" alt="" />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-[auto_1fr] md:grid-rows-1 w-full lg:max-w-[78.125rem] mx-auto gap-x-5 lg:gap-x-20">
-                <div className="flex items-center justify-center">
+              <section className="grid grid-cols-1 md:grid-cols-2 grid-rows-[auto_1fr] md:grid-rows-1 w-full lg:max-w-[78.125rem] mx-auto gap-x-5 lg:gap-x-20">
+                <section className="flex items-center justify-center">
                   <img src={currentEvent.img} className="h-auto w-auto rounded-lg" alt="" />
-                </div>
-                <div className="flex flex-col py-10 space-y-5 lg:justify-center md:space-y-2 lg:space-y-10">
+                </section>
+                <section className="flex flex-col py-10 space-y-5 lg:justify-center md:space-y-2 lg:space-y-10">
                   <h3>{currentEvent.name}</h3>
                   <div className="flex flex-col space-y-2">
                     <div className="flex space-x-2">
@@ -191,13 +191,13 @@ const MMap = ({ events }: Props) => {
                       <button className="primary w-full lg:w-auto">Maggiori informazioni</button>
                     </Link>
                   </div>
-                </div>
-              </div>
-            </div>
+                </section>
+              </section>
+            </section>
             {currentEvent.sponsors && (
               <>
                 <div className="separator lg:max-w-[78.125rem] mx-auto mt-5 mb-10 lg:my-10"></div>
-                <div className="flex flex-col items-center space-y-5 text-center">
+                <section className="flex flex-col items-center space-y-5 text-center">
                   <h3>Questo evento è sponsorizzato da</h3>
                   {currentEvent.sponsors.map((sponsor, i) => {
                     return (
@@ -219,10 +219,10 @@ const MMap = ({ events }: Props) => {
                       </div>
                     );
                   })}
-                </div>
+                </section>
               </>
             )}
-          </div>
+          </section>
         </div>
       )}
     </div>

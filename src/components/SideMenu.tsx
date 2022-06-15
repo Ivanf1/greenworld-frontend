@@ -15,7 +15,7 @@ const SideMenu = ({ open, onClose }: Props) => {
   return (
     <AnimatePresence>
       {open && (
-        <div>
+        <nav className="h-full w-full z-50">
           <motion.div
             className="fixed bg-gray-800 h-full w-full z-50"
             initial={{ opacity: 0 }}
@@ -105,7 +105,7 @@ const SideMenu = ({ open, onClose }: Props) => {
               </Link>
             </div>
           </motion.div>
-        </div>
+        </nav>
       )}
     </AnimatePresence>
   );
