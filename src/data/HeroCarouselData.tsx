@@ -3,6 +3,7 @@ import gennaro from "../assets/gennaro.jpg";
 
 export interface HeroCarouselItemData {
   leftImg: string;
+  altLeftImg: string;
   profileImg: string;
   name: string;
   title: string;
@@ -12,6 +13,7 @@ export interface HeroCarouselItemData {
 export const heroCarouselItemData: HeroCarouselItemData[] = [
   {
     leftImg: testA,
+    altLeftImg: "Gennaro sott'acqua con la tuta da sub raccoglie una busta di plastica",
     profileImg: gennaro,
     name: "Gennaro",
     title: "Un'esperienza fantastica!",
@@ -20,6 +22,7 @@ export const heroCarouselItemData: HeroCarouselItemData[] = [
   },
   {
     leftImg: testA,
+    altLeftImg: "Gennaro sott'acqua con la tuta da sub raccoglie una busta di plastica",
     profileImg: gennaro,
     name: "Gennaro",
     title: "Un'esperienza fantastica!",
