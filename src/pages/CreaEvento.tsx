@@ -59,7 +59,7 @@ const CreaEvento = () => {
   return (
     <div className="form-background min-h-full py-10 bg-primary-tint">
       <div className="card flex flex-col items-center p-6 md:p-[60px] max-w-[95%] md:max-w-2xl md:w-2xl mx-auto rounded-lg">
-        <h4 className="self-start mb-8">Crea un evento</h4>
+        <h2 className="self-start mb-8">Crea un evento</h2>
         <Formik
           initialValues={initialFormValues}
           validate={(values: FormValues) => {

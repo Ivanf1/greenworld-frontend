@@ -57,13 +57,11 @@ const InserimentoTestimonianza = () => {
     <div className="form-background min-h-full py-10 bg-primary-tint">
       <div className="card flex flex-col items-center p-6 md:p-[60px] max-w-[95%] md:max-w-2xl md:w-2xl mx-auto rounded-lg">
         <div className="flex items-start flex-col self-start">
-          <h3 className="mb-8">Inserisci una testimonianza</h3>
-          {/* <div>
-            <h5>{eventInfoQuery.data.name}</h5>
-          </div> */}
-          <div className="flex space-x-5 items-center my-10">
+          <h2 className="mb-20">Inserisci una testimonianza</h2>
+          <h4>{eventInfoQuery.data.name}</h4>
+          <div className="flex space-x-5 items-center mt-10">
             <img className="w-[100px] h-[100px]" src={currentUser.img} alt="" />
-            <span className="text-sm font-semibold">{`${currentUser.nome} ${currentUser.cognome}`}</span>
+            <span className="text-sm">{`${currentUser.nome} ${currentUser.cognome}`}</span>
           </div>
         </div>
 
