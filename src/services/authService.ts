@@ -1,5 +1,6 @@
 import { LOCAL_STORAGE_USER_KEY } from "./storageKeys";
 import profileImg from "../assets/profilo.png";
+import { getConcludedEvents } from "./eventService";
 
 export interface CurrentUser {
   nome: string;
@@ -8,6 +9,7 @@ export interface CurrentUser {
   email: string;
   dataRegistrazione: string;
   img: string;
+  numeroEventiPartecipati: number;
 }
 
 const defaultUtente: CurrentUser = {
@@ -17,6 +19,7 @@ const defaultUtente: CurrentUser = {
   email: "francesca97@live.it",
   dataRegistrazione: "16 gennaio 2021",
   img: profileImg,
+  numeroEventiPartecipati: getConcludedEvents().length,
 };
 
 const register = () => {
