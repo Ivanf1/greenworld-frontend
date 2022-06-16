@@ -1,8 +1,14 @@
+import { Navigate } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar";
+import { useCurrentUser } from "../context/userContext";
 
 const DiventaOrganizzatore = () => {
-  const numEventi = 12;
+  const { currentUser } = useCurrentUser();
   const minEventi = 20;
+
+  if (!currentUser) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div className="min-w-full min-h-[calc(100vh-80px)] bg-light-grey py-10">
@@ -33,7 +39,11 @@ const DiventaOrganizzatore = () => {
               diventare organizzatore
             </p>
             <div className="mt-2">
-              <ProgressBar total={minEventi} completed={numEventi} showLabel={true} />
+              <ProgressBar
+                total={minEventi}
+                completed={currentUser.numeroEventiPartecipati}
+                showLabel={true}
+              />
             </div>
           </div>
         </div>

@@ -60,7 +60,7 @@ const Evento = () => {
       <main className="min-h-[calc(100vh-80px)] card mx-auto px-4 py-10 w-[95%] max-w-[95%] md:max-w-[1600px] md:p-10">
         <section className="grid grid-cols-1 grid-rows-[repeat(3,auto)] gap-y-5 xl:grid-cols-2 xl:grid-rows-[repeat(2,auto)] lg:gap-10">
           <section className="row-start-2 xl:row-start-1 xl:row-span-2">
-            <Carousel />
+            <Carousel imgs={[eventInfoQuery.data.img]} />
           </section>
 
           <section className="flex flex-1 flex-col space-y-3">
