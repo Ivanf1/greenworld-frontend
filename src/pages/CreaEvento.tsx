@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Formik } from "formik";
 import { MultiSelect } from "react-multi-select-component";
 import FileInput from "../components/FileInput";
+import { useSearchParams } from "react-router-dom";
 
 interface FormValues {
   nome: string;
@@ -23,6 +24,7 @@ interface MultiselectOption {
 }
 
 const CreaEvento = () => {
+  const [searchParams] = useSearchParams();
   const [files, setFiles] = useState<{ preview: string }[]>([]);
   const initialFormValues = {
     nome: "",
@@ -30,9 +32,9 @@ const CreaEvento = () => {
     ora: "",
     numeroPartecipanti: "",
     sponsors: "",
-    citta: "",
-    via: "",
-    civico: "",
+    citta: searchParams.get("citta") || "",
+    via: searchParams.get("via") || "",
+    civico: searchParams.get("civico") || "",
     files: "",
   };
 

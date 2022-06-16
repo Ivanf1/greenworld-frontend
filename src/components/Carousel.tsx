@@ -4,20 +4,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./Carousel.css";
-import testA from "../assets/a.jpg";
-import testB from "../assets/b.jpg";
 
 SwiperCore.use([Navigation, Pagination]);
 
-const MyCarousel = () => {
+interface Props {
+  imgs: string[];
+}
+
+const MyCarousel = ({ imgs }: Props) => {
   return (
     <Swiper slidesPerView={1} loop={true} navigation={true} pagination={true}>
-      <SwiperSlide>
-        <img src={testA} alt="immagine A" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={testB} alt="immagine B" />
-      </SwiperSlide>
+      {imgs.map((img, i) => {
+        return (
+          <SwiperSlide key={i}>
+            <img src={img} alt="immagine" />
+          </SwiperSlide>
+        );
+      })}
     </Swiper>
   );
 };

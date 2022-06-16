@@ -1,6 +1,5 @@
-import { EVENT_COMMENTS, EVENT_TESTIMONIANZE } from "./storageKeys";
+import { getStorageKeys } from "./storageKeys";
 
 export const resetLocalStorage = () => {
-  localStorage.removeItem(EVENT_COMMENTS);
-  localStorage.removeItem(EVENT_TESTIMONIANZE);
+  getStorageKeys().map((key) => localStorage.removeItem(key));
 };
