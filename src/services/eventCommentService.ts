@@ -11,7 +11,7 @@ interface EventiComments {
   comments: EventoComment[];
 }
 
-export const getEventComments = (idEvento: string) => {
+export const getLocalEventComments = (idEvento: string) => {
   const comments = localStorage.getItem(EVENT_COMMENTS);
   if (comments) {
     const events = JSON.parse(comments) as EventiComments[];
@@ -23,7 +23,7 @@ export const getEventComments = (idEvento: string) => {
   return [] as EventoComment[];
 };
 
-export const postComment = async (idEvento: string, comment: EventoComment) => {
+export const postLocalComment = async (idEvento: string, comment: EventoComment) => {
   const comments = localStorage.getItem(EVENT_COMMENTS);
   if (comments) {
     const events = JSON.parse(comments) as EventiComments[];

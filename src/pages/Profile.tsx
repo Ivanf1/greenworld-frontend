@@ -6,11 +6,10 @@ import giftImg from "../assets/gift.svg";
 import { Navigate } from "react-router-dom";
 import { useCurrentUser } from "../context/userContext";
 import { useQuery } from "react-query";
-import { getUserInfo, getUserPartecipatedEvents } from "../services/profileService";
+import { getUserPartecipatedEvents } from "../services/profileService";
 
 const Profile = () => {
   const { currentUser } = useCurrentUser();
-  const userInfoQuery = useQuery("userInfo", getUserInfo);
   const userPartecipatedEventsQuery = useQuery("userPartecipatedEvents", getUserPartecipatedEvents);
   const eventiPerPremio = 100;
 
@@ -18,12 +17,7 @@ const Profile = () => {
     return <Navigate to="/login" replace />;
   }
 
-  if (
-    userInfoQuery.isLoading ||
-    !userInfoQuery.data ||
-    userPartecipatedEventsQuery.isLoading ||
-    !userPartecipatedEventsQuery.data
-  ) {
+  if (userPartecipatedEventsQuery.isLoading || !userPartecipatedEventsQuery.data) {
     return <div className="h-full"></div>;
   }
 
@@ -34,14 +28,14 @@ const Profile = () => {
           <section className="flex flex-col w-full md:flex-row space-y-10 md:space-x-10 md:space-y-0 items-center mx-auto lg:mx-0">
             <img src={profileImg} alt="immagine del profilo" />
             <section className="flex flex-col w-full md:w-auto items-center md:items-start space-y-5">
-              <h3>{`${userInfoQuery.data.nome} ${userInfoQuery.data.cognome}`}</h3>
+              <h3>{`${currentUser.nome} ${currentUser.cognome}`}</h3>
               <div className="grid w-full grid-cols-[1fr_auto] md:grid-rows-2 grid-rows-3 gap-x-5">
                 <span className="username-label font-semibold">Username</span>
-                <span className="username">{userInfoQuery.data.username}</span>
+                <span className="username">{currentUser.username}</span>
                 <span className="email-label font-semibold">Email</span>
-                <span className="email">{userInfoQuery.data.email}</span>
+                <span className="email">{currentUser.email}</span>
                 <span className="community-label font-semibold">Nella community</span>
-                <span className="community">{userInfoQuery.data.dataRegistrazione}</span>
+                <span className="community">{currentUser.dataRegistrazione}</span>
               </div>
               <button className="secondary w-full xl:w-auto">Modifica informazioni</button>
             </section>

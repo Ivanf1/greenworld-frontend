@@ -3,38 +3,56 @@ import calendarImg from "../assets/calendar.svg";
 import ScrollableContainer from "./ScrollableContainer";
 import useWindowSize from "../hooks/windowSize";
 import { TAILWINDCSS_LG_BREAKPOINT } from "../constants/tailwind";
+import { Link } from "react-router-dom";
 
 interface Props {
   profileImg: string;
-  name: string;
-  location: string;
-  date: string;
+  nomeUtente: string;
+  dataEvento: string;
+  dataTestimonianza: string;
+  nomeEvento: string;
   comment: string;
   imgs?: string[];
+  id: string;
+  indirizzo: string;
 }
 
-const TestimonianzaCard = ({ profileImg, name, location, date, comment, imgs }: Props) => {
+const TestimonianzaCard = ({
+  profileImg,
+  nomeUtente,
+  indirizzo,
+  dataEvento,
+  comment,
+  imgs,
+  nomeEvento,
+  dataTestimonianza,
+  id,
+}: Props) => {
   const [width] = useWindowSize();
 
   return (
     <article className="card flex flex-col space-y-8 md:space-y-5 p-4 md:p-10 w-[95%] max-w-[95%] md:max-w-[1000px]">
       <header className="flex items-center space-x-5">
         <img className="profile-img" src={profileImg} alt="" />
-        <h4>{name}</h4>
+        <div className="flex flex-col text-xs">
+          <h3>{nomeUtente}</h3>
+          <span>{dataTestimonianza}</span>
+        </div>
       </header>
       <section className="flex flex-col md:flex-row items-start md:items-center space-y-10 md:space-y-0 md:space-x-10">
         <div className="flex flex-col space-y-2">
+          <h5 className="font-semibold">{nomeEvento}</h5>
           <div className="flex space-x-2">
             <img src={mapMarkImg} alt="" aria-hidden="true" />
-            <span className="">{location}</span>
+            <span className="">{indirizzo}</span>
           </div>
           <div className="flex space-x-2">
             <img src={calendarImg} alt="" aria-hidden="true" />
-            <span className="">{date}</span>
+            <span className="">{dataEvento}</span>
           </div>
         </div>
       </section>
-      {imgs && (
+      {imgs && imgs.length > 0 && (
         <section className="w-full">
           <ScrollableContainer
             slidesPerView={width > TAILWINDCSS_LG_BREAKPOINT ? 3 : 1}
@@ -44,7 +62,9 @@ const TestimonianzaCard = ({ profileImg, name, location, date, comment, imgs }: 
       )}
       <section className="flex flex-col-reverse md:flex-col">
         <p className="mt-5 md:mt-0 md:mb-5">{comment}</p>
-        <button className="primary w-full md:w-auto ml-auto">Vedi evento</button>
+        <Link to={`/evento/${id}`} className="flex md:self-end">
+          <button className="primary w-full md:w-auto ml-auto">Vedi evento</button>
+        </Link>
       </section>
     </article>
   );
