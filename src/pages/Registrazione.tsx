@@ -136,7 +136,7 @@ const Registrazione = () => {
               )}
               <div className="flex justify-end mt-10">
                 <button className="primary w-full md:w-auto" type="submit" disabled={isSubmitting}>
-                  Login
+                  Registrati
                 </button>
               </div>
             </form>
