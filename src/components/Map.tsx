@@ -196,7 +196,7 @@ const MMap = ({ events }: Props) => {
                   </div>
                   <div>
                     <Link to="/evento">
-                      <button className="primary w-full lg:w-auto">Maggiori informazioni</button>
+                      <button className="primary w-full lg:w-auto">Partecipa all'evento</button>
                     </Link>
                   </div>
                 </section>
