@@ -3,17 +3,28 @@ import EventoProfilo from "../components/EventoProfilo";
 import ProgressBar from "../components/ProgressBar";
 import giftImg from "../assets/gift.svg";
 
-import { eventi } from "../data/EventoProfiloData";
 import { Navigate } from "react-router-dom";
 import { useCurrentUser } from "../context/userContext";
+import { useQuery } from "react-query";
+import { getUserInfo, getUserPartecipatedEvents } from "../services/profileService";
 
 const Profile = () => {
   const { currentUser } = useCurrentUser();
-  const eventiPartecipati = eventi.length;
+  const userInfoQuery = useQuery("userInfo", getUserInfo);
+  const userPartecipatedEventsQuery = useQuery("userPartecipatedEvents", getUserPartecipatedEvents);
   const eventiPerPremio = 100;
 
   if (!currentUser) {
     return <Navigate to="/login" replace />;
+  }
+
+  if (
+    userInfoQuery.isLoading ||
+    !userInfoQuery.data ||
+    userPartecipatedEventsQuery.isLoading ||
+    !userPartecipatedEventsQuery.data
+  ) {
+    return <div className="h-full"></div>;
   }
 
   return (
@@ -23,14 +34,14 @@ const Profile = () => {
           <section className="flex flex-col w-full md:flex-row space-y-10 md:space-x-10 md:space-y-0 items-center mx-auto lg:mx-0">
             <img src={profileImg} alt="immagine del profilo" />
             <section className="flex flex-col w-full md:w-auto items-center md:items-start space-y-5">
-              <h3>Francesca Brignano</h3>
+              <h3>{`${userInfoQuery.data.nome} ${userInfoQuery.data.cognome}`}</h3>
               <div className="grid w-full grid-cols-[1fr_auto] md:grid-rows-2 grid-rows-3 gap-x-5">
                 <span className="username-label font-semibold">Username</span>
-                <span className="username">Francesca70</span>
+                <span className="username">{userInfoQuery.data.username}</span>
                 <span className="email-label font-semibold">Email</span>
-                <span className="email">francesca97@live.it</span>
+                <span className="email">{userInfoQuery.data.email}</span>
                 <span className="community-label font-semibold">Nella community</span>
-                <span className="community">16 gennaio 2021</span>
+                <span className="community">{userInfoQuery.data.dataRegistrazione}</span>
               </div>
               <button className="secondary w-full xl:w-auto">Modifica informazioni</button>
             </section>
@@ -39,7 +50,11 @@ const Profile = () => {
           <section className="flex flex-col md:self-center md:justify-self-end w-full">
             <h4 className="text-center mb-10 md:text-left md:mb-0">Punteggio conseguito</h4>
             <div className="flex items-center space-x-10">
-              <ProgressBar total={eventiPerPremio} completed={eventiPartecipati} showLabel={true} />
+              <ProgressBar
+                total={eventiPerPremio}
+                completed={userPartecipatedEventsQuery.data.length}
+                showLabel={true}
+              />
               <img src={giftImg} alt="pacco regalo" />
             </div>
           </section>
@@ -47,11 +62,20 @@ const Profile = () => {
         <div className="separator w-full my-20"></div>
         <section>
           <h4 className="text-center mb-10 md:text-left">
-            Hai partecipato a {eventiPartecipati} eventi
+            Hai partecipato a {userPartecipatedEventsQuery.data.length} eventi
           </h4>
           <div className="flex flex-col space-y-20 lg:space-y-10">
-            {eventi.map((evento, i) => (
-              <EventoProfilo key={i} {...evento} />
+            {userPartecipatedEventsQuery.data.map((evento, i) => (
+              <EventoProfilo
+                key={i}
+                img={evento.img}
+                altImg={evento.altImg}
+                date={evento.data}
+                description={evento.descrizione}
+                location={evento.indirizzo}
+                nome={evento.name}
+                id={evento.id}
+              />
             ))}
           </div>
         </section>
