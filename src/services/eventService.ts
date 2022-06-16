@@ -1,7 +1,7 @@
 import eventImage from "../assets/a.jpg";
 import sponsorLogo from "../assets/pizzaciro.png";
 import commentProfileImg from "../assets/profile-img.png";
-import { getEventComments } from "./eventCommentService";
+import { getLocalEventComments } from "./eventCommentService";
 
 export interface EventoComment {
   nome: string;
@@ -291,7 +291,7 @@ export const defaultEventi: EventoInfo[] = [
 
 export const getEventoInfo = async (id: string) => {
   const idx = defaultEventi.findIndex((evento) => evento.id === id);
-  defaultEventi[idx].comments = [...getEventComments(id), ...defaultComments];
+  defaultEventi[idx].comments = [...getLocalEventComments(id), ...defaultComments];
   return defaultEventi[idx];
 };
 

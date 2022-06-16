@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { EventoComment, getEventoInfo } from "../services/eventService";
 import { useState } from "react";
-import { postComment } from "../services/eventCommentService";
+import { postLocalComment } from "../services/eventCommentService";
 import { useCurrentUser } from "../context/userContext";
 
 const Evento = () => {
@@ -28,12 +28,11 @@ const Evento = () => {
 
   const addComment = useMutation(
     async (data: EventoComment) => {
-      return await postComment(idEvento!, data);
+      return await postLocalComment(idEvento!, data);
     },
     {
       onSuccess: () => {
         queryClient.invalidateQueries("eventInfoQ");
-        console.log("success");
       },
     }
   );
