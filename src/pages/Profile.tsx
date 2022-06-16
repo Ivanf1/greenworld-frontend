@@ -4,10 +4,17 @@ import ProgressBar from "../components/ProgressBar";
 import giftImg from "../assets/gift.svg";
 
 import { eventi } from "../data/EventoProfiloData";
+import { Navigate } from "react-router-dom";
+import { useCurrentUser } from "../context/userContext";
 
 const Profile = () => {
+  const { currentUser } = useCurrentUser();
   const eventiPartecipati = eventi.length;
   const eventiPerPremio = 100;
+
+  if (!currentUser) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div className="w-full h-full bg-light-grey py-10">

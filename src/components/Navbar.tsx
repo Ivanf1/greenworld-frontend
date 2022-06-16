@@ -3,8 +3,10 @@ import { useCycle } from "framer-motion";
 import logo from "../assets/Logo.png";
 import SideMenu from "./SideMenu";
 import { Link } from "react-router-dom";
+import { useCurrentUser } from "../context/userContext";
 
 const Navbar = () => {
+  const { currentUser } = useCurrentUser();
   const [open, cycleOpen] = useCycle(false, true);
 
   return (
@@ -45,9 +47,25 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <Link to="/profilo">
-            <button className="secondary nav">Profilo</button>
-          </Link>
+          {currentUser ? (
+            <div className="flex items-center space-x-5">
+              <Link to="/logout" className="hover-underline-animation font-semibold">
+                Logout
+              </Link>
+              <Link to="/profilo">
+                <button className="secondary nav">Profilo</button>
+              </Link>
+            </div>
+          ) : (
+            <div className="flex items-center space-x-5">
+              <Link to="/registrazione" className="hover-underline-animation font-semibold">
+                Registrati
+              </Link>
+              <Link to="/login">
+                <button className="secondary nav">Login</button>
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </>

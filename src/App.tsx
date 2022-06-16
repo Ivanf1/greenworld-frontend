@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
@@ -14,6 +13,9 @@ import Evento from "./pages/Evento";
 import { MotionConfig } from "framer-motion";
 import smoothscroll from "smoothscroll-polyfill";
 import ScrollToTop from "./components/ScrollToTop";
+import Login from "./pages/Login";
+import Logout from "./components/Logout";
+import Registrazione from "./pages/Registrazione";
 
 function App() {
   smoothscroll.polyfill();
@@ -33,6 +35,9 @@ function App() {
             <Route path="/testimonianze" element={<Testimonianze />} />
             <Route path="/organizzatore" element={<DiventaOrganizzatore />} />
             <Route path="/evento" element={<Evento />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/registrazione" element={<Registrazione />} />
             <Route path="/" element={<Home />} />
           </Routes>
         </ScrollToTop>
