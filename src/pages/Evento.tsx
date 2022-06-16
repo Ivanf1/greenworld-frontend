@@ -4,17 +4,57 @@ import calendarImg from "../assets/calendar.svg";
 import timeImg from "../assets/time.svg";
 import sponsorLogo from "../assets/pizzaciro.png";
 import profileImg from "../assets/profilo.png";
-import commentProfileImg from "../assets/profile-img.png";
 import UserComment from "../components/UserComment";
 import ProgressBar from "../components/ProgressBar";
+import { useParams } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { EventoComment, getEventoInfo } from "../services/eventService";
+import { useState } from "react";
+import { postComment } from "../services/eventCommentService";
+import { useCurrentUser } from "../context/userContext";
 
 const Evento = () => {
-  const partecipanti = 45;
-  const maxPartecipanti = 150;
-  const numeroCommenti = 10;
+  const { idEvento } = useParams();
+  const { currentUser } = useCurrentUser();
+  const [comment, setComment] = useState<string>("");
+  const queryClient = useQueryClient();
+  const eventInfoQuery = useQuery(
+    "eventInfoQ",
+    async () => {
+      return await getEventoInfo(idEvento!);
+    },
+    { enabled: idEvento !== undefined }
+  );
 
-  const comment =
-    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat.";
+  const addComment = useMutation(
+    async (data: EventoComment) => {
+      return await postComment(idEvento!, data);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("eventInfoQ");
+        console.log("success");
+      },
+    }
+  );
+
+  const postCommentHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (comment.length <= 0) {
+      return;
+    }
+    const commentData: EventoComment = {
+      nome: "Francesca",
+      img: profileImg,
+      commento: comment,
+    };
+    addComment.mutate(commentData);
+    setComment("");
+  };
+
+  if (eventInfoQuery.isLoading || !eventInfoQuery.data) {
+    return <div className="h-full"></div>;
+  }
 
   return (
     <div className="w-full h-full bg-light-grey py-10">
@@ -25,42 +65,45 @@ const Evento = () => {
           </section>
 
           <section className="flex flex-1 flex-col space-y-3">
-            <h3 className="font-bold text-xl">Evento sul fiume Sarno</h3>
+            <h3 className="font-bold text-xl">{eventInfoQuery.data.name}</h3>
 
             <div className="flex flex-col space-y-2">
               <div className="flex space-x-2">
                 <img src={mapMarkImg} alt="" aria-hidden="true" />
-                <span className="">Sarno, 80087, SA</span>
+                <span className="">{eventInfoQuery.data.indirizzo}</span>
               </div>
               <div className="flex space-x-2">
                 <img src={calendarImg} alt="" aria-hidden="true" />
-                <span className="">10/07/2022</span>
+                <span className="">{eventInfoQuery.data.data}</span>
               </div>
               <div className="flex space-x-2">
                 <img src={timeImg} alt="" aria-hidden="true" />
-                <span className="">15:30</span>
+                <span className="">{eventInfoQuery.data.ora}</span>
               </div>
             </div>
 
-            <p className="flex-1">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-              laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-              architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-              sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-              voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
-              amet.
-            </p>
+            <p className="flex-1">{eventInfoQuery.data.descrizione}</p>
 
             <div>
               <h4>Partecipanti</h4>
-              <ProgressBar total={maxPartecipanti} completed={partecipanti} showLabel={true} />
+              <ProgressBar
+                total={eventInfoQuery.data.maxPartecipanti}
+                completed={eventInfoQuery.data.partecipanti}
+                showLabel={true}
+              />
             </div>
           </section>
 
-          <div className="flex flex-col md:flex-row md:items-end space-y-2 md:mt-0 md:space-x-5 md:mb-5">
-            <button className="primary flex-1 lg:flex-initial">Partecipa</button>
-            <button className="secondary flex-1 lg:flex-initial">Condividi</button>
-          </div>
+          {eventInfoQuery.data.concluso ? (
+            <div className="md:mt-0 md:mb-5 text-center xl:text-left">
+              <span className="font-semibold text-red-600">Questo evento è concluso</span>
+            </div>
+          ) : (
+            <div className="flex flex-col md:flex-row md:items-end space-y-2 md:mt-0 md:space-x-5 md:mb-5">
+              <button className="primary flex-1 lg:flex-initial">Partecipa</button>
+              <button className="secondary flex-1 lg:flex-initial">Condividi</button>
+            </div>
+          )}
         </section>
 
         <div className="separator w-full my-20"></div>
@@ -81,27 +124,49 @@ const Evento = () => {
 
         <div className="separator w-full my-20"></div>
 
-        <section>
-          <div className="flex items-center space-x-5">
-            <img className="profile-img" src={profileImg} alt="" />
-            <h4 className="font-normal">Francesca</h4>
-          </div>
-          <div className="md:pl-[100px] space-y-5">
-            <div className="flex flex-col mt-4">
-              <label htmlFor="comment-input">Inserisci un commento</label>
-              <textarea className="input lg:max-w-3xl h-40 md:h-20" name="comment-input" />
+        {currentUser ? (
+          <section>
+            <div className="flex items-center space-x-5">
+              <img className="profile-img" src={profileImg} alt="" />
+              <h4 className="font-normal">Francesca</h4>
             </div>
-            <button className="secondary  w-full lg:w-auto">Pubblica</button>
-          </div>
-        </section>
+            <form>
+              <div className="md:pl-[100px] space-y-5">
+                <div className="flex flex-col mt-4">
+                  <label htmlFor="comment-input">Inserisci un commento</label>
+                  <textarea
+                    className="input lg:max-w-3xl h-40 md:h-20"
+                    name="comment-input"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                  />
+                </div>
+                <button className="secondary  w-full lg:w-auto" onClick={postCommentHandler}>
+                  Pubblica
+                </button>
+              </div>
+            </form>
+          </section>
+        ) : (
+          <section>
+            <h4>Effettua il login per inserire un commento</h4>
+          </section>
+        )}
 
-        <section className="flex flex-col space-y-10 mt-20 max-w-[1000px]">
-          {[...Array(numeroCommenti)].map((_, i) => {
-            return (
-              <UserComment key={i} name="Marge" profileImg={commentProfileImg} comment={comment} />
-            );
-          })}
-        </section>
+        {eventInfoQuery.data.comments && (
+          <section className="flex flex-col space-y-10 mt-20 max-w-[1000px]">
+            {eventInfoQuery.data.comments.map((comment, i) => {
+              return (
+                <UserComment
+                  key={i}
+                  name={comment.nome}
+                  profileImg={comment.img}
+                  comment={comment.commento}
+                />
+              );
+            })}
+          </section>
+        )}
       </main>
     </div>
   );

@@ -18,28 +18,7 @@ import timeImg from "../assets/time.svg";
 import close from "../assets/delete.svg";
 import sponsorLogo from "../assets/pizzaciro.png";
 import searchIcon from "../assets/search.svg";
-
-interface EventoSponsor {
-  nome: string;
-  testo: string;
-  indirizzo: string;
-  info: string;
-  logo: string;
-}
-
-interface EventoInfo {
-  n: number;
-  e: number;
-  name: string;
-  partecipanti: number;
-  maxPartecipanti: number;
-  ora: string;
-  indirizzo: string;
-  data: string;
-  img: string;
-  altImg: string;
-  sponsors?: EventoSponsor[];
-}
+import { EventoInfo } from "../services/eventService";
 
 interface Props {
   events: EventoInfo[];
@@ -195,8 +174,10 @@ const MMap = ({ events }: Props) => {
                     />
                   </div>
                   <div>
-                    <Link to="/evento">
-                      <button className="primary w-full lg:w-auto">Partecipa all'evento</button>
+                    <Link to={`/evento/${currentEvent.id}`}>
+                      <button className="primary w-full lg:w-auto" id={currentEvent.id}>
+                        Partecipa all'evento
+                      </button>
                     </Link>
                   </div>
                 </section>

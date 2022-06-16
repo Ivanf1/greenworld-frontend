@@ -1,4 +1,4 @@
-const LOCAL_STORAGE_USER_KEY = "utente";
+import { LOCAL_STORAGE_USER_KEY } from "./storageKeys";
 
 export interface CurrentUser {
   nome: string;
