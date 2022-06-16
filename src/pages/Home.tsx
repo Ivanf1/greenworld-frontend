@@ -150,19 +150,39 @@ const Home = () => {
           <div className="flex w-full space-x-20">
             <div className="flex flex-col space-y-4">
               <span className="font-semibold text-lg">Su di noi</span>
-              <span>Chi siamo</span>
-              <span>Chi siamo</span>
-              <span>Chi siamo</span>
-              <span>Chi siamo</span>
-              <span>Chi siamo</span>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
             </div>
             <div className="flex flex-col space-y-4">
               <span className="font-semibold text-lg">Su di noi</span>
-              <span>Chi siamo</span>
-              <span>Chi siamo</span>
-              <span>Chi siamo</span>
-              <span>Chi siamo</span>
-              <span>Chi siamo</span>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
+              <a className="hover-underline-animation-footer" href="/">
+                Chi siamo
+              </a>
             </div>
           </div>
           <div className="flex-1 flex justify-end self-end mt-20 md:mt-10">
