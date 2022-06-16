@@ -188,6 +188,10 @@ button.secondary:hover {
   color: #ffffff;
 }
 
+button.secondary.nav {
+  padding: 2px 10px;
+}
+
 button.secondary-white {
   background: transparent;
   color: #ffffff;
@@ -315,8 +319,9 @@ div.rmsc {
   button {
     padding: 8px 40px;
   }
-  button.nav {
+  button.secondary.nav {
     max-height: 41px;
+    padding: 8px 40px;
   }
   div.form-background {
     min-height: calc(100vh - 80px);
