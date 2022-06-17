@@ -35,7 +35,7 @@ const TestimonianzaCard = ({
       <header className="flex items-center space-x-5">
         <img className="profile-img" src={profileImg} alt="" />
         <div className="flex flex-col text-xs">
-          <h3>{nomeUtente}</h3>
+          <h4>{nomeUtente}</h4>
           <span>{dataTestimonianza}</span>
         </div>
       </header>

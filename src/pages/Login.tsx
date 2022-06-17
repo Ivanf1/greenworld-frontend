@@ -1,7 +1,8 @@
 import { Formik } from "formik";
 import { useCurrentUser } from "../context/userContext";
 import AuthService from "../services/authService";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { ExtendedLocation } from "../location";
 
 interface FormValues {
   email: string;
@@ -9,12 +10,18 @@ interface FormValues {
 }
 
 const Login = () => {
+  const { currentUser } = useCurrentUser();
+  const location = useLocation() as ExtendedLocation;
   const navigate = useNavigate();
   const { fetchCurrentUser } = useCurrentUser();
   const initialFormValues: FormValues = {
     email: "",
     password: "",
   };
+
+  if (currentUser) {
+    return <Navigate to={"/"} />;
+  }
 
   return (
     <div className="form-background min-h-full py-10 bg-primary-tint">
@@ -35,7 +42,7 @@ const Login = () => {
           onSubmit={() => {
             AuthService.login();
             fetchCurrentUser();
-            navigate("/");
+            navigate(location.state?.previousPathname ? location.state.previousPathname : "/");
           }}
         >
           {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (

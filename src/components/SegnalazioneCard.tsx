@@ -52,15 +52,15 @@ const SegnalazioneCard = ({
           </div>
         </section>
 
-        <div className="flex flex-col md:flex-row md:items-end space-y-2 md:mt-0 md:space-x-5 md:mb-5">
-          <Link to={`/crea-evento?citta=${citta}&via=${via}&civico=${civico}`}>
-            <button className="primary flex-1 lg:flex-initial">Crea evento</button>
-          </Link>
-          <button
-            className="delete flex-1 lg:flex-initial"
-            onClick={onRemove}
-            data-segnalazioneid={id}
+        <div className="flex flex-col md:items-end md:flex-row space-y-2 md:mt-0 md:space-x-5 md:mb-5 md:justify-end lg:justify-start">
+          <Link
+            to={`/crea-evento?citta=${citta}&via=${via}&civico=${civico}`}
+            role="button"
+            className="primary w-full md:w-auto"
           >
+            <button className="primary w-full">Crea evento</button>
+          </Link>
+          <button className="delete w-full md:w-auto" onClick={onRemove} data-segnalazioneid={id}>
             Rimuovi
           </button>
         </div>

@@ -1,13 +1,20 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar";
 import { useCurrentUser } from "../context/userContext";
+import { ExtendedLocation } from "../location";
 
 const DiventaOrganizzatore = () => {
+  const location = useLocation() as ExtendedLocation;
   const { currentUser } = useCurrentUser();
   const minEventi = 20;
 
   if (!currentUser) {
-    return <Navigate to="/login" replace />;
+    return (
+      <Navigate
+        to={location.state?.previousPathname ? location.state.previousPathname : "/login"}
+        state={{ previousPathname: location.pathname }}
+      />
+    );
   }
 
   return (

@@ -6,14 +6,17 @@ import sponsorLogo from "../assets/pizzaciro.png";
 import profileImg from "../assets/profilo.png";
 import UserComment from "../components/UserComment";
 import ProgressBar from "../components/ProgressBar";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { EventoComment, getEventoInfo } from "../services/eventService";
 import { useState } from "react";
 import { postLocalComment } from "../services/eventCommentService";
 import { useCurrentUser } from "../context/userContext";
+import { ExtendedLocation } from "../location";
 
 const Evento = () => {
+  const navigate = useNavigate();
+  const location = useLocation() as ExtendedLocation;
   const { idEvento } = useParams();
   const { currentUser } = useCurrentUser();
   const [comment, setComment] = useState<string>("");
@@ -46,9 +49,17 @@ const Evento = () => {
       nome: "Francesca",
       img: profileImg,
       commento: comment,
+      data: new Date().toLocaleString(),
     };
     addComment.mutate(commentData);
     setComment("");
+  };
+
+  const partecipaEventoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!currentUser) {
+      navigate("/login", { state: { previousPathname: location.pathname } });
+    }
   };
 
   if (eventInfoQuery.isLoading || !eventInfoQuery.data) {
@@ -98,8 +109,10 @@ const Evento = () => {
               <span className="font-semibold text-red-600">Questo evento è concluso</span>
             </div>
           ) : (
-            <div className="flex flex-col md:flex-row md:items-end space-y-2 md:mt-0 md:space-x-5 md:mb-5">
-              <button className="primary flex-1 lg:flex-initial">Partecipa</button>
+            <div className="flex flex-col md:flex-row md:items-end lg:justify-end xl:justify-start space-y-2 md:mt-0 md:space-x-5 md:mb-5">
+              <button className="primary flex-1 lg:flex-initial" onClick={partecipaEventoHandler}>
+                Partecipa
+              </button>
               <button className="secondary flex-1 lg:flex-initial">Condividi</button>
             </div>
           )}
@@ -127,7 +140,7 @@ const Evento = () => {
           <section>
             <div className="flex items-center space-x-5">
               <img className="profile-img" src={profileImg} alt="" />
-              <h4 className="font-normal">Francesca</h4>
+              <h4 className="">Francesca</h4>
             </div>
             <form>
               <div className="md:pl-[100px] space-y-5">
@@ -161,6 +174,7 @@ const Evento = () => {
                   name={comment.nome}
                   profileImg={comment.img}
                   comment={comment.commento}
+                  data={comment.data}
                 />
               );
             })}

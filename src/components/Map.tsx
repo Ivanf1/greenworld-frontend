@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { Icon, LeafletMouseEvent, Map } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -19,12 +19,17 @@ import close from "../assets/delete.svg";
 import sponsorLogo from "../assets/pizzaciro.png";
 import searchIcon from "../assets/search.svg";
 import { EventoInfo } from "../services/eventService";
+import { useCurrentUser } from "../context/userContext";
+import { ExtendedLocation } from "../location";
 
 interface Props {
   events: EventoInfo[];
 }
 
 const MMap = ({ events }: Props) => {
+  const navigate = useNavigate();
+  const location = useLocation() as ExtendedLocation;
+  const { currentUser } = useCurrentUser();
   const [map, setMap] = useState<Map | undefined | null>(null);
   const [currentEvent, setCurrentEvent] = useState<EventoInfo | null | undefined>(null);
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
@@ -76,6 +81,13 @@ const MMap = ({ events }: Props) => {
     setInit(false);
     /* eslint-enable */
     return null;
+  };
+
+  const partecipaEventoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!currentUser) {
+      navigate("/login", { state: { previousPathname: location.pathname } });
+    }
   };
 
   return (
@@ -173,9 +185,18 @@ const MMap = ({ events }: Props) => {
                       showLabel={true}
                     />
                   </div>
-                  <div className="flex">
+                  <div className="flex flex-col lg:flex-row w-full space-y-2 lg:space-x-4 lg:space-y-0">
+                    <Link to={`/`} className="flex">
+                      <button
+                        className="primary w-full lg:w-auto mr-auto"
+                        id={currentEvent.id}
+                        onClick={partecipaEventoHandler}
+                      >
+                        Partecipa
+                      </button>
+                    </Link>
                     <Link to={`/evento/${currentEvent.id}`} className="flex">
-                      <button className="primary w-full md:w-auto mr-auto" id={currentEvent.id}>
+                      <button className="secondary w-full lg:w-auto mr-auto" id={currentEvent.id}>
                         Maggiori informazioni
                       </button>
                     </Link>

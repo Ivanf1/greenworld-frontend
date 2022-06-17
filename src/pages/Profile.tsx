@@ -3,18 +3,25 @@ import EventoProfilo from "../components/EventoProfilo";
 import ProgressBar from "../components/ProgressBar";
 import giftImg from "../assets/gift.svg";
 
-import { Navigate } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import { useCurrentUser } from "../context/userContext";
 import { useQuery } from "react-query";
 import { getUserPartecipatedEvents } from "../services/profileService";
+import { ExtendedLocation } from "../location";
 
 const Profile = () => {
+  const location = useLocation() as ExtendedLocation;
   const { currentUser } = useCurrentUser();
   const userPartecipatedEventsQuery = useQuery("userPartecipatedEvents", getUserPartecipatedEvents);
   const eventiPerPremio = 100;
 
   if (!currentUser) {
-    return <Navigate to="/login" replace />;
+    return (
+      <Navigate
+        to={location.state?.previousPathname ? location.state.previousPathname : "/"}
+        state={{ previousPath: location.pathname }}
+      />
+    );
   }
 
   if (userPartecipatedEventsQuery.isLoading || !userPartecipatedEventsQuery.data) {
