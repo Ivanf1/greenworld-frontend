@@ -7,9 +7,10 @@ import {
   EventTestimonianza,
   postTestimonianza,
 } from "../services/eventTestimonianzaService";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../context/userContext";
 import { getEventoInfo } from "../services/eventService";
+import { ExtendedLocation } from "../location";
 
 interface FormValues {
   testimonianza: string;
@@ -17,6 +18,7 @@ interface FormValues {
 }
 
 const InserimentoTestimonianza = () => {
+  const location = useLocation() as ExtendedLocation;
   const navigate = useNavigate();
   const { idEvento } = useParams();
   const { currentUser } = useCurrentUser();
@@ -46,7 +48,12 @@ const InserimentoTestimonianza = () => {
   );
 
   if (!currentUser) {
-    return <Navigate to="/login" replace />;
+    return (
+      <Navigate
+        to={location.state?.previousPathname ? location.state.previousPathname : "/login"}
+        state={{ previousPathname: location.pathname }}
+      />
+    );
   }
 
   if (eventInfoQuery.isLoading || !eventInfoQuery.data) {
