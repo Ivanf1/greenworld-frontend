@@ -36,7 +36,7 @@ const Navbar = () => {
                 <rect y="16" width="40" height="4" rx="2" />
               </svg>
             </div>
-            <Link to="/">
+            <Link to="/" replace>
               <div className="flex items-center logo-container hover:cursor-pointer space-x-1">
                 <img
                   className="logo w-[20px] h-[20px] md:w-[30px] md:h-[30px]"

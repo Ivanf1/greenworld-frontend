@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Formik } from "formik";
 import { MultiSelect } from "react-multi-select-component";
 import FileInput from "../components/FileInput";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useLocation, useSearchParams } from "react-router-dom";
+import { ExtendedLocation } from "../location";
+import { useCurrentUser } from "../context/userContext";
 
 interface FormValues {
   nome: string;
@@ -25,6 +27,8 @@ interface MultiselectOption {
 
 const CreaEvento = () => {
   const [searchParams] = useSearchParams();
+  const location = useLocation() as ExtendedLocation;
+  const { currentUser } = useCurrentUser();
   const [files, setFiles] = useState<{ preview: string }[]>([]);
   const initialFormValues = {
     nome: "",
@@ -57,6 +61,16 @@ const CreaEvento = () => {
   };
 
   const [selected, setSelected] = useState<MultiselectOption[]>([]);
+
+  if (!currentUser) {
+    console.log(searchParams.toString());
+    return (
+      <Navigate
+        to={"/login"}
+        state={{ previousPathname: `${location.pathname}?${searchParams.toString()}` }}
+      />
+    );
+  }
 
   return (
     <div className="form-background min-h-full py-10 bg-primary-tint">

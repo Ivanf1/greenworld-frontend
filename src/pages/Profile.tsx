@@ -19,7 +19,7 @@ const Profile = () => {
     return (
       <Navigate
         to={location.state?.previousPathname ? location.state.previousPathname : "/"}
-        state={{ previousPath: location.pathname }}
+        state={{ previousPathname: location.pathname }}
       />
     );
   }
