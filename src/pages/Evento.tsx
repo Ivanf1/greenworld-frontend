@@ -46,6 +46,7 @@ const Evento = () => {
       nome: "Francesca",
       img: profileImg,
       commento: comment,
+      data: new Date().toLocaleString(),
     };
     addComment.mutate(commentData);
     setComment("");
@@ -98,7 +99,7 @@ const Evento = () => {
               <span className="font-semibold text-red-600">Questo evento è concluso</span>
             </div>
           ) : (
-            <div className="flex flex-col md:flex-row md:items-end space-y-2 md:mt-0 md:space-x-5 md:mb-5">
+            <div className="flex flex-col md:flex-row md:items-end lg:justify-end xl:justify-start space-y-2 md:mt-0 md:space-x-5 md:mb-5">
               <button className="primary flex-1 lg:flex-initial">Partecipa</button>
               <button className="secondary flex-1 lg:flex-initial">Condividi</button>
             </div>
@@ -127,7 +128,7 @@ const Evento = () => {
           <section>
             <div className="flex items-center space-x-5">
               <img className="profile-img" src={profileImg} alt="" />
-              <h4 className="font-normal">Francesca</h4>
+              <h4 className="">Francesca</h4>
             </div>
             <form>
               <div className="md:pl-[100px] space-y-5">
@@ -161,6 +162,7 @@ const Evento = () => {
                   name={comment.nome}
                   profileImg={comment.img}
                   comment={comment.commento}
+                  data={comment.data}
                 />
               );
             })}

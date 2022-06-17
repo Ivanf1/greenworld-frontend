@@ -4,6 +4,7 @@ export interface EventoComment {
   nome: string;
   img: string;
   commento: string;
+  data: string;
 }
 
 interface EventiComments {
