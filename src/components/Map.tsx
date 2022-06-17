@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { Icon, LeafletMouseEvent, Map } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -24,19 +24,24 @@ import { ExtendedLocation } from "../location";
 
 interface Props {
   events: EventoInfo[];
+  onEventoSelected: (id: string | null) => void;
 }
 
-const MMap = ({ events }: Props) => {
+const MMap = ({ events, onEventoSelected }: Props) => {
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation() as ExtendedLocation;
   const { currentUser } = useCurrentUser();
   const [map, setMap] = useState<Map | undefined | null>(null);
+  const [initialEvent, setInitialEvent] = useState<EventoInfo | null | undefined>(
+    searchParams.get("evento") ? events.find((e) => searchParams.get("evento") === e.id) : null
+  );
   const [currentEvent, setCurrentEvent] = useState<EventoInfo | null | undefined>(null);
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
   const [windowWidth] = useWindowSize();
   const [init, setInit] = useState<boolean>(true);
 
-  const scrollToEventSection = () => {
+  const scrollToEventSection = useCallback(() => {
     if (mapSectionRef.current) {
       const offset =
         windowWidth >= TAILWINDCSS_LG_BREAKPOINT
@@ -47,13 +52,14 @@ const MMap = ({ events }: Props) => {
       const y = mapSectionRef.current.getBoundingClientRect().top + window.pageYOffset + offset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
-  };
+  }, [windowWidth]);
 
   const scrollToMapSection = () => {
     const offset = windowWidth >= TAILWINDCSS_MD_BREAKPOINT ? 200 : 70;
     if (mapSectionRef.current) {
       const y = mapSectionRef.current.getBoundingClientRect().top + (window.pageYOffset - offset);
       window.scrollTo({ top: y, behavior: "smooth" });
+      mapSectionRef.current.focus();
     }
   };
 
@@ -61,16 +67,20 @@ const MMap = ({ events }: Props) => {
     let selectedEvent = events.find(
       (marker) => marker.n === e.latlng.lat && marker.e === e.latlng.lng
     );
-    setCurrentEvent(selectedEvent);
-    if (map) {
-      map.flyTo(e.latlng);
-      scrollToEventSection();
+    if (selectedEvent) {
+      setCurrentEvent(selectedEvent);
+      if (map) {
+        map.flyTo(e.latlng);
+        scrollToEventSection();
+      }
+      onEventoSelected(selectedEvent.id);
     }
   };
 
   const eventSectionClickHandler = () => {
     setCurrentEvent(null);
     scrollToMapSection();
+    onEventoSelected(null);
   };
 
   const GestureHandlingSetter = () => {
@@ -86,9 +96,19 @@ const MMap = ({ events }: Props) => {
   const partecipaEventoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!currentUser) {
-      navigate("/login", { state: { previousPathname: location.pathname } });
+      navigate("/login", {
+        state: { previousPathname: `${location.pathname}?evento=${currentEvent?.id}` },
+      });
     }
   };
+
+  useEffect(() => {
+    if (initialEvent) {
+      setCurrentEvent(initialEvent);
+      setInitialEvent(null);
+      scrollToEventSection();
+    }
+  }, [initialEvent, scrollToEventSection]);
 
   return (
     <div className="w-full h-full relative">
@@ -186,17 +206,17 @@ const MMap = ({ events }: Props) => {
                     />
                   </div>
                   <div className="flex flex-col lg:flex-row w-full space-y-2 lg:space-x-4 lg:space-y-0">
-                    <Link to={`/`} className="flex">
-                      <button
-                        className="primary w-full lg:w-auto mr-auto"
-                        id={currentEvent.id}
-                        onClick={partecipaEventoHandler}
-                      >
-                        Partecipa
-                      </button>
-                    </Link>
+                    {/* <Link to={`/`} className="flex"> */}
+                    <button
+                      className="primary w-full lg:w-auto"
+                      id={currentEvent.id}
+                      onClick={partecipaEventoHandler}
+                    >
+                      Partecipa
+                    </button>
+                    {/* </Link> */}
                     <Link to={`/evento/${currentEvent.id}`} className="flex">
-                      <button className="secondary w-full lg:w-auto mr-auto" id={currentEvent.id}>
+                      <button className="secondary w-full lg:w-auto" id={currentEvent.id}>
                         Maggiori informazioni
                       </button>
                     </Link>
