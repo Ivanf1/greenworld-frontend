@@ -173,9 +173,14 @@ const MMap = ({ events }: Props) => {
                       showLabel={true}
                     />
                   </div>
-                  <div className="flex">
+                  <div className="flex flex-col lg:flex-row w-full space-y-2 lg:space-x-4 lg:space-y-0">
+                    <Link to={`/`} className="flex">
+                      <button className="primary w-full lg:w-auto mr-auto" id={currentEvent.id}>
+                        Partecipa
+                      </button>
+                    </Link>
                     <Link to={`/evento/${currentEvent.id}`} className="flex">
-                      <button className="primary w-full md:w-auto mr-auto" id={currentEvent.id}>
+                      <button className="secondary w-full lg:w-auto mr-auto" id={currentEvent.id}>
                         Maggiori informazioni
                       </button>
                     </Link>
