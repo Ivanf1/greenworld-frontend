@@ -1,5 +1,5 @@
-import { getStorageKeys } from "./storageKeys";
+import { storageKeys } from "./storageKeys";
 
 export const resetLocalStorage = () => {
-  getStorageKeys().map((key) => localStorage.removeItem(key));
+  storageKeys.map((key) => localStorage.removeItem(key));
 };
