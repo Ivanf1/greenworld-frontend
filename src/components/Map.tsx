@@ -9,18 +9,18 @@ import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
 
 import { TAILWINDCSS_LG_BREAKPOINT, TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
 import useWindowSize from "../hooks/windowSize";
-import ProgressBar from "./ProgressBar";
 
-import mapMarkImg from "../assets/map-mark.svg";
 import homeMapMarkImg from "../assets/home-map-mark.svg";
-import calendarImg from "../assets/calendar.svg";
-import timeImg from "../assets/time.svg";
-import close from "../assets/delete.svg";
-import sponsorLogo from "../assets/pizzaciro.png";
 import searchIcon from "../assets/search.svg";
 import { EventoInfo } from "../services/eventService";
 import { useCurrentUser } from "../context/userContext";
 import { ExtendedLocation } from "../location";
+import {
+  addUserParticipatingEvent,
+  getUserParticipatingStatus,
+  removeUserParticipatingEvent,
+} from "../services/profileService";
+import MapEvent from "./MapEvent";
 
 interface Props {
   events: EventoInfo[];
@@ -32,14 +32,20 @@ const MMap = ({ events, onEventoSelected }: Props) => {
   const navigate = useNavigate();
   const location = useLocation() as ExtendedLocation;
   const { currentUser } = useCurrentUser();
+
   const [map, setMap] = useState<Map | undefined | null>(null);
+  const mapSectionRef = useRef<HTMLDivElement | null>(null);
+
   const [initialEvent, setInitialEvent] = useState<EventoInfo | null | undefined>(
     searchParams.get("evento") ? events.find((e) => searchParams.get("evento") === e.id) : null
   );
   const [currentEvent, setCurrentEvent] = useState<EventoInfo | null | undefined>(null);
-  const mapSectionRef = useRef<HTMLDivElement | null>(null);
+
   const [windowWidth] = useWindowSize();
-  const [init, setInit] = useState<boolean>(true);
+
+  const [participatingStatus, setParticipatingStatus] = useState(
+    currentUser ? getUserParticipatingStatus(initialEvent ? initialEvent.id : "") : false
+  );
 
   const scrollToEventSection = useCallback(() => {
     if (mapSectionRef.current) {
@@ -53,6 +59,36 @@ const MMap = ({ events, onEventoSelected }: Props) => {
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   }, [windowWidth]);
+
+  useEffect(() => {
+    if (initialEvent) {
+      setCurrentEvent(initialEvent);
+      setInitialEvent(null);
+      scrollToEventSection();
+    }
+  }, [initialEvent, scrollToEventSection]);
+
+  useEffect(() => {
+    if (currentUser && currentEvent) {
+      setParticipatingStatus(getUserParticipatingStatus(currentEvent.id));
+    }
+  }, [currentEvent, currentUser]);
+
+  const partecipaEventoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!currentUser) {
+      navigate("/login", { state: { previousPathname: location.pathname } });
+      return;
+    }
+    if (currentEvent) {
+      if (participatingStatus) {
+        removeUserParticipatingEvent(currentEvent.id);
+      } else {
+        addUserParticipatingEvent(currentEvent.id);
+      }
+      setParticipatingStatus(getUserParticipatingStatus(currentEvent.id));
+    }
+  };
 
   const scrollToMapSection = () => {
     const offset = windowWidth >= TAILWINDCSS_MD_BREAKPOINT ? 200 : 70;
@@ -84,31 +120,11 @@ const MMap = ({ events, onEventoSelected }: Props) => {
   };
 
   const GestureHandlingSetter = () => {
-    /* eslint-disable */
     const map = useMap() as any;
     map.gestureHandling.enable();
     map.addHandler("gestureHandling", GestureHandling);
-    setInit(false);
-    /* eslint-enable */
     return null;
   };
-
-  const partecipaEventoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (!currentUser) {
-      navigate("/login", {
-        state: { previousPathname: `${location.pathname}?evento=${currentEvent?.id}` },
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (initialEvent) {
-      setCurrentEvent(initialEvent);
-      setInitialEvent(null);
-      scrollToEventSection();
-    }
-  }, [initialEvent, scrollToEventSection]);
 
   return (
     <div className="w-full h-full relative">
@@ -120,7 +136,7 @@ const MMap = ({ events, onEventoSelected }: Props) => {
           ref={setMap}
           zoom={13}
         >
-          {init && <GestureHandlingSetter />}
+          <GestureHandlingSetter />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -161,99 +177,12 @@ const MMap = ({ events, onEventoSelected }: Props) => {
       </section>
 
       {currentEvent && (
-        <div className="bg-light-grey pb-5" id="sezione-evento">
-          <section className="card xl:max-w-[78.125rem] xl:mx-auto mx-5 p-5">
-            <section className="relative ">
-              <div
-                className="absolute -top-3 -right-3 md:top-[5px] md:right-[5px] cursor-pointer"
-                onClick={eventSectionClickHandler}
-                role="button"
-                aria-label="Chiudi la sezione dell'evento"
-                aria-controls="sezione-evento"
-              >
-                <img src={close} className="w-[14px] h-[14px]" alt="" aria-hidden="true" />
-              </div>
-              <section className="grid grid-cols-1 md:grid-cols-2 grid-rows-[auto_1fr] md:grid-rows-1 w-full lg:max-w-[78.125rem] mx-auto gap-x-5 lg:gap-x-20">
-                <section className="flex items-center justify-center">
-                  <img
-                    src={currentEvent.img}
-                    className="h-auto w-auto rounded-lg"
-                    alt={currentEvent.altImg}
-                  />
-                </section>
-                <section className="flex flex-col py-10 space-y-5 lg:justify-center md:space-y-2 lg:space-y-10">
-                  <h3>{currentEvent.name}</h3>
-                  <div className="flex flex-col space-y-2">
-                    <div className="flex space-x-2">
-                      <img src={mapMarkImg} alt="" aria-hidden="true" />
-                      <span>{currentEvent.indirizzo}</span>
-                    </div>
-                    <div className="flex space-x-2">
-                      <img src={calendarImg} alt="" aria-hidden="true" />
-                      <span>{currentEvent.data}</span>
-                    </div>
-                    <div className="flex space-x-2">
-                      <img src={timeImg} alt="" aria-hidden="true" />
-                      <span>{currentEvent.ora}</span>
-                    </div>
-                  </div>
-                  <div>
-                    <h4>Partecipanti</h4>
-                    <ProgressBar
-                      total={currentEvent.maxPartecipanti}
-                      completed={currentEvent.partecipanti}
-                      showLabel={true}
-                    />
-                  </div>
-                  <div className="flex flex-col lg:flex-row w-full space-y-2 lg:space-x-4 lg:space-y-0">
-                    {/* <Link to={`/`} className="flex"> */}
-                    <button
-                      className="primary w-full lg:w-auto"
-                      id={currentEvent.id}
-                      onClick={partecipaEventoHandler}
-                    >
-                      Partecipa
-                    </button>
-                    {/* </Link> */}
-                    <Link to={`/evento/${currentEvent.id}`} className="flex">
-                      <button className="secondary w-full lg:w-auto" id={currentEvent.id}>
-                        Maggiori informazioni
-                      </button>
-                    </Link>
-                  </div>
-                </section>
-              </section>
-            </section>
-            {currentEvent.sponsors && (
-              <>
-                <div className="separator lg:max-w-[78.125rem] mx-auto mt-5 mb-10 lg:my-10"></div>
-                <section className="flex flex-col items-center space-y-5 text-center">
-                  <h3>Questo evento è sponsorizzato da</h3>
-                  {currentEvent.sponsors.map((sponsor, i) => {
-                    return (
-                      <div
-                        className="grid grid-cols-[auto_auto] items-center gap-x-2 md:gap-x-10"
-                        key={i}
-                      >
-                        <div className="flex flex-col items-center">
-                          <span className="font-semibold">{sponsor.nome}</span>
-                          <span className="text-xs">{sponsor.testo}</span>
-                          <span className="text-xs">{sponsor.indirizzo}</span>
-                          <span className="text-xs">{sponsor.info}</span>
-                        </div>
-                        <img
-                          className="w-full max-w-[80px] max-h-[80px]"
-                          src={sponsorLogo}
-                          alt="logo dello sponsor"
-                        />
-                      </div>
-                    );
-                  })}
-                </section>
-              </>
-            )}
-          </section>
-        </div>
+        <MapEvent
+          currentEvent={currentEvent}
+          onEventSectionClose={eventSectionClickHandler}
+          onParticipateClick={partecipaEventoHandler}
+          isUserParticipating={participatingStatus}
+        />
       )}
     </div>
   );

@@ -13,6 +13,11 @@ import { useRef, useState } from "react";
 import { postLocalComment } from "../services/eventCommentService";
 import { useCurrentUser } from "../context/userContext";
 import { ExtendedLocation } from "../location";
+import {
+  addUserParticipatingEvent,
+  getUserParticipatingStatus,
+  removeUserParticipatingEvent,
+} from "../services/profileService";
 
 const Evento = () => {
   const navigate = useNavigate();
@@ -30,6 +35,14 @@ const Evento = () => {
     { enabled: idEvento !== undefined }
   );
 
+  const userPartecipatingStatus = useQuery(
+    "userPartecipatingStatus",
+    async () => {
+      return getUserParticipatingStatus(idEvento!);
+    },
+    { enabled: idEvento !== undefined && currentUser !== null }
+  );
+
   const addComment = useMutation(
     async (data: EventoComment) => {
       return await postLocalComment(idEvento!, data);
@@ -37,6 +50,28 @@ const Evento = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries("eventInfoQ");
+      },
+    }
+  );
+
+  const addPartecipatingEvent = useMutation(
+    async (data: string) => {
+      return addUserParticipatingEvent(data);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("userPartecipatingStatus");
+      },
+    }
+  );
+
+  const removePartecipatingEvent = useMutation(
+    async (data: string) => {
+      return removeUserParticipatingEvent(data);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("userPartecipatingStatus");
       },
     }
   );
@@ -60,6 +95,17 @@ const Evento = () => {
     e.preventDefault();
     if (!currentUser) {
       navigate("/login", { state: { previousPathname: location.pathname } });
+      return;
+    }
+    const eventoId = e.currentTarget.dataset.eventoid;
+    if (!userPartecipatingStatus.data) {
+      if (eventoId) {
+        addPartecipatingEvent.mutate(eventoId);
+      }
+    } else {
+      if (eventoId) {
+        removePartecipatingEvent.mutate(eventoId);
+      }
     }
   };
 
@@ -137,8 +183,18 @@ const Evento = () => {
             </div>
           ) : (
             <div className="flex flex-col md:flex-row md:items-end lg:justify-end xl:justify-start space-y-2 md:mt-0 md:space-x-5 md:mb-5">
-              <button className="primary flex-1 lg:flex-initial" onClick={partecipaEventoHandler}>
-                Partecipa
+              <button
+                className={`${
+                  currentUser && userPartecipatingStatus.data ? "delete" : "primary"
+                } flex-1 lg:flex-initial`}
+                onClick={partecipaEventoHandler}
+                data-eventoid={eventInfoQuery.data.id}
+              >
+                {`${
+                  currentUser && userPartecipatingStatus.data
+                    ? "Rimuovi partecipazione"
+                    : "Partecipa"
+                }`}
               </button>
               <button
                 className="secondary flex-1 lg:flex-initial"
