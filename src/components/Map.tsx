@@ -68,12 +68,6 @@ const MMap = ({ events, onEventoSelected }: Props) => {
     }
   }, [initialEvent, scrollToEventSection]);
 
-  useEffect(() => {
-    if (currentUser && currentEvent) {
-      setParticipatingStatus(getUserParticipatingStatus(currentEvent.id));
-    }
-  }, [currentEvent, currentUser]);
-
   const partecipaEventoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!currentUser) {
@@ -110,6 +104,9 @@ const MMap = ({ events, onEventoSelected }: Props) => {
         scrollToEventSection();
       }
       onEventoSelected(selectedEvent.id);
+      if (currentUser) {
+        setParticipatingStatus(getUserParticipatingStatus(selectedEvent.id));
+      }
     }
   };
 
