@@ -72,13 +72,12 @@ const Evento = () => {
     }
     const shareData = {
       title: `GreenWorld - ${eventInfoQuery.data?.name}`,
-      text: "Partecipa anche tu all'evento",
+      text: `${eventInfoQuery.data?.name} - Partecipa anche tu!`,
       url: document.location.href,
     };
 
     try {
       await navigator.share(shareData);
-      // resultPara.textContent = "MDN shared successfully";
     } catch (err) {
       navigator.clipboard.writeText(shareData.url);
       e.currentTarget.innerHTML = "Link copiato negli appunti";
@@ -87,27 +86,7 @@ const Evento = () => {
           shareButtonRef.current.innerHTML = "Condividi";
         }
       }, 4000);
-      // resultPara.textContent = "Error: " + err;
     }
-
-    // try {
-    //   if (navigator.canShare(shareData)) {
-    //     try {
-    //       await navigator.share(shareData);
-    //     } catch (err) {
-    //       throw err;
-    //     }
-    //   }
-    // } catch (err) {
-    //   // fallback if browser does not support Web Share API
-    //   navigator.clipboard.writeText(shareData.url);
-    //   e.currentTarget.innerHTML = "Link copiato negli appunti";
-    //   setTimeout(() => {
-    //     if (shareButtonRef && shareButtonRef.current) {
-    //       shareButtonRef.current.innerHTML = "Condividi";
-    //     }
-    //   }, 4000);
-    // }
   };
 
   if (eventInfoQuery.isLoading || !eventInfoQuery.data) {
