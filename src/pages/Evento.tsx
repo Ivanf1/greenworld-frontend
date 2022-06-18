@@ -80,7 +80,9 @@ const Evento = () => {
       if (navigator.canShare(shareData)) {
         try {
           await navigator.share(shareData);
-        } catch (err) {}
+        } catch (err) {
+          throw err;
+        }
       }
     } catch (err) {
       // fallback if browser does not support Web Share API
