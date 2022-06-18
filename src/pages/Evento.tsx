@@ -77,15 +77,9 @@ const Evento = () => {
     };
 
     try {
-      if (navigator.canShare(shareData)) {
-        try {
-          await navigator.share(shareData);
-        } catch (err) {
-          throw err;
-        }
-      }
+      await navigator.share(shareData);
+      // resultPara.textContent = "MDN shared successfully";
     } catch (err) {
-      // fallback if browser does not support Web Share API
       navigator.clipboard.writeText(shareData.url);
       e.currentTarget.innerHTML = "Link copiato negli appunti";
       setTimeout(() => {
@@ -93,7 +87,27 @@ const Evento = () => {
           shareButtonRef.current.innerHTML = "Condividi";
         }
       }, 4000);
+      // resultPara.textContent = "Error: " + err;
     }
+
+    // try {
+    //   if (navigator.canShare(shareData)) {
+    //     try {
+    //       await navigator.share(shareData);
+    //     } catch (err) {
+    //       throw err;
+    //     }
+    //   }
+    // } catch (err) {
+    //   // fallback if browser does not support Web Share API
+    //   navigator.clipboard.writeText(shareData.url);
+    //   e.currentTarget.innerHTML = "Link copiato negli appunti";
+    //   setTimeout(() => {
+    //     if (shareButtonRef && shareButtonRef.current) {
+    //       shareButtonRef.current.innerHTML = "Condividi";
+    //     }
+    //   }, 4000);
+    // }
   };
 
   if (eventInfoQuery.isLoading || !eventInfoQuery.data) {
