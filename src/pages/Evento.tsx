@@ -9,7 +9,7 @@ import ProgressBar from "../components/ProgressBar";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { EventoComment, getEventoInfo } from "../services/eventService";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { postLocalComment } from "../services/eventCommentService";
 import { useCurrentUser } from "../context/userContext";
 import { ExtendedLocation } from "../location";
@@ -20,6 +20,7 @@ const Evento = () => {
   const { idEvento } = useParams();
   const { currentUser } = useCurrentUser();
   const [comment, setComment] = useState<string>("");
+  const shareButtonRef = useRef<HTMLButtonElement | null>(null);
   const queryClient = useQueryClient();
   const eventInfoQuery = useQuery(
     "eventInfoQ",
@@ -59,6 +60,37 @@ const Evento = () => {
     e.preventDefault();
     if (!currentUser) {
       navigate("/login", { state: { previousPathname: location.pathname } });
+    }
+  };
+
+  const shareEventoHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (
+      shareButtonRef.current &&
+      shareButtonRef.current.innerHTML === "Link copiato negli appunti"
+    ) {
+      return;
+    }
+    const shareData = {
+      title: `GreenWorld - ${eventInfoQuery.data?.name}`,
+      text: "Partecipa anche tu all'evento",
+      url: document.location.href,
+    };
+
+    try {
+      if (navigator.canShare(shareData)) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {}
+      }
+    } catch (err) {
+      // fallback if browser does not support Web Share API
+      navigator.clipboard.writeText(shareData.url);
+      e.currentTarget.innerHTML = "Link copiato negli appunti";
+      setTimeout(() => {
+        if (shareButtonRef && shareButtonRef.current) {
+          shareButtonRef.current.innerHTML = "Condividi";
+        }
+      }, 4000);
     }
   };
 
@@ -113,7 +145,13 @@ const Evento = () => {
               <button className="primary flex-1 lg:flex-initial" onClick={partecipaEventoHandler}>
                 Partecipa
               </button>
-              <button className="secondary flex-1 lg:flex-initial">Condividi</button>
+              <button
+                className="secondary flex-1 lg:flex-initial"
+                onClick={shareEventoHandler}
+                ref={shareButtonRef}
+              >
+                Condividi
+              </button>
             </div>
           )}
         </section>
