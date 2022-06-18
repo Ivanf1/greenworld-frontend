@@ -10,6 +10,7 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   description: string;
   nome: string;
   id: string;
+  testimonianza: boolean;
 }
 
 const EventoProfilo = ({
@@ -20,6 +21,7 @@ const EventoProfilo = ({
   description,
   nome,
   id,
+  testimonianza,
   ...others
 }: Props) => {
   return (
@@ -39,12 +41,14 @@ const EventoProfilo = ({
         </div>
         <p>{description}</p>
       </div>
-      <div className="flex flex-col space-y-2 self-center">
-        <Link to={`/testimonia/${id}`}>
-          <button className="primary w-full ml-auto" {...others}>
-            Aggiungi testimonianza
-          </button>
-        </Link>
+      <div className="flex flex-col space-y-2 self-center min-w-[260px]">
+        {testimonianza && (
+          <Link to={`/testimonia/${id}`}>
+            <button className="primary w-full ml-auto" {...others}>
+              Aggiungi testimonianza
+            </button>
+          </Link>
+        )}
         <Link to={`/evento/${id}`}>
           <button className="secondary w-full ml-auto" {...others}>
             Vedi evento

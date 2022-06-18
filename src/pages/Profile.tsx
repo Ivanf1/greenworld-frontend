@@ -6,13 +6,17 @@ import giftImg from "../assets/gift.svg";
 import { useLocation, Navigate } from "react-router-dom";
 import { useCurrentUser } from "../context/userContext";
 import { useQuery } from "react-query";
-import { getUserPartecipatedEvents } from "../services/profileService";
+import { getUserParticipatedEvents, getUserParticipatingEvents } from "../services/profileService";
 import { ExtendedLocation } from "../location";
 
 const Profile = () => {
   const location = useLocation() as ExtendedLocation;
   const { currentUser } = useCurrentUser();
-  const userPartecipatedEventsQuery = useQuery("userPartecipatedEvents", getUserPartecipatedEvents);
+  const userPartecipatedEventsQuery = useQuery("userPartecipatedEvents", getUserParticipatedEvents);
+  const userPartecipatingEventsQuery = useQuery(
+    "userPartecipatingEvents",
+    getUserParticipatingEvents
+  );
   const eventiPerPremio = 100;
 
   if (!currentUser) {
@@ -61,25 +65,66 @@ const Profile = () => {
           </section>
         </section>
         <div className="separator w-full my-20"></div>
-        <section>
-          <h4 className="text-center mb-10 md:text-left">
-            Hai partecipato a {userPartecipatedEventsQuery.data.length} eventi
-          </h4>
-          <div className="flex flex-col space-y-20 lg:space-y-10">
-            {userPartecipatedEventsQuery.data.map((evento, i) => (
-              <EventoProfilo
-                key={i}
-                img={evento.img}
-                altImg={evento.altImg}
-                date={evento.data}
-                description={evento.descrizione}
-                location={evento.indirizzo}
-                nome={evento.name}
-                id={evento.id}
-              />
-            ))}
-          </div>
-        </section>
+        {userPartecipatingEventsQuery.data && userPartecipatingEventsQuery.data.length > 0 ? (
+          <section>
+            <h4 className="text-center mb-10 md:text-left">
+              Hai confermato la partecipazione a {userPartecipatingEventsQuery.data.length} event
+              {userPartecipatingEventsQuery.data.length > 1 ? "i" : "o"}
+            </h4>
+            <div className="flex flex-col space-y-20 lg:space-y-10">
+              {userPartecipatingEventsQuery.data.map((evento, i) => (
+                <EventoProfilo
+                  key={i}
+                  img={evento.img}
+                  altImg={evento.altImg}
+                  date={evento.data}
+                  description={evento.descrizione}
+                  location={evento.indirizzo}
+                  nome={evento.name}
+                  id={evento.id}
+                  testimonianza={false}
+                />
+              ))}
+            </div>
+          </section>
+        ) : (
+          <section>
+            <h4 className="text-center mb-10 md:text-left">
+              Gli eventi a cui parteciperai compariranno qui
+            </h4>
+          </section>
+        )}
+
+        <div className="separator w-full my-20"></div>
+        {userPartecipatedEventsQuery.data && userPartecipatedEventsQuery.data.length > 0 ? (
+          <section>
+            <h4 className="text-center mb-10 md:text-left">
+              Hai partecipato a {userPartecipatedEventsQuery.data.length} event
+              {userPartecipatedEventsQuery.data.length > 1 ? "i" : "o"}
+            </h4>
+            <div className="flex flex-col space-y-20 lg:space-y-10">
+              {userPartecipatedEventsQuery.data.map((evento, i) => (
+                <EventoProfilo
+                  key={i}
+                  img={evento.img}
+                  altImg={evento.altImg}
+                  date={evento.data}
+                  description={evento.descrizione}
+                  location={evento.indirizzo}
+                  nome={evento.name}
+                  id={evento.id}
+                  testimonianza={true}
+                />
+              ))}
+            </div>
+          </section>
+        ) : (
+          <section>
+            <h4 className="text-center mb-10 md:text-left">
+              Gli eventi a cui hai partecipato compariranno qui
+            </h4>
+          </section>
+        )}
       </main>
     </div>
   );

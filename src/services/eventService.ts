@@ -291,6 +291,11 @@ export const defaultEventi: EventoInfo[] = [
   },
 ];
 
+export const getEventsInfoByIds = (ids: string[]) => {
+  const filteredEvents = defaultEventi.filter((e) => ids.includes(e.id));
+  return filteredEvents;
+};
+
 export const getEventoInfo = async (id: string) => {
   const idx = defaultEventi.findIndex((evento) => evento.id === id);
   defaultEventi[idx].comments = [...getLocalEventComments(id), ...defaultComments];
