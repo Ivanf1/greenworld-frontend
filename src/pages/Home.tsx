@@ -10,7 +10,7 @@ import downArrow from "../assets/down.svg";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
-import { heroCarouselItemData } from "../data/HeroCarouselData";
+import { heroCarouselItemData } from "../data/heroCarouselData";
 
 const Home = () => {
   const navigate = useNavigate();
