@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import HeroCarouselItem from "./HeroCarouselItem";
-import { HeroCarouselItemData } from "../data/HeroCarouselData";
+import { HeroCarouselItemData } from "../data/heroCarouselData";
 
 SwiperCore.use([Navigation, Pagination]);
 
