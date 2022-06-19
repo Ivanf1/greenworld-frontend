@@ -3,7 +3,7 @@ import calendarImg from "../assets/calendar.svg";
 import ScrollableContainer from "./ScrollableContainer";
 import useWindowSize from "../hooks/windowSize";
 import { TAILWINDCSS_LG_BREAKPOINT } from "../constants/tailwind";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   profileImg: string;
@@ -28,6 +28,7 @@ const TestimonianzaCard = ({
   dataTestimonianza,
   id,
 }: Props) => {
+  const navigate = useNavigate();
   const [width] = useWindowSize();
 
   return (
@@ -62,9 +63,12 @@ const TestimonianzaCard = ({
       )}
       <section className="flex flex-col-reverse md:flex-col">
         <p className="mt-5 md:mt-0 md:mb-5">{comment}</p>
-        <Link to={`/evento/${id}`} className="flex md:self-end">
-          <button className="primary w-full md:w-auto ml-auto">Vedi evento</button>
-        </Link>
+        <button
+          className="primary w-full md:w-auto ml-auto"
+          onClick={() => navigate(`/evento/${id}`)}
+        >
+          Vedi evento
+        </button>
       </section>
     </article>
   );

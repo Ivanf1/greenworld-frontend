@@ -2,7 +2,7 @@ import Carousel from "./Carousel";
 import mapMarkImg from "../assets/map-mark.svg";
 import calendarImg from "../assets/calendar.svg";
 import UserComment from "./UserComment";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   id: string;
@@ -31,6 +31,8 @@ const SegnalazioneCard = ({
   imgs,
   onRemove,
 }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <article className="card p-4 md:p-10 flex flex-col space-y-10 md:space-y-10 w-[95%] max-w-[95%] md:max-w-[1000px]">
       <section className="grid grid-cols-1 grid-rows-[repeat(3,auto)] gap-y-5 lg:grid-cols-2 lg:grid-rows-[repeat(2,auto)] lg:gap-5">
@@ -53,13 +55,12 @@ const SegnalazioneCard = ({
         </section>
 
         <div className="flex flex-col md:items-end md:flex-row space-y-2 md:mt-0 md:space-x-5 md:mb-5 md:justify-end lg:justify-start">
-          <Link
-            to={`/crea-evento?citta=${citta}&via=${via}&civico=${civico}`}
-            role="button"
+          <button
             className="primary w-full md:w-auto"
+            onClick={() => navigate(`/crea-evento?citta=${citta}&via=${via}&civico=${civico}`)}
           >
-            <button className="primary w-full">Crea evento</button>
-          </Link>
+            Crea evento
+          </button>
           <button className="delete w-full md:w-auto" onClick={onRemove} data-segnalazioneid={id}>
             Rimuovi
           </button>

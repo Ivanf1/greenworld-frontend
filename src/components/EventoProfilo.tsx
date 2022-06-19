@@ -1,6 +1,6 @@
 import mapMarkImg from "../assets/map-mark.svg";
 import calendarImg from "../assets/calendar.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   img: string;
@@ -24,6 +24,8 @@ const EventoProfilo = ({
   testimonianza,
   ...others
 }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <article className="evento-profilo-container grid grid-cols-1 grid-rows-[auto_auto_auto] lg:grid-rows-1 gap-y-10 lg:grid-cols-[minmax(100px,200px)_auto_auto] lg:gap-x-2">
       <img src={img} alt={altImg} className="w-full max-w-full block rounded-lg lg:w-auto" />
@@ -43,17 +45,21 @@ const EventoProfilo = ({
       </div>
       <div className="flex flex-col space-y-2 self-center min-w-[260px]">
         {testimonianza && (
-          <Link to={`/testimonia/${id}`}>
-            <button className="primary w-full ml-auto" {...others}>
-              Aggiungi testimonianza
-            </button>
-          </Link>
-        )}
-        <Link to={`/evento/${id}`}>
-          <button className="secondary w-full ml-auto" {...others}>
-            Vedi evento
+          <button
+            className="primary w-full ml-auto"
+            {...others}
+            onClick={() => navigate(`/testimonia/${id}`)}
+          >
+            Aggiungi testimonianza
           </button>
-        </Link>
+        )}
+        <button
+          className="secondary w-full ml-auto"
+          {...others}
+          onClick={() => navigate(`/evento/${id}`)}
+        >
+          Vedi evento
+        </button>
       </div>
     </article>
   );

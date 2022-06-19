@@ -19,7 +19,7 @@ const DiventaOrganizzatore = () => {
 
   return (
     <div className="min-w-full min-h-[calc(100vh-80px)] bg-light-grey py-10">
-      <div className="card mx-auto px-4 py-10 w-[95%] max-w-[95%] md:max-w-[1200px] md:p-10">
+      <main className="card mx-auto px-4 py-10 w-[95%] max-w-[95%] md:max-w-[1200px] md:p-10">
         <h2>Diventa Organizzatore</h2>
         <div className="mt-10">
           <h4>Ricorda, un organizzatore deve:</h4>
@@ -54,7 +54,7 @@ const DiventaOrganizzatore = () => {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
