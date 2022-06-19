@@ -19,6 +19,14 @@
   npm install
   ```
 
+- successivamente
+
+  ```bash
+  npm run start
+  ```
+
+  si avvierà il development server su localhost:3000
+
 ## Alcune documentazioni di riferimento usate durante lo sviluppo del sistema
 
 ### Principali
