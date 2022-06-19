@@ -2,10 +2,11 @@ import "./Navbar.css";
 import { useCycle } from "framer-motion";
 import logo from "../assets/Logo.png";
 import SideMenu from "./SideMenu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCurrentUser } from "../context/userContext";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { currentUser } = useCurrentUser();
   const [open, cycleOpen] = useCycle(false, true);
 
@@ -19,7 +20,7 @@ const Navbar = () => {
               className="ham-container p-2 -ml-2"
               onClick={() => cycleOpen()}
               role="button"
-              aria-controls="side-menu"
+              // aria-controls="side-menu"
               aria-label="Apri menu laterale"
             >
               <svg
@@ -36,36 +37,35 @@ const Navbar = () => {
                 <rect y="16" width="40" height="4" rx="2" />
               </svg>
             </div>
-            <Link to="/" replace>
-              <div className="flex items-center logo-container hover:cursor-pointer space-x-1">
-                <img
-                  className="logo w-[20px] h-[20px] md:w-[30px] md:h-[30px]"
-                  src={logo}
-                  alt="logo GreenWorld"
-                />
-                <span className="logo-name text-lg md:text-xl mb-0 md:mb-[0.125rem]">
-                  GreenWorld
-                </span>
-              </div>
-            </Link>
+            <div
+              className="flex items-center logo-container hover:cursor-pointer space-x-1"
+              onClick={() => navigate("/")}
+            >
+              <img
+                className="logo w-[20px] h-[20px] md:w-[30px] md:h-[30px]"
+                src={logo}
+                alt="logo GreenWorld"
+              />
+              <span className="logo-name text-lg md:text-xl mb-0 md:mb-[0.125rem]">GreenWorld</span>
+            </div>
           </div>
           {currentUser ? (
             <div className="flex items-center space-x-2 md:space-x-5">
               <Link to="/logout" className="hover-underline-animation font-semibold">
                 Logout
               </Link>
-              <Link to="/profilo">
-                <button className="secondary nav">Profilo</button>
-              </Link>
+              <button className="secondary nav" onClick={() => navigate("/profilo")}>
+                Profilo
+              </button>
             </div>
           ) : (
             <div className="flex items-center space-x-2 md:space-x-5">
               <Link to="/registrazione" className="hover-underline-animation font-semibold">
                 Registrati
               </Link>
-              <Link to="/login">
-                <button className="secondary nav">Login</button>
-              </Link>
+              <button className="secondary nav" onClick={() => navigate("/login")}>
+                Login
+              </button>
             </div>
           )}
         </div>

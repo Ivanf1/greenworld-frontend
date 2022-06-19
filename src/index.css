@@ -249,7 +249,7 @@ div.rmsc {
   --rmsc-hover: #f1f3f5;
   --rmsc-selected: #e2e6ea;
   --rmsc-border: #d8d8da;
-  --rmsc-gray: #aaa;
+  --rmsc-gray: rgb(0, 0, 0);
   --rmsc-bg: #fff;
   --rmsc-p: 10px; /* Spacing */
   --rmsc-radius: var(--border-rad); /* Radius */

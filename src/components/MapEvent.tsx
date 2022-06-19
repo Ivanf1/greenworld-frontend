@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProgressBar from "./ProgressBar";
 
 import mapMarkImg from "../assets/map-mark.svg";
@@ -22,6 +22,8 @@ const MapEvent = ({
   onParticipateClick,
   isUserParticipating,
 }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-light-grey pb-5" id="sezione-evento">
       <section className="card xl:max-w-[78.125rem] xl:mx-auto mx-5 p-5">
@@ -69,17 +71,19 @@ const MapEvent = ({
               </div>
               <div className="flex flex-col lg:flex-row w-full space-y-2 lg:space-x-4 lg:space-y-0">
                 <button
-                  className={`${isUserParticipating ? "delete" : "primary"} flex-1 lg:flex-initial`}
+                  className={`${isUserParticipating ? "delete" : "primary"} lg:flex-initial`}
                   onClick={onParticipateClick}
                   data-eventoid={currentEvent.id}
                 >
                   {`${isUserParticipating ? "Rimuovi partecipazione" : "Partecipa"}`}
                 </button>
-                <Link to={`/evento/${currentEvent.id}`} className="flex">
-                  <button className="secondary w-full lg:w-auto" id={currentEvent.id}>
-                    Maggiori informazioni
-                  </button>
-                </Link>
+                <button
+                  className="secondary w-full lg:w-auto"
+                  id={currentEvent.id}
+                  onClick={() => navigate(`/evento/${currentEvent.id}`)}
+                >
+                  Maggiori informazioni
+                </button>
               </div>
             </section>
           </section>

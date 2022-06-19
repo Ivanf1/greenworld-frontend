@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { Icon, LeafletMouseEvent, Map } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -158,11 +158,12 @@ const MMap = ({ events, onEventoSelected }: Props) => {
             );
           })}
         </MapContainer>
-        <Link to="segnala">
-          <button className="absolute bottom-[20px] right-[20px] z-[40] primary">
-            Segnala un luogo
-          </button>
-        </Link>
+        <button
+          className="absolute bottom-[20px] right-[20px] z-[40] primary"
+          onClick={() => navigate("/segnala")}
+        >
+          Segnala un luogo
+        </button>
         <div className="flex absolute top-[10px] left-[74px] z-[40] search-bar-container pr-2 w-[min(calc(100%-74px-8px-12px),400px)]">
           <input
             type="text"
