@@ -160,34 +160,85 @@ const Home = () => {
             </h2>
           </div>
           <div className="flex flex-col items-center lg:items-start col-start-1 col-end-1 lg:row-start-2 lg:row-end-2 lg:pb-60 lg:mt-4 px-5 xl:px-0">
-            <p>
+            <p className="text-center md:text-left">
               <span className="font-semibold">234</span> aziende si sono già unite alla nostra
-              causa.
+              causa. Diventa anche tu parte del cambiamento
             </p>
-            <p>Diventa anche tu parte del cambiamento.</p>
             <button className="primary mt-5" onClick={() => navigate("candidatura-sponsor")}>
               Diventa Sponsor
             </button>
           </div>
-          <div className="flex flex-col justify-around col-start-1 col-end-1 row-start-2 row-end-2 lg:col-start-2 lg:col-end-2 lg:row-start-1 lg:row-span-2 px-5 xl:px-0">
+          <div className="flex flex-col justify-around col-start-1 col-end-1 row-start-2 row-end-2 lg:col-start-2 lg:col-end-2 lg:row-start-1 lg:row-span-2 px-5 xl:px-0 h-full">
             <div className="flex justify-around w-full py-10">
-              <img src={sponsor1} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor2} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor3} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor4} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
+              <img
+                src={sponsor1}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor2}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor3}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor4}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
             </div>
             <div className="flex justify-between w-full py-5">
-              <img src={sponsor5} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor6} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor7} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor8} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor1} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
+              <img
+                src={sponsor6}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor5}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor7}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor8}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor1}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
             </div>
             <div className="flex justify-around w-full py-10">
-              <img src={sponsor2} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor4} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor6} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor5} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
+              <img
+                src={sponsor2}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor4}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor6}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
+              <img
+                src={sponsor5}
+                alt=""
+                className="w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px]"
+              />
             </div>
           </div>
         </div>
