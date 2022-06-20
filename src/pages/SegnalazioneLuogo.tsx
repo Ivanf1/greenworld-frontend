@@ -1,22 +1,45 @@
 import { useState } from "react";
 import { Formik } from "formik";
 import FileInput from "../components/FileInput";
+import {
+  getDefaultSegnalazioneImgs,
+  getNextSegnalazioneId,
+  postSegnalazione,
+  Segnalazione,
+} from "../services/segnalazioneService";
+import { useCurrentUser } from "../context/userContext";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { ExtendedLocation } from "../location";
 
 interface FormValues {
   citta: string;
   strada: string;
   commenti: string;
+  titolo: string;
   files: string;
 }
 
 const SegnalazioneLuogo = () => {
+  const location = useLocation() as ExtendedLocation;
+  const navigate = useNavigate();
+  const { currentUser } = useCurrentUser();
   const [files, setFiles] = useState<{ preview: string }[]>([]);
   const initialFormValues: FormValues = {
     citta: "",
     strada: "",
     commenti: "",
+    titolo: "",
     files: "",
   };
+
+  if (!currentUser) {
+    return (
+      <Navigate
+        to={location.state?.previousPathname ? location.state.previousPathname : "/login"}
+        state={{ previousPathname: location.pathname }}
+      />
+    );
+  }
 
   return (
     <div className="form-background min-h-full py-10 bg-primary-tint">
@@ -32,17 +55,53 @@ const SegnalazioneLuogo = () => {
             if (!values.strada) {
               errors.strada = "Inserisci la strada";
             }
+            if (!values.titolo) {
+              errors.titolo = "Inserisci un titolo";
+            }
             if (files.length < 1) {
               errors.files = "Carica almeno un file";
             }
             return errors;
           }}
-          onSubmit={(values, { validateForm }) => {
-            validateForm();
+          onSubmit={(values) => {
+            const segnalazione: Segnalazione = {
+              citta: values.citta,
+              via: values.strada,
+              commentoUtente: values.commenti,
+              titolo: values.titolo,
+              data: new Date().toLocaleDateString(),
+              imgs: getDefaultSegnalazioneImgs(),
+              imgUtente: currentUser.img,
+              nomeUtente: `${currentUser.nome} ${currentUser.cognome}`,
+              id: getNextSegnalazioneId(),
+            };
+            postSegnalazione(segnalazione);
+            navigate("/segnalazioni");
           }}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit} className="w-full">
+              <div className="mt-3">
+                <label className="flex required" htmlFor="titolo">
+                  Titolo
+                </label>
+                <input
+                  className="input"
+                  type="text"
+                  name="titolo"
+                  id="titolo"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.titolo}
+                  aria-errormessage="titoloError"
+                  aria-required="true"
+                />
+              </div>
+              {errors.titolo && touched.titolo && errors.titolo && (
+                <div className="form-error" id="titoloError">
+                  {errors.titolo}
+                </div>
+              )}
               <div className="mt-3">
                 <label className="flex required" htmlFor="citta">
                   Città
@@ -117,7 +176,7 @@ const SegnalazioneLuogo = () => {
                 )}
               </div>
               <div className="flex justify-end mt-10">
-                <button className="primary w-full md:w-auto" type="submit" disabled={isSubmitting}>
+                <button className="primary w-full md:w-auto" type="submit">
                   Invia segnalazione
                 </button>
               </div>
