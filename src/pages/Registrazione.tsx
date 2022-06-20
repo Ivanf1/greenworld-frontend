@@ -105,7 +105,7 @@ const Registrazione = () => {
                 </label>
                 <input
                   className="input"
-                  type="text"
+                  type="email"
                   name="email"
                   id="email"
                   onChange={handleChange}
