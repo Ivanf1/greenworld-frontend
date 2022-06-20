@@ -295,6 +295,7 @@ div.rmsc {
   display: inline-block;
   position: relative;
   color: #ffffff;
+  width: fit-content;
 }
 
 .hover-underline-animation-footer:after {

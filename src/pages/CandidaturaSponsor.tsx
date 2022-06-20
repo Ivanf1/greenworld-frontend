@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Formik } from "formik";
 import FileInput from "../components/FileInput";
+import { Link } from "react-router-dom";
 
 interface FormValues {
   nomeAzienda: string;
@@ -12,6 +13,7 @@ interface FormValues {
 }
 
 const CandidaturaSponsor = () => {
+  const [submitted, setSubmitted] = useState(false);
   const [files, setFiles] = useState<{ preview: string }[]>([]);
   const initialFormValues: FormValues = {
     nomeAzienda: "",
@@ -21,6 +23,22 @@ const CandidaturaSponsor = () => {
     url: "",
     files: "",
   };
+
+  if (submitted) {
+    return (
+      <div className="form-background min-h-full py-10 bg-primary-tint">
+        <main className="card flex flex-col items-center lg:items-start p-6 md:p-[60px] max-w-[95%] md:max-w-2xl md:w-2xl mx-auto rounded-lg">
+          <h2 className="self-start mb-8">Ti ringraziamo per aver inviato la tua candidatura!</h2>
+          <div className="space-y-5">
+            <p>Un membro della nostra community ti contatterà al più presto.</p>
+            <Link to="/" className="hover-underline-animation">
+              Torna alla Home Page
+            </Link>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="form-background min-h-full py-10 bg-primary-tint">
@@ -50,11 +68,11 @@ const CandidaturaSponsor = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { validateForm }) => {
-            validateForm();
+          onSubmit={() => {
+            setSubmitted(true);
           }}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit} className="w-full">
               <div className="mt-3">
                 <label className="flex required" htmlFor="nomeAzienda">
@@ -177,7 +195,7 @@ const CandidaturaSponsor = () => {
                 )}
               </div>
               <div className="flex justify-end mt-10">
-                <button className="primary w-full md:w-auto" type="submit" disabled={isSubmitting}>
+                <button className="primary w-full md:w-auto" type="submit">
                   Candidati
                 </button>
               </div>

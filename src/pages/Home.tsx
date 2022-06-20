@@ -17,7 +17,7 @@ import sponsor6 from "../assets/logos/honda-7.svg";
 import sponsor7 from "../assets/logos/shopify-2.svg";
 import sponsor8 from "../assets/logos/hulu-2.svg";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
 import { heroCarouselItemData } from "../data/heroCarouselData";
@@ -248,22 +248,25 @@ const Home = () => {
         <div className="flex flex-col md:space-x-40 items-start text-white xl:px-0 lg:max-w-[64rem] mx-auto">
           <div className="flex w-full space-x-20">
             <div className="flex flex-col space-y-4">
-              <span className="font-semibold text-lg">Su di noi</span>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
+              <span className="font-semibold text-lg">Link utili</span>
+              <Link to="segnalazioni" className="hover-underline-animation-footer">
+                Segnalazioni
+              </Link>
+              <Link to="segnala" className="hover-underline-animation-footer">
+                Segnala un luogo
+              </Link>
+              <Link to="crea-evento" className="hover-underline-animation-footer">
+                Crea evento
+              </Link>
+              <Link to="organizzatore" className="hover-underline-animation-footer">
+                Diventa organizzatore
+              </Link>
+              <Link to="candidatura-sponsor" className="hover-underline-animation-footer">
+                Diventa sponsor
+              </Link>
+              <Link to="testimonianze" className="hover-underline-animation-footer">
+                Elenco testimonianze
+              </Link>
             </div>
             <div className="flex flex-col space-y-4">
               <span className="font-semibold text-lg">Su di noi</span>
