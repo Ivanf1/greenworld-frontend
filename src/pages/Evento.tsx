@@ -18,6 +18,7 @@ import {
   getUserParticipatingStatus,
   removeUserParticipatingEvent,
 } from "../services/profileService";
+import { mapsSelector } from "../utils/mapsSelector";
 
 const Evento = () => {
   const navigate = useNavigate();
@@ -135,6 +136,12 @@ const Evento = () => {
     }
   };
 
+  const directionsClickHandler = () => {
+    if (eventInfoQuery && eventInfoQuery.data) {
+      mapsSelector(eventInfoQuery.data.n, eventInfoQuery.data.e);
+    }
+  };
+
   if (eventInfoQuery.isLoading || !eventInfoQuery.data) {
     return <div className="h-full"></div>;
   }
@@ -182,11 +189,9 @@ const Evento = () => {
               <span className="font-semibold text-red-600">Questo evento è concluso</span>
             </div>
           ) : (
-            <div className="flex flex-col md:flex-row md:items-end lg:justify-end xl:justify-start space-y-2 md:mt-0 md:space-x-5 md:mb-5">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-end xl:justify-start space-y-2 md:mt-0 md:space-x-5 md:mb-5">
               <button
-                className={`${
-                  currentUser && userPartecipatingStatus.data ? "delete" : "primary"
-                } flex-1 lg:flex-initial`}
+                className={`${currentUser && userPartecipatingStatus.data ? "delete" : "primary"} `}
                 onClick={partecipaEventoHandler}
                 data-eventoid={eventInfoQuery.data.id}
               >
@@ -196,12 +201,11 @@ const Evento = () => {
                     : "Partecipa"
                 }`}
               </button>
-              <button
-                className="secondary flex-1 lg:flex-initial"
-                onClick={shareEventoHandler}
-                ref={shareButtonRef}
-              >
+              <button className="secondary " onClick={shareEventoHandler} ref={shareButtonRef}>
                 Condividi
+              </button>
+              <button className="secondary" onClick={directionsClickHandler}>
+                Indicazioni stradali
               </button>
             </div>
           )}

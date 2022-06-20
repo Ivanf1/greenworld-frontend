@@ -8,6 +8,7 @@ import close from "../assets/delete.svg";
 import sponsorLogo from "../assets/pizzaciro.png";
 
 import { EventoInfo } from "../services/eventService";
+import { mapsSelector } from "../utils/mapsSelector";
 
 interface Props {
   currentEvent: EventoInfo;
@@ -24,6 +25,10 @@ const MapEvent = ({
 }: Props) => {
   const navigate = useNavigate();
 
+  const directionsClickHandler = () => {
+    mapsSelector(currentEvent.n, currentEvent.e);
+  };
+
   return (
     <div className="bg-light-grey pb-5" id="sezione-evento">
       <section className="card xl:max-w-[78.125rem] xl:mx-auto mx-5 p-5">
@@ -37,7 +42,8 @@ const MapEvent = ({
           >
             <img src={close} className="w-[14px] h-[14px]" alt="" aria-hidden="true" />
           </div>
-          <section className="grid grid-cols-1 md:grid-cols-2 grid-rows-[auto_1fr] md:grid-rows-1 w-full lg:max-w-[78.125rem] mx-auto gap-x-5 lg:gap-x-20">
+          <h3 className="w-full mx-auto text-center py-5 mb-5">{currentEvent.name}</h3>
+          <section className="grid grid-cols-1 md:grid-cols-[60%_auto] grid-rows-[auto_1fr] md:grid-rows-1 w-full lg:max-w-[78.125rem] mx-auto gap-x-5 lg:gap-x-5">
             <section className="flex items-center justify-center">
               <img
                 src={currentEvent.img}
@@ -45,8 +51,7 @@ const MapEvent = ({
                 alt={currentEvent.altImg}
               />
             </section>
-            <section className="flex flex-col py-10 space-y-5 lg:justify-center md:space-y-2 lg:space-y-10">
-              <h3>{currentEvent.name}</h3>
+            <section className="flex flex-col py-5 space-y-5 lg:justify-center md:space-y-2 lg:space-y-3">
               <div className="flex flex-col space-y-2">
                 <div className="flex space-x-2">
                   <img src={mapMarkImg} alt="" aria-hidden="true" />
@@ -69,20 +74,23 @@ const MapEvent = ({
                   showLabel={true}
                 />
               </div>
-              <div className="flex flex-col lg:flex-row w-full space-y-2 lg:space-x-4 lg:space-y-0">
+              <div className="flex flex-col space-y-2 flex-1 justify-end">
                 <button
-                  className={`${isUserParticipating ? "delete" : "primary"} lg:flex-initial`}
+                  className={`${isUserParticipating ? "delete" : "primary"}`}
                   onClick={onParticipateClick}
                   data-eventoid={currentEvent.id}
                 >
                   {`${isUserParticipating ? "Rimuovi partecipazione" : "Partecipa"}`}
                 </button>
                 <button
-                  className="secondary w-full lg:w-auto"
+                  className="secondary"
                   id={currentEvent.id}
                   onClick={() => navigate(`/evento/${currentEvent.id}`)}
                 >
                   Maggiori informazioni
+                </button>
+                <button className="secondary" onClick={directionsClickHandler}>
+                  Indicazioni stradali
                 </button>
               </div>
             </section>
