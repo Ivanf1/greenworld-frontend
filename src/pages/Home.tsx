@@ -160,11 +160,11 @@ const Home = () => {
             </h2>
           </div>
           <div className="flex flex-col items-center lg:items-start col-start-1 col-end-1 lg:row-start-2 lg:row-end-2 lg:pb-60 lg:mt-4 px-5 xl:px-0">
-            <p>
+            <p className="text-center md:text-left">
               <span className="font-semibold">234</span> aziende si sono già unite alla nostra
               causa.
             </p>
-            <p>Diventa anche tu parte del cambiamento.</p>
+            <p className="text-center md:text-left">Diventa anche tu parte del cambiamento.</p>
             <button className="primary mt-5" onClick={() => navigate("candidatura-sponsor")}>
               Diventa Sponsor
             </button>
