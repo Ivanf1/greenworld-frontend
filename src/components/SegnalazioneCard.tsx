@@ -57,7 +57,9 @@ const SegnalazioneCard = ({
         <div className="flex flex-col md:items-end md:flex-row space-y-2 md:mt-0 md:space-x-5 md:mb-5 md:justify-end lg:justify-start">
           <button
             className="primary w-full md:w-auto"
-            onClick={() => navigate(`/crea-evento?citta=${citta}&via=${via}&civico=${civico}`)}
+            onClick={() =>
+              navigate(`/crea-evento?citta=${citta}&via=${via}${civico ? `&civico=${civico}` : ""}`)
+            }
           >
             Crea evento
           </button>
