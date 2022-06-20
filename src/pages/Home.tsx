@@ -162,14 +162,14 @@ const Home = () => {
           <div className="flex flex-col items-center lg:items-start col-start-1 col-end-1 lg:row-start-2 lg:row-end-2 lg:pb-60 lg:mt-4 px-5 xl:px-0">
             <p className="text-center md:text-left">
               <span className="font-semibold">234</span> aziende si sono già unite alla nostra
-              causa.
+              causa. Diventa anche tu parte del cambiamento
             </p>
-            <p className="text-center md:text-left">Diventa anche tu parte del cambiamento.</p>
+            {/* <p className="text-center md:text-left">Diventa anche tu parte del cambiamento.</p> */}
             <button className="primary mt-5" onClick={() => navigate("candidatura-sponsor")}>
               Diventa Sponsor
             </button>
           </div>
-          <div className="flex flex-col justify-around col-start-1 col-end-1 row-start-2 row-end-2 lg:col-start-2 lg:col-end-2 lg:row-start-1 lg:row-span-2 px-5 xl:px-0">
+          <div className="flex flex-col justify-around col-start-1 col-end-1 row-start-2 row-end-2 lg:col-start-2 lg:col-end-2 lg:row-start-1 lg:row-span-2 px-5 xl:px-0 h-full">
             <div className="flex justify-around w-full py-10">
               <img src={sponsor1} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
               <img src={sponsor2} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
