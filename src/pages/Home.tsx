@@ -171,23 +171,23 @@ const Home = () => {
           </div>
           <div className="flex flex-col justify-around col-start-1 col-end-1 row-start-2 row-end-2 lg:col-start-2 lg:col-end-2 lg:row-start-1 lg:row-span-2 px-5 xl:px-0 h-full">
             <div className="flex justify-around w-full py-10">
-              <img src={sponsor1} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor2} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor3} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor4} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
+              <img src={sponsor1} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor2} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor3} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor4} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
             </div>
             <div className="flex justify-between w-full py-5">
-              <img src={sponsor5} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor6} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor7} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor8} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor1} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
+              <img src={sponsor6} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor5} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor7} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor8} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor1} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
             </div>
             <div className="flex justify-around w-full py-10">
-              <img src={sponsor2} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor4} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor6} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
-              <img src={sponsor5} alt="" className="w-[50px] md:w-[70px] lg:w-[80px] h-auto" />
+              <img src={sponsor2} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor4} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor6} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
+              <img src={sponsor5} alt="" className="w-[50px] h-[50px] md:w-[70px] lg:w-[80px]" />
             </div>
           </div>
         </div>
