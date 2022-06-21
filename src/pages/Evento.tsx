@@ -201,11 +201,42 @@ const Evento = () => {
                     : "Partecipa"
                 }`}
               </button>
-              <button className="secondary " onClick={shareEventoHandler} ref={shareButtonRef}>
+              <button className="secondary" onClick={shareEventoHandler} ref={shareButtonRef}>
                 Condividi
               </button>
-              <button className="secondary" onClick={directionsClickHandler}>
+              <button className="secondary external" onClick={directionsClickHandler}>
                 Indicazioni stradali
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 14 14"
+                  width="16"
+                  height="16"
+                  className="ml-2"
+                >
+                  <g>
+                    <path
+                      d="M13.5,8v4.5a1,1,0,0,1-1,1H1.5a1,1,0,0,1-1-1V1.5a1,1,0,0,1,1-1H6"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <polyline
+                      points="10 0.5 13.5 0.5 13.5 4"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></polyline>
+                    <line
+                      x1="13.5"
+                      y1="0.5"
+                      x2="7"
+                      y2="7"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></line>
+                  </g>
+                </svg>
               </button>
             </div>
           )}
