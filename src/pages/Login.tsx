@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { useCurrentUser } from "../context/userContext";
 import AuthService from "../services/authService";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { ExtendedLocation } from "../location";
 
 interface FormValues {
@@ -97,6 +97,14 @@ const Login = () => {
             </form>
           )}
         </Formik>
+        <div className="w-full mt-5">
+          <p>
+            Non hai ancora un account?{" "}
+            <Link to="/registrazione" className="hover-underline-animation">
+              Registrati.
+            </Link>
+          </p>
+        </div>
       </main>
     </div>
   );

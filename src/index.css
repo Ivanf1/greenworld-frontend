@@ -336,6 +336,15 @@ div.rmsc {
   transition: 0.4s;
 }
 
+button.secondary.external > svg {
+  stroke: var(--color-primary);
+}
+
+button.secondary.external:hover > svg {
+  stroke: #ffffff;
+  transition: 0.2s;
+}
+
 @media (min-width: 768px) {
   button {
     padding: 8px 40px;
