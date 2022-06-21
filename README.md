@@ -35,7 +35,7 @@
 - [React Router](https://reactrouter.com/docs/en/v6)
 - [TypeScript](https://www.typescriptlang.org/docs/)
 - [React + Typescript](https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets)
-- [Tailwind](https://tailwindcss.com/docs/installation)
+- [Tailwind CSS](https://tailwindcss.com/docs/installation)
 
 ### Altre librerie usate
 
@@ -44,6 +44,10 @@
 - [react-multi-select-component](https://github.com/hc-oss/react-multi-select-component)
 - [react-dropzone](https://react-dropzone.js.org/)
 - [Formik](https://formik.org/docs/overview)
+- [Leaflet](https://leafletjs.com/)
+- [Leaflet.GestureHandling](https://github.com/elmarquis/Leaflet.GestureHandling#readme)
+- [react-intersection-observer](https://react-intersection-observer.vercel.app/?path=/docs/introduction--page)
+- [React Query](https://react-query.tanstack.com/overview)
 
 ### Layout
 
