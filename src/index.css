@@ -316,6 +316,26 @@ div.rmsc {
   transform-origin: bottom left;
 }
 
+.footer-social {
+  padding: 6px;
+  border: 2px solid #ffffff;
+  border-radius: var(--border-rad);
+}
+
+.footer-social > svg {
+  stroke: #ffffff;
+}
+
+.footer-social:hover {
+  background: #ffffff;
+  transition: 0.4s;
+}
+
+.footer-social:hover > svg {
+  stroke: var(--color-primary);
+  transition: 0.4s;
+}
+
 @media (min-width: 768px) {
   button {
     padding: 8px 40px;
