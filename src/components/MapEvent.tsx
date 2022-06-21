@@ -97,6 +97,7 @@ const MapEvent = ({
                     width="16"
                     height="16"
                     className="ml-2"
+                    aria-hidden="true"
                   >
                     <g>
                       <path
