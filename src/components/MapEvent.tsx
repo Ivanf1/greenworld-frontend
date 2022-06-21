@@ -83,7 +83,7 @@ const MapEvent = ({
                   {`${isUserParticipating ? "Rimuovi partecipazione" : "Partecipa"}`}
                 </button>
                 <button
-                  className="secondary "
+                  className="secondary"
                   id={currentEvent.id}
                   onClick={() => navigate(`/evento/${currentEvent.id}`)}
                 >
