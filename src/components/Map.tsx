@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 import { GestureHandling } from "leaflet-gesture-handling";
 import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
 
-import { TAILWINDCSS_LG_BREAKPOINT, TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
+import { TAILWINDCSS_MD_BREAKPOINT } from "../constants/tailwind";
 import useWindowSize from "../hooks/windowSize";
 
 import homeMapMarkImg from "../assets/home-map-mark.svg";
@@ -49,13 +49,8 @@ const MMap = ({ events, onEventoSelected }: Props) => {
 
   const scrollToEventSection = useCallback(() => {
     if (mapSectionRef.current) {
-      const offset =
-        windowWidth >= TAILWINDCSS_LG_BREAKPOINT
-          ? 250
-          : windowWidth >= TAILWINDCSS_MD_BREAKPOINT
-          ? 160
-          : 520;
-      const y = mapSectionRef.current.getBoundingClientRect().top + window.pageYOffset + offset;
+      const offset = windowWidth >= TAILWINDCSS_MD_BREAKPOINT ? 80 : 56;
+      const y = mapSectionRef.current.getBoundingClientRect().bottom + window.pageYOffset - offset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   }, [windowWidth]);
