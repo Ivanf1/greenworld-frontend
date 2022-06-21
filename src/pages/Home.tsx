@@ -17,10 +17,6 @@ import sponsor6 from "../assets/logos/honda-7.svg";
 import sponsor7 from "../assets/logos/shopify-2.svg";
 import sponsor8 from "../assets/logos/hulu-2.svg";
 
-import socialFb from "../assets/socials/fb2.svg";
-import socialTwitter from "../assets/socials/twitter.svg";
-import socialYt from "../assets/socials/yt.svg";
-
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
