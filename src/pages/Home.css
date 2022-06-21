@@ -6,7 +6,6 @@
   background-position: center;
   color: var(--color-primary-text);
   padding-bottom: calc(100% - 190px);
-  /* max-height: 100vh; */
 }
 
 .testimonianze-cta {

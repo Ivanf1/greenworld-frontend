@@ -17,6 +17,10 @@ import sponsor6 from "../assets/logos/honda-7.svg";
 import sponsor7 from "../assets/logos/shopify-2.svg";
 import sponsor8 from "../assets/logos/hulu-2.svg";
 
+import socialFb from "../assets/socials/fb2.svg";
+import socialTwitter from "../assets/socials/twitter.svg";
+import socialYt from "../assets/socials/yt.svg";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
@@ -246,7 +250,7 @@ const Home = () => {
 
       <footer className="w-full bg-primary px-5 py-20">
         <div className="flex flex-col md:space-x-40 items-start text-white xl:px-0 lg:max-w-[64rem] mx-auto">
-          <div className="flex w-full space-x-20">
+          <div className="flex flex-col md:flex-row w-full space-y-10 md:space-y-0 md:space-x-20">
             <div className="flex flex-col space-y-4">
               <span className="font-semibold text-lg">Link utili</span>
               <Link to="segnalazioni" className="hover-underline-animation-footer">
@@ -269,24 +273,54 @@ const Home = () => {
               </Link>
             </div>
             <div className="flex flex-col space-y-4">
-              <span className="font-semibold text-lg">Su di noi</span>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
-              <a className="hover-underline-animation-footer" href="/">
-                Chi siamo
-              </a>
+              <span className="font-semibold text-lg">Seguici</span>
+              <div className="flex space-x-5">
+                <Link to={"/"} className="footer-social w-[40px] h-[40px]">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                    <path
+                      d="M8,4C8,3,8.5,3,9,3h.6a.75.75,0,0,0,.76-.76V1.3A.76.76,0,0,0,9.59.54L8.17.52a2.86,2.86,0,0,0-2.95,3.2V5.17H4.43a.76.76,0,0,0-.76.76v.94a.76.76,0,0,0,.76.76h.79V13a.5.5,0,0,0,.5.5H7.53A.5.5,0,0,0,8,13V7.63h.88a.76.76,0,0,0,.76-.76V5.93a.76.76,0,0,0-.76-.76H8Z"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </Link>
+                <Link to={"/"} className="footer-social w-[40px] h-[40px]">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                    <path
+                      d="M4,9.4a6.77,6.77,0,0,1-2.41,1.21.5.5,0,0,0,0,.94C8.51,14.39,12.91,10,12.24,5.13l1.12-2.32h-1.3C10.44.82,6.14.92,6.85,5.16c0,0-2.3.41-5.24-2.48A.5.5,0,0,0,.76,3,5.52,5.52,0,0,0,4,9.4Z"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </Link>
+                <Link to={"/"} className="footer-social w-[40px] h-[40px]">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                    <g>
+                      <rect
+                        x="0.5"
+                        y="2"
+                        width="13"
+                        height="10"
+                        rx="2"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></rect>
+                      <path
+                        d="M5.31,9.32V5.12a.39.39,0,0,1,.6-.34l3.6,2.1a.4.4,0,0,1,0,.69l-3.6,2.1A.4.4,0,0,1,5.31,9.32Z"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </g>
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
+
           <div className="flex-1 flex justify-end self-end mt-20 md:mt-10">
             <span className="font-logo text-lg">GreenWorld</span>
           </div>
