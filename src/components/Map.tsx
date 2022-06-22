@@ -66,7 +66,9 @@ const MMap = ({ events, onEventoSelected }: Props) => {
   const partecipaEventoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!currentUser) {
-      navigate("/login", { state: { previousPathname: location.pathname } });
+      navigate("/login", {
+        state: { previousPathname: `${location.pathname}?evento=${currentEvent?.id}` },
+      });
       return;
     }
     if (currentEvent) {

@@ -99,8 +99,12 @@ const Login = () => {
         </Formik>
         <div className="w-full mt-5">
           <p>
-            Non hai ancora un account?{" "}
-            <Link to="/registrazione" className="hover-underline-animation">
+            Non hai ancora un account?
+            <Link
+              to="/registrazione"
+              state={{ previousPathname: location.state?.previousPathname || "/" }}
+              className="hover-underline-animation"
+            >
               Registrati.
             </Link>
           </p>
