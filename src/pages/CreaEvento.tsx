@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Formik } from "formik";
 import { MultiSelect } from "react-multi-select-component";
 import FileInput from "../components/FileInput";
-import { Navigate, useLocation, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useLocation, useSearchParams } from "react-router-dom";
 import { ExtendedLocation } from "../location";
 import { useCurrentUser } from "../context/userContext";
 
@@ -29,7 +29,9 @@ const CreaEvento = () => {
   const [searchParams] = useSearchParams();
   const location = useLocation() as ExtendedLocation;
   const { currentUser } = useCurrentUser();
+  const [submitted, setSubmitted] = useState(false);
   const [files, setFiles] = useState<{ preview: string }[]>([]);
+  const [selected, setSelected] = useState<MultiselectOption[]>([]);
   const initialFormValues = {
     nome: "",
     data: "",
@@ -43,7 +45,9 @@ const CreaEvento = () => {
   };
 
   const options = [
-    { value: "peroni", label: "Peroni" },
+    { value: "hulu", label: "Hulu" },
+    { value: "aprilia", label: "Aprilia" },
+    { value: "netflix", label: "Netflix" },
     { value: "bmw", label: "BMW" },
     { value: "ciro", label: "Pizzeria Ciro" },
   ];
@@ -60,15 +64,28 @@ const CreaEvento = () => {
     create: "Crea",
   };
 
-  const [selected, setSelected] = useState<MultiselectOption[]>([]);
-
   if (!currentUser) {
-    console.log(searchParams.toString());
     return (
       <Navigate
         to={"/login"}
         state={{ previousPathname: `${location.pathname}?${searchParams.toString()}` }}
       />
+    );
+  }
+
+  if (submitted) {
+    return (
+      <div className="form-background min-h-full py-10 bg-primary-tint">
+        <main className="card flex flex-col items-center lg:items-start p-6 md:p-[60px] max-w-[95%] md:max-w-2xl md:w-2xl mx-auto rounded-lg">
+          <h2 className="self-start mb-8">L'evento è stato creato!</h2>
+          <div className="space-y-5">
+            <p>Potrai visualizzarlo sulla mappa.</p>
+            <Link to="/" className="hover-underline-animation">
+              Torna alla Home Page
+            </Link>
+          </div>
+        </main>
+      </div>
     );
   }
 
@@ -107,7 +124,7 @@ const CreaEvento = () => {
             if (!values.via) {
               errors.via = "Inserisci la via";
             }
-            if (values.sponsors.length === 0) {
+            if (selected.length === 0) {
               errors.sponsors = "Seleziona almeno uno sponsor";
             }
             if (files.length < 1) {
@@ -115,11 +132,11 @@ const CreaEvento = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { validateForm }) => {
-            validateForm();
+          onSubmit={() => {
+            setSubmitted(true);
           }}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit} className="w-full">
               <div className="mt-3">
                 <label className="flex required" htmlFor="nome">
@@ -307,7 +324,7 @@ const CreaEvento = () => {
               </div>
 
               <div className="flex justify-end mt-10">
-                <button className="primary w-full md:w-auto" type="submit" disabled={isSubmitting}>
+                <button className="primary w-full md:w-auto" type="submit">
                   Crea
                 </button>
               </div>

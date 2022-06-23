@@ -2,30 +2,39 @@
 
 ## Live
 
-[GreenWorld](https://greenworld-ium.pages.dev/)
+E' disponibile una versione online del sistema a [questo](https://greenworld-ium.pages.dev/) indirizzo.
+
+## Utilizzo
+
+Il sistema presenta solo l'implementazione del front end, pertanto non prevede il caricamento di contenuti da database. Tuttavia l'utente può effettuare alcune azioni i cui risultati vengono resi persistenti nel local storage del browser.
+Per eliminare i contenuti aggiunti dall'utente e quindi resettare il sistema basterà fare il logout. Per il login e la
+registrazione qualsiasi input, purché correttamente formattato, verrà accettato e si avrà accesso all'account di default.
+Queste scelte sono state prese per permettere agli utenti di interagire e testare il sistema senza la necessità di un back end.
 
 ## Installazione
 
+Nel caso si preferisca testare il sistema localmente, si possono seguire queste istruzioni:
+
 - Assicurati di avere installato [Node.js](https://nodejs.dev/download)
-- Clona questa repository
+- Clona la repository
 
   ```bash
   git clone https://github.com/Ivanf1/greenworld-frontend.git
   ```
 
-- nella root della repository
+- Nella root della repository
 
   ```bash
   npm install
   ```
 
-- successivamente
+- Successivamente
 
   ```bash
   npm run start
   ```
 
-  si avvierà il development server su localhost:3000
+  Si avvierà il development server su [localhost:3000](http://localhost:3000)
 
 ## Alcune documentazioni di riferimento usate durante lo sviluppo del sistema
 
